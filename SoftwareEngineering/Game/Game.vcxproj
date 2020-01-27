@@ -73,12 +73,20 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>$(SolutionDir)\Libraries\SDL2-2.0.5/include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)\Libraries\SDL2-2.0.5\lib\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)\Libraries\CopiriteMath;$(SolutionDir)\Libraries\SDL2-2.0.5\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)\Libraries\CopiriteMath\Release;$(SolutionDir)\Libraries\SDL2-2.0.5\lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>$(SolutionDir)\Libraries\SDL2-2.0.5/include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)\Libraries\SDL2-2.0.5\lib\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)\Libraries\CopiriteMath;$(SolutionDir)\Libraries\SDL2-2.0.5\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)\Libraries\CopiriteMath\Release;$(SolutionDir)\Libraries\SDL2-2.0.5\lib\x86;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>$(SolutionDir)\Libraries\CopiriteMath;$(SolutionDir)\Libraries\SDL2-2.0.5\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)\Libraries\CopiriteMath\Release;$(SolutionDir)\Libraries\SDL2-2.0.5\lib\x64;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IncludePath>$(SolutionDir)\Libraries\CopiriteMath;$(SolutionDir)\Libraries\SDL2-2.0.5\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)\Libraries\CopiriteMath\Release;$(SolutionDir)\Libraries\SDL2-2.0.5\lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -89,7 +97,7 @@
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_ttf.lib;CopiriteMath.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Console</SubSystem>
     </Link>
     <PostBuildEvent>
@@ -107,6 +115,10 @@ copy "$(SolutionDir)\Libraries\SDL2_ttf-2.0.12\lib\x86\zlib1.dll" "$(TargetDir)"
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
+    <Link>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_ttf.lib;CopiriteMath.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <SubSystem>Console</SubSystem>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
