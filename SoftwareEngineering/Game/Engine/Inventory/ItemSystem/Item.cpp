@@ -1,12 +1,32 @@
 #include "Item.h"
 
-Item::Destroy()
+void Item::Destroy()
 {
 	//Remove item from owning inventory
+	if (m_owner)
+		m_owner->RemoveItem(this);
 	//delete object
 }
 
-Item::UpdateOwner()
+void Item::UpdateOwner(Inventory* newOwner)
 {
-	//m_owner = ...
+	m_owner = newOwner;
+}
+
+void Item::IncrementStackSize()
+{
+	//Only increment if item is actually stackable, if not just set stacksize to default
+	if (m_stackable)
+		m_stackSize++;
+	else
+		m_stackSize = 1;
+}
+
+void Item::DecrementStackSize()
+{
+	//Only decrement if item is actually stackable, if not just set stacksize to default
+	if (m_stackable)
+		m_stackSize--;
+	else
+		m_stackSize = 1;
 }

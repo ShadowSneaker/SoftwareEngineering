@@ -1,7 +1,8 @@
-#include "ItemList.h"
+#include "Inventory.h"
 #include "ItemSystem/Item.h"
+#include <algorithm>
 
-ItemList::AddItem(Item* item)
+void Inventory::AddItem(Item* item)
 {
 	bool containsItem = std::find(m_items.begin(), m_items.end(), item) != m_items.end();
 
@@ -19,10 +20,12 @@ ItemList::AddItem(Item* item)
 	OnItemAdded(item);
 }
 
-ItemList::RemoveItem(Item* item)
+void Inventory::RemoveItem(Item* item)
 {
 	bool containsItem = std::find(m_items.begin(), m_items.end(), item) != m_items.end();
-	if (!containsItem)return;
+
+	//vector does not contain item, stop here...
+	if (!containsItem) return;
 
 	if (item->IsStackable())
 	{
