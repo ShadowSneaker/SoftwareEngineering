@@ -17,7 +17,7 @@ enum class EWindowMode
 
 class CSDLSetup
 {
-	/// Private
+	/// Properties
 
 	// The main created window reference.
 	SDL_Window* Window{ nullptr };

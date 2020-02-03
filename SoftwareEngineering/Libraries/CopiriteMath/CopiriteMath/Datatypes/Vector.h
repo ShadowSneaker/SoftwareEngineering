@@ -11,8 +11,9 @@
 #include <DirectXMath.h>
 #endif // INCLUDE_DIRECTX_MATH
 
+#define INCLUDE_SDL
 #ifdef INCLUDE_SDL
-#include<SDL.h>
+#include <SDL_rect.h>
 #endif
 
 
@@ -306,6 +307,15 @@ public:
 	// Converts this vector to a DirectX::XMVECTOR.
 	INLINE DirectX::XMVECTOR ToXMVector() const;
 #endif // INCLUDE_DIRECTX_MATH
+
+#ifdef INCLUDE_SDL
+	static INLINE STVector<Size, Type> FromRect(SDL_Rect Rect);
+	static INLINE STVector<Size, Type> FromPoint(SDL_Point Point);
+
+	INLINE SDL_Rect ToRect() const;
+	INLINE SDL_Point ToPoint() const;
+#endif// INCLUDE_SDL
+
 
 	// Converts this vector to represent a rotation of unit length.
 	INLINE STVector<3, float> Rotation() const;
@@ -1350,6 +1360,34 @@ INLINE DirectX::XMVECTOR STVector<Size, Type>::ToXMVector() const
 	}
 }
 #endif // INCLUDE_DIRECTX_MATH
+
+#ifdef INCLUDE_SDL
+template <uint Size, typename Type>
+static INLINE STVector<Size, Type> STVector<Size, Type>::FromRect(SDL_Rect Rect)
+{
+
+}
+
+template <uint Size, typename Type>
+static INLINE STVector<Size, Type> STVector<Size, Type>::FromPoint(SDL_Point Point)
+{
+
+}
+
+template <uint Size, typename Type>
+INLINE SDL_Rect STVector<Size, Type>::ToRect() const
+{
+
+}
+
+template<uint Size, typename Type>
+INLINE SDL_Point STVector<Size, Type>::ToPoint() const
+{
+
+}
+
+#endif // INCLUDE_SDL
+
 
 
 template <uint Size, typename Type>

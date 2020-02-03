@@ -19,13 +19,13 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="CImage.cpp" />
+    <ClCompile Include="Engine\Graphics\Image.cpp" />
     <ClCompile Include="Engine\Graphics\Renderer\Renderer.cpp" />
     <ClCompile Include="Engine\Graphics\Renderer\SDLSetup.cpp" />
     <ClCompile Include="Engine\Source.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CImage.h" />
+    <ClInclude Include="Engine\Graphics\Image.h" />
     <ClInclude Include="Engine\Graphics\Renderer\Renderer.h" />
     <ClInclude Include="Engine\Graphics\Renderer\SDLSetup.h" />
   </ItemGroup>

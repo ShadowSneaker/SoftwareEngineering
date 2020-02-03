@@ -24,7 +24,7 @@
     <ClCompile Include="Engine\Graphics\Renderer\SDLSetup.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CImage.cpp">
+    <ClCompile Include="Engine\Graphics\Image.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -35,7 +35,7 @@
     <ClInclude Include="Engine\Graphics\Renderer\SDLSetup.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CImage.h">
+    <ClInclude Include="Engine\Graphics\Image.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
