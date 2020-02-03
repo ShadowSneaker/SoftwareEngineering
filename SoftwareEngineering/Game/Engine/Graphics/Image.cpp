@@ -13,7 +13,7 @@ CImage::~CImage()
 }
 
 
-void CImage::SetTexture(std::string FilePath, bool UseDefaultPath)
+void CImage::SetImage(std::string FilePath, bool UseDefaultPath)
 {
 
 }

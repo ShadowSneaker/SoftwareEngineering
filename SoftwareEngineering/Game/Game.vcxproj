@@ -25,6 +25,7 @@
     <ClCompile Include="Engine\Source.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Engine\Graphics\Colour.h" />
     <ClInclude Include="Engine\Graphics\Image.h" />
     <ClInclude Include="Engine\Graphics\Renderer\Renderer.h" />
     <ClInclude Include="Engine\Graphics\Renderer\SDLSetup.h" />
