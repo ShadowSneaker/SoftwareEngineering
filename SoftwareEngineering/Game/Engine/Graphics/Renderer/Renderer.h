@@ -3,6 +3,7 @@
 #include "..\\Image.h"
 #include <map>
 #include <vector>
+#include <SDL.h>
 
 // 
 class CRenderer

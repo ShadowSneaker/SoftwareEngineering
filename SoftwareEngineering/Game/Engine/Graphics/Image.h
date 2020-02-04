@@ -83,7 +83,7 @@ public:
 	//Get the Image Width
 	INLINE SVector2i GetSize() const { return ImageSize; }
 
-	//virtual INLINE SDL_Rect GetCell() const { return SVector4{ 0.0f, ImageSize }.ToRect(); }
+	virtual INLINE SDL_Rect GetCell() const { return SVector4{ 0.0f, ImageSize }.ToRect(); }
 
 	virtual INLINE SVector2 GetWorldPivot() const { return (ImageSize * Transform.GetWorldScale()) / 2.0f; }
 
