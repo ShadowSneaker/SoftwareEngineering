@@ -14,15 +14,15 @@ struct SColour
 public:
 	/// Constructors
 
-	SColour();
+	INLINE SColour();
 
-	SColour(const uint8& InR, const uint8& InG, const uint8& InB, const uint8& Alpha = 255);
+	INLINE SColour(const uint8& InR, const uint8& InG, const uint8& InB, const uint8& Alpha = 255);
 
 
 
 	/// Conversions
 
-	SDL_Color ToSDLColor()
+	INLINE SDL_Color ToSDLColor()
 	{
 		return SDL_Color{ R, G, B, A };
 	}
@@ -30,11 +30,11 @@ public:
 
 
 
-SColour::SColour()
+INLINE SColour::SColour()
 {}
 
 
-SColour::SColour(const uint8& InR, const uint8& InG, const uint8& InB, const uint8& Alpha)
+INLINE SColour::SColour(const uint8& InR, const uint8& InG, const uint8& InB, const uint8& Alpha)
 	:R{ InR }, G{ InG }, B{ InB }, A{ Alpha }
 {}
 

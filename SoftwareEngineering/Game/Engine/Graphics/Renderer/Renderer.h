@@ -13,7 +13,7 @@ private:
 	CSDLSetup* TheSetUp;
 
 	//
-	std::map<std::string, SDL_Texture> ImageTextures;
+	std::map<std::string, SDL_Texture*> ImageTextures;
 
 	//
 	std::vector<CImage*> Images;

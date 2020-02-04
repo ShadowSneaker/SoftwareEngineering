@@ -1317,7 +1317,7 @@ INLINE void STVector<Size, Type>::Print() const
 template <uint Size, typename Type>
 INLINE STVector<Size, Type> STVector<Size, Type>::FromXMVector(DirectX::XMVECTOR Vector)
 {
-	STVector<Size, Element> Result;
+	STVector<Size, Type> Result;
 	switch (Size)
 	{
 	default:
@@ -1365,25 +1365,79 @@ INLINE DirectX::XMVECTOR STVector<Size, Type>::ToXMVector() const
 template <uint Size, typename Type>
 static INLINE STVector<Size, Type> STVector<Size, Type>::FromRect(SDL_Rect Rect)
 {
+	STVector<Size, Type> Result{ 0 };
+	switch (Size)
+	{
+	case 4:
+		Result[3] = Rect.h;
 
+	case 3:
+		Result[2] = Rect.w;
+
+	case 2:
+		Result[1] = Rect.y;
+
+	case 1:
+		Result[0] = Rect.x;
+	}
+
+	return Result;
 }
 
 template <uint Size, typename Type>
 static INLINE STVector<Size, Type> STVector<Size, Type>::FromPoint(SDL_Point Point)
 {
+	STVector<Size, Type> Result{ 0 };
+	switch (Size)
+	{
+	case 2:
+		Result[1] = Point.y;
 
+	case 1:
+		Result[0] = Point.x;
+	}
+	return Result;
 }
 
 template <uint Size, typename Type>
 INLINE SDL_Rect STVector<Size, Type>::ToRect() const
 {
+	switch (Size)
+	{
+	case 0:
+		return SDL_Rect{ 0, 0, 0, 0 };
 
+	case 1:
+		return SDL_Rect{ (int32)Data[0], 0, 0, 0 };
+
+	case 2:
+		return SDL_Rect{ (int32)Data[0], (int32)Data[1], 0, 0 };
+
+	case 3:
+		return SDL_Rect{ (int32)Data[0], (int32)Data[1], (int32)Data[2], 0 };
+
+	case 4:
+	default:
+		return SDL_Rect{ (int32)Data[0], (int32)Data[1], (int32)Data[2], (int32)Data[3] };
+	}
 }
 
 template<uint Size, typename Type>
 INLINE SDL_Point STVector<Size, Type>::ToPoint() const
 {
+	switch (Size)
+	{
+	case 0:
+		return SDL_Point{ 0, 0 };
 
+	case 1:
+		return SDL_Point{ Data[0], 0 };
+
+
+	default:
+	case 2:
+		return SDL_Point{ Data[0], Data[2] };
+	}
 }
 
 #endif // INCLUDE_SDL
