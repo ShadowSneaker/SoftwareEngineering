@@ -237,13 +237,13 @@ public:
 	STransform2 GetWorldTransform() const;
 
 	// Gets the location of this object in worldspace.
-	INLINE SVector2 GetWorldLocation() const { return ((Parent) ? Parent->GetWorldLocation() : 0.0f) + Location; }
+	INLINE SVector2 GetWorldLocation() const { return GetWorldTransform().Rotation; }
 
 	// Gets the rotation of this object in worldspace.
 	INLINE float GetWorldRotation() const { return ((Parent) ? Parent->GetWorldRotation() : 0.0f) + Rotation; }
 
 	// Gets the scale of this object in worldspace.
-	INLINE SVector2 GetWorldScale() const { return ((Parent) ? Parent->GetWorldScale() : 1.0f) * Scale; }
+	INLINE SVector2 GetWorldScale() const { return GetWorldTransform().Scale; }
 
 	// Gets a reference to all this object's children.
 	INLINE std::vector<STransform2*> GetChildren() const { return Children; }

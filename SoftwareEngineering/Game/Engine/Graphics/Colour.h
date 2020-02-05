@@ -16,6 +16,8 @@ public:
 
 	INLINE SColour();
 
+	INLINE SColour(const SDL_Color& Colour);
+
 	INLINE SColour(const uint8& InR, const uint8& InG, const uint8& InB, const uint8& Alpha = 255);
 
 
@@ -31,6 +33,11 @@ public:
 
 
 INLINE SColour::SColour()
+{}
+
+
+INLINE SColour::SColour(const SDL_Color& Colour)
+	:R{ Colour.r }, G{ Colour.g }, B{ Colour.b }, A{ Colour.a }
 {}
 
 

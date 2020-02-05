@@ -69,26 +69,119 @@ void CRenderer::DrawAllImages()
 
 void CRenderer::DrawImage(CImage* Image) const
 {
-	STransform2 WorldTransform{ Image->Transform.GetWorldTransform() };
 	SDL_Rect Cell{ Image->GetCell() };
 	SVector2 Pivot{ Image->Pivot };
+	
+	STransform2 Local{ Image->Transform };
+	Local.Location -= Pivot;
+
+	STransform2 WorldTransform{ Local.GetWorldTransform() };
 
 	SDL_FRect Rect;
-	Rect.x = WorldTransform.Location[X] - Pivot[X];
-	Rect.y = WorldTransform.Location[Y] - Pivot[Y];
-	Rect.w = Image->GetCell().x * WorldTransform.Scale[X];
-	Rect.h = Image->GetCell().y * WorldTransform.Scale[Y];
+	Rect.x = WorldTransform.Location[X];
+	Rect.y = WorldTransform.Location[Y];
+	Rect.w = Cell.w * WorldTransform.Scale[X];
+	Rect.h = Cell.h * WorldTransform.Scale[Y];
 
-	SDL_RenderCopyExF(Setup->GetRenderer(), Image->GetTexture(), &Cell, &Rect, WorldTransform.Rotation, &Image->Pivot.ToFPoint(), Image->GetFlip());
+	SDL_RenderCopyExF(Setup->GetRenderer(), Image->GetTexture(), &Cell, &Rect, (double)WorldTransform.Rotation, &Pivot.ToFPoint(), Image->GetFlip());
 }
 
 
-void CRenderer::AddImage(const std::string& FilePath)
+bool CRenderer::AddTexture(const std::string& FilePath, const bool& UseDefaultPath)
 {
-	std::string Path{ FilePath };
+	std::string Path{ GetPath(FilePath, UseDefaultPath) };
 	if (!Textures.count(Path))
 	{
 		SImageInfo ImageInfo;
 		ImageInfo.Surface = IMG_Load(Path.c_str());
+		if (!ImageInfo.Surface)
+		{
+			std::cout << "Failed to create surface from file: " + Path << std::endl;
+			return false;
+		}
+
+		ImageInfo.Texture = SDL_CreateTextureFromSurface(Setup->GetRenderer(), ImageInfo.Surface);
+		if (!ImageInfo.Texture)
+		{
+			std::cout << "Failed to create texture from file: " + Path << std::endl;
+			SDL_FreeSurface(ImageInfo.Surface);
+			return false;
+		}
+
+		SDL_QueryTexture(ImageInfo.Texture, NULL, NULL, &ImageInfo.ImageSize[X], &ImageInfo.ImageSize[Y]);
+		Textures.insert(std::pair<std::string, SImageInfo>(Path, ImageInfo));
 	}
+	return true;
+}
+
+
+void CRenderer::SetImage(CImage* Image, const std::string& FilePath, const bool& UseDefaultPath)
+{
+	std::string Path{ GetPath(FilePath, UseDefaultPath) };
+
+	if (!Textures.count(Path))
+	{
+		if (!AddTexture(FilePath, UseDefaultPath))
+		{
+			throw std::runtime_error("Texture failed to be created");
+		}
+	}
+	SImageInfo Info{ Textures[Path] };
+	Image->SetImage(Info, Path);
+}
+
+
+void CRenderer::AddImage(CImage* Image)
+{
+	if (!ContainsImage(Image))
+	{
+		Images.push_back(Image);
+	}
+}
+
+
+void CRenderer::RemoveImage(CImage* Image)
+{
+	for (uint i = 0; i < Images.size(); ++i)
+	{
+		if (Images[i] == Image)
+		{
+			Images.erase(Images.begin() + i);
+		}
+	}
+}
+
+
+void CRenderer::DeleteImage(CImage* Image)
+{
+	RemoveImage(Image);
+	delete Image;
+}
+
+
+bool CRenderer::ContainsImage(const CImage* Image)
+{
+	for (uint i = 0; i < Images.size(); ++i)
+	{
+		if (Images[i] == Image) return true;
+	}
+	return false;
+}
+
+
+void CRenderer::SetBackgroundColour(const SColour& Colour)
+{
+	SDL_SetRenderDrawColor(Setup->GetRenderer(), Colour.R, Colour.G, Colour.B, Colour.A);
+}
+
+
+void CRenderer::SetBackgroundColour(const uint8& Red, const uint8& Green, const uint8& Blue, const uint8& Alpha)
+{
+	SetBackgroundColour(SColour{ Red, Green, Blue, Alpha });
+}
+
+
+void CRenderer::SetBackgroundColour(const SDL_Color& Colour)
+{
+	SetBackgroundColour(SColour{ Colour });
 }

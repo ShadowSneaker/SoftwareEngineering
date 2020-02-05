@@ -73,7 +73,9 @@ STransform2 STransform2::GetWorldTransform() const
 	LocationMat.ToTranslation(Location);
 
 	SMatrix3 Local{ ScaleMat * RotationMat * LocationMat };
-	Local = ParentMat * Local;
+	SMatrix3 World{ ParentMat * Local };
 
-	return Local.GetTransform();
+	STransform2 Transform{ World.GetTransform() };
+	Transform.Rotation = GetWorldRotation();
+	return Transform;
 }

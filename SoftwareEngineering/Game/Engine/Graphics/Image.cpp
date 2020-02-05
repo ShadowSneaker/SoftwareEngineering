@@ -13,9 +13,13 @@ CImage::~CImage()
 }
 
 
-void CImage::SetImage(std::string FilePath, bool UseDefaultPath)
+void CImage::SetImage(const SImageInfo& Info, const std::string& Path)
 {
-
+	Surface = Info.Surface;
+	Texture = Info.Texture;
+	ImageSize = Info.ImageSize;
+	FilePath = Path;
+	Pivot = GetImageCenter();
 }
 
 

@@ -421,11 +421,11 @@ public:
 	// Returns true if the inputted value is not a number.
 	// @param Value - The value to check.
 	// @return - true if the inputted value is not a number.
-	//template <typename Type>
-	//static INLINE bool IsNaN(Type Value)
-	//{
-	//	return isnan(Value);
-	//}
+	template <typename Type>
+	static INLINE bool IsNaN(Type Value)
+	{
+		return isnan(Value);
+	}
 
 
 	// Returns true if the inputted value is not a number.
@@ -440,11 +440,11 @@ public:
 	// Returns true if the inputted value is a valid number.
 	// @param Value - The value to check.
 	// @return - true if the inputted value is a valid number.
-	//template <typename Type>
-	//static INLINE bool IsFinite(Type Value)
-	//{
-	//	return isfinite(Value);
-	//}
+	template <typename Type>
+	static INLINE bool IsFinite(Type Value)
+	{
+		return isfinite(Value);
+	}
 
 
 	// Returns true if the inputted value is a valid number.

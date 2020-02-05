@@ -19,15 +19,15 @@ private:
 	/// Properties
 
 
-	SDL_Surface* Surface;
-	SDL_Texture* Texture;
-	SColour Colour;
+	SDL_Surface* Surface{ nullptr };
+	SDL_Texture* Texture{ nullptr };
+	SColour Colour{ SColour{} };
 
 protected:
 	// The size of the image (in pixels).
 	SVector2i ImageSize;
 
-	std::string FilePath;
+	std::string FilePath{""};
 
 public:
 	// The location, rotaiton and scale of the image.
@@ -68,10 +68,10 @@ public:
 
 	///Functions
 
-	// Sets a texture to this image using the inputted file path.
-	// @param FilePath - The location in file of this image (start point is the soluttion folder).
-	// @param UseDefaultPath - Should the file path start in a default directory of images.
-	void SetImage(std::string FilePath, bool UseDefaultPath = true);
+	// Sets a texture to this image using the inputted information.
+	// @param Info - the image info to use.
+	// @param FilePath - The file path to this texture.
+	void SetImage(const SImageInfo& Info, const std::string& Path);
 
 	void SetColour(const uint8& Red, const uint8& Green, const uint8& Blue, const uint8& Alpha = 255);
 

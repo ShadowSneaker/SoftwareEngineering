@@ -2,10 +2,11 @@
 #pragma warning(disable : 26812)
 
 #include "SDLSetup.h"
-#include "..\\Image.h"
+#include "..\Image.h"
 #include <map>
 #include <vector>
 #include <SDL.h>
+#include <SDL_image.h>
 
 
 
@@ -60,12 +61,50 @@ public:
 	// @param Image - A reference to the image that should be drawn.
 	void DrawImage(CImage* Image) const;
 
-	void AddImage(const std::string& FilePath);
+	// Loads a texture file and inserts it into this object.
+	// @param FilePath - The path to the file.
+	// @param UseDefaultPath - Should the root directory be the default location of textures.
+	// @return - Returns true if the file already exists or was successfully created.
+	bool AddTexture(const std::string& FilePath, const bool& UseDefaultPath = true);
+
+	// Sets a texture onto an image.
+	// @param Image - The image object to apply the texture on to.
+	// @param FilePath - The location in files of the texture.
+	// @param UseDefaultPath - Should the root directory be the default location of textures.
+	void SetImage(CImage* Image, const std::string& FilePath, const bool& UseDefaultPath = true);
+
+	// Adds an image to this object.
+	// @param Image - The reference to the image to add.
+	void AddImage(CImage* Image);
+
+	// Removes an image from this object.
+	// @param Image - The reference to the image to remove.
+	void RemoveImage(CImage* Image);
+
+	// Safely remvoes and deletes the inputted image from this object.
+	// @note - Inputted images that are not stored in this object will still be deleted.
+	// @param Image - The reference to the image to delete.
+	void DeleteImage(CImage* Image);
+
+	// Checks to see if the images has already been added to this object.
+	// @param Image - The reference to the image to add.
+	// @return - Returns true if the image already exists.
+	bool ContainsImage(const CImage* Image);
+
 
 
 	/// Setters
 
+	void SetBackgroundColour(const SColour& Colour);
+	void SetBackgroundColour(const uint8& Red, const uint8& Green, const uint8& Blue, const uint8& Alpha = 255);
+	void SetBackgroundColour(const SDL_Color& Colour);
 
 
+
+private:
 	/// Getters
+
+	// Returns the file built filepath of an inputted file.
+	INLINE std::string GetPath(const std::string& Path, const bool& UseDefaultPath = true) const { return std::string{ (UseDefaultPath) ? "" + Path : Path }; }
+
 };
