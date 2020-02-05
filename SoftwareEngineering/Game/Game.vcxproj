@@ -23,12 +23,16 @@
     <ClCompile Include="Engine\Graphics\Renderer\Renderer.cpp" />
     <ClCompile Include="Engine\Graphics\Renderer\SDLSetup.cpp" />
     <ClCompile Include="Engine\Source.cpp" />
+    <ClCompile Include="Engine\Inventory\Inventory.cpp" />
+    <ClCompile Include="Engine\Inventory\ItemSystem\Item.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Graphics\Colour.h" />
     <ClInclude Include="Engine\Graphics\Image.h" />
     <ClInclude Include="Engine\Graphics\Renderer\Renderer.h" />
     <ClInclude Include="Engine\Graphics\Renderer\SDLSetup.h" />
+    <ClCompile Include="Engine\Inventory\Inventory.h" />
+    <ClCompile Include="Engine\Inventory\ItemSystem\Item.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

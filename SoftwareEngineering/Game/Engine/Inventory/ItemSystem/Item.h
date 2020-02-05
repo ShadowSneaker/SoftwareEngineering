@@ -4,12 +4,12 @@
 class Item
 {
 private:
-	bool m_stackable;
-	int m_stackSize;
-	int m_value;
-	int m_weight;
+	bool m_stackable = false;
+	int m_stackSize = 1;
+	int m_value = 0;
+	int m_weight = 0;
 
-	Inventory* m_owner;
+	Inventory* m_owner = nullptr;
 public:
 	void Destroy();
 	void UpdateOwner(Inventory* newOwner);
