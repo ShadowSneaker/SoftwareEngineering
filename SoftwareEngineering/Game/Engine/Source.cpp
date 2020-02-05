@@ -6,7 +6,7 @@ int main(int argc, char** argv)
 {
 	// Temporary code, this should be changed!
 	CRenderer* Renderer{ new CRenderer() };
-	Renderer->SetBackgroundColour(64, 64, 64);
+	Renderer->SetBackgroundColour(SColour::DarkGray());
 	
 	CImage* Image{ new CImage() };
 	Renderer->SetImage(Image, "Content/Images/HappyBoi.png", false);
