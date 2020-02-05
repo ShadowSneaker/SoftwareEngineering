@@ -1,21 +1,26 @@
 #pragma once
+#pragma warning(disable : 26812)
+
 #include "SDLSetup.h"
 #include "..\\Image.h"
 #include <map>
 #include <vector>
 #include <SDL.h>
 
+
+
 // 
 class CRenderer
 {
 private:
 	/// Properties
-	CSDLSetup* TheSetUp;
+	CSDLSetup* Setup;
 
-	//
-	std::map<std::string, SDL_Texture*> ImageTextures;
+	// A reference to all loaded textures.
+	// Used to keep one reference of all texture types.
+	std::map<std::string, SImageInfo> Textures;
 
-	//
+	// A list of all stored image objects to render.
 	std::vector<CImage*> Images;
 
 
@@ -30,15 +35,32 @@ public:
 
 
 
+private:
 	/// Functions
 
-	//
+	// Removes all images stored from this object.
+	void DeleteAllImages();
+
+	// Removes all textures stored in this object.
+	void DeleteAllTextures();
+
+public:
+	// Clears the window.
+	void Clear();
+
+	// Presents the current frame to the window.
+	void Present();
+
+
+	// Draws all stored images on to the screen then presents it.
+	// @Note - Does not cull any images.
 	void DrawAllImages();
 
-	// Param:
-	// Name is the file path from the image class to determine the texture from the map above
-	// TheImage is the image that is going to be used to draw at the screen
-	void DrawImage(CImage* TheImage, std::string Name);
+	// Draws the inputted image to the screen.
+	// @param Image - A reference to the image that should be drawn.
+	void DrawImage(CImage* Image) const;
+
+	void AddImage(const std::string& FilePath);
 
 
 	/// Setters

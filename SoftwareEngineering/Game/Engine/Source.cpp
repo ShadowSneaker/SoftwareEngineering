@@ -13,6 +13,7 @@ int main(int argc, char** argv)
 
 	while (Event->type != SDL_QUIT)
 	{
+		Renderer->DrawAllImages();
 		SDL_PollEvent(Event);
 	}
 

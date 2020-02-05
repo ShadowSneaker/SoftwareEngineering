@@ -13,7 +13,7 @@
 
 #define INCLUDE_SDL
 #ifdef INCLUDE_SDL
-#include <SDL_rect.h>
+#include <SDL_image.h>
 #endif
 
 
@@ -310,10 +310,14 @@ public:
 
 #ifdef INCLUDE_SDL
 	static INLINE STVector<Size, Type> FromRect(SDL_Rect Rect);
+	static INLINE STVector<Size, Type> FromFRect(SDL_FRect Rect);
 	static INLINE STVector<Size, Type> FromPoint(SDL_Point Point);
+	static INLINE STVector<Size, Type> FromFPoint(SDL_FPoint Point);
 
 	INLINE SDL_Rect ToRect() const;
+	INLINE SDL_FRect ToFRect() const;
 	INLINE SDL_Point ToPoint() const;
+	INLINE SDL_FPoint ToFPoint() const;
 #endif// INCLUDE_SDL
 
 
@@ -499,10 +503,10 @@ public:
 	INLINE STVector<Size, Type> GetNormal(float Tolerance = MICRO_NUMBER) const;
 
 	// Returns the X component of this vector.
-	INLINE Type& X();
+	//INLINE Type& X();
 
 	// Returns the X component of this vector.
-	INLINE Type X() const;
+	//INLINE Type X() const;
 
 	// Returns the X component of this vector.
 	INLINE Type& GetX();
@@ -511,10 +515,10 @@ public:
 	INLINE Type GetX() const;
 
 	// Returns the Y component of this vector.
-	INLINE Type& Y();
+	//INLINE Type& Y();
 
 	// REturns the Y component of this vector.
-	INLINE Type Y() const;
+	//INLINE Type Y() const;
 
 	// Returns the Y component of this vector.
 	INLINE Type& GetY();
@@ -523,10 +527,10 @@ public:
 	INLINE Type GetY() const;
 
 	// Returns the Z component of this vector.
-	INLINE Type& Z();
+	//INLINE Type& Z();
 
 	// Returns the Z component of this vector.
-	INLINE Type Z() const;
+	//INLINE Type Z() const;
 
 	// Returns the Z component of this vector.
 	INLINE Type& GetZ();
@@ -535,10 +539,10 @@ public:
 	INLINE Type GetZ() const;
 
 	// Returns the W Component of this vector.
-	INLINE Type& W();
+	//INLINE Type& W();
 
 	// Returns the W component of this vector.
-	INLINE Type W() const;
+	//INLINE Type W() const;
 
 	// Returns the W component of this vector.
 	INLINE Type& GetW();
@@ -959,7 +963,7 @@ INLINE STVector<Size, Type> STVector<Size, Type>::operator*(const STVector<Size2
 	STVector<Size, Type> Result;
 	for (uint i = 0; i < Count; ++i)
 	{
-		Result[i] = Data[i] * Other[i];
+		Result[i] = Data[i] * (Type)Other[i];
 	}
 	Result.CheckNaN();
 	return Result;
@@ -1286,7 +1290,7 @@ INLINE void STVector<Size, Type>::CheckNaN()
 	if (ContainsNaN())
 	{
 		//printf("Vector contains NaN\n");
-		*this = 0.0f;
+		*this = (Type)0.0f;
 	}
 }
 
@@ -1296,7 +1300,7 @@ INLINE bool STVector<Size, Type>::ContainsNaN() const
 {
 	for (uint i = 0; i < Size; ++i)
 	{
-		if (!TMath::IsFinite(Data[i])) return true;
+		if (!TMath::IsFinite((float)Data[i])) return true;
 	}
 	return false;
 }
@@ -1369,20 +1373,44 @@ static INLINE STVector<Size, Type> STVector<Size, Type>::FromRect(SDL_Rect Rect)
 	switch (Size)
 	{
 	case 4:
-		Result[3] = Rect.h;
+		Result[3] = (Type)Rect.h;
 
 	case 3:
-		Result[2] = Rect.w;
+		Result[2] = (Type)Rect.w;
 
 	case 2:
-		Result[1] = Rect.y;
+		Result[1] = (Type)Rect.y;
 
 	case 1:
-		Result[0] = Rect.x;
+		Result[0] = (Type)Rect.x;
 	}
 
 	return Result;
 }
+
+
+template <uint Size, typename Type>
+static INLINE STVector<Size, Type> STVector<Size, Type>::FromFRect(SDL_FRect Rect)
+{
+	STVector<Size, Type> Result{ 0 };
+	switch (Size)
+	{
+	case 4:
+		Result[3] = (Type)Rect.h;
+
+	case 3:
+		Result[2] = (Type)Rect.w;
+
+	case 2:
+		Result[1] = (Type)Rect.y;
+
+	case 1:
+		Result[0] = (Type)Rect.x;
+	}
+
+	return Result;
+}
+
 
 template <uint Size, typename Type>
 static INLINE STVector<Size, Type> STVector<Size, Type>::FromPoint(SDL_Point Point)
@@ -1391,13 +1419,30 @@ static INLINE STVector<Size, Type> STVector<Size, Type>::FromPoint(SDL_Point Poi
 	switch (Size)
 	{
 	case 2:
-		Result[1] = Point.y;
+		Result[1] = (Type)Point.y;
 
 	case 1:
-		Result[0] = Point.x;
+		Result[0] = (Type)Point.x;
 	}
 	return Result;
 }
+
+
+template <uint Size, typename Type>
+static INLINE STVector<Size, Type> STVector<Size, Type>::FromFPoint(SDL_FPoint Point)
+{
+	STVector<Size, Type> Result{ 0 };
+	switch (Size)
+	{
+	case 2:
+		Result[1] = (Type)Point.y;
+
+	case 1:
+		Result[0] = (Type)Point.x;
+	}
+	return Result;
+}
+
 
 template <uint Size, typename Type>
 INLINE SDL_Rect STVector<Size, Type>::ToRect() const
@@ -1406,7 +1451,7 @@ INLINE SDL_Rect STVector<Size, Type>::ToRect() const
 	{
 	case 0:
 		return SDL_Rect{ 0, 0, 0, 0 };
-
+		
 	case 1:
 		return SDL_Rect{ (int32)Data[0], 0, 0, 0 };
 
@@ -1422,6 +1467,31 @@ INLINE SDL_Rect STVector<Size, Type>::ToRect() const
 	}
 }
 
+
+template <uint Size, typename Type>
+INLINE SDL_FRect STVector<Size, Type>::ToFRect() const
+{
+	switch (Size)
+	{
+	case 0:
+		return SDL_FRect{ 0.0f, 0.0f, 0.0f, 0.0f };
+
+	case 1:
+		return SDL_FRect{ (float)Data[0], 0.0f, 0.0f, 0.0f };
+
+	case 2:
+		return SDL_FRect{ (float)Data[0], (float)Data[1], 0.0f, 0.0f };
+
+	case 3:
+		return SDL_FRect{ (float)Data[0], (float)Data[1], (float)Data[2], 0.0f };
+
+	case 4:
+	default:
+		return SDL_FRect{ (float)Data[0], (float)Data[1], (float)Data[2], (float)Data[3] };
+	}
+}
+
+
 template<uint Size, typename Type>
 INLINE SDL_Point STVector<Size, Type>::ToPoint() const
 {
@@ -1429,14 +1499,35 @@ INLINE SDL_Point STVector<Size, Type>::ToPoint() const
 	{
 	case 0:
 		return SDL_Point{ 0, 0 };
+		
 
 	case 1:
-		return SDL_Point{ Data[0], 0 };
+		return SDL_Point{ (int32)Data[0], 0 };
 
 
 	default:
 	case 2:
-		return SDL_Point{ Data[0], Data[2] };
+		return SDL_Point{ (int32)Data[0], (int32)Data[2] };
+	}
+}
+
+
+template<uint Size, typename Type>
+INLINE SDL_FPoint STVector<Size, Type>::ToFPoint() const
+{
+	switch (Size)
+	{
+	case 0:
+		return SDL_FPoint{ 0.0f, 0.0f };
+
+
+	case 1:
+		return SDL_FPoint{ (float)Data[0], 0.0f };
+
+
+	default:
+	case 2:
+		return SDL_FPoint{ (float)Data[0], (float)Data[2] };
 	}
 }
 
@@ -1866,18 +1957,18 @@ INLINE STVector<Size, Type> STVector<Size, Type>::GetNormal(float Tolerance) con
 }
 
 
-template <uint Size, typename Type>
-INLINE Type& STVector<Size, Type>::X()
-{
-	return Data[EAxis::X];
-}
+//template <uint Size, typename Type>
+//INLINE Type& STVector<Size, Type>::X()
+//{
+//	return Data[EAxis::X];
+//}
 
 
-template <uint Size, typename Type>
-INLINE Type STVector<Size, Type>::X() const
-{
-	return Data[EAxis::X];
-}
+//template <uint Size, typename Type>
+//INLINE Type STVector<Size, Type>::X() const
+//{
+//	return Data[EAxis::X];
+//}
 
 
 template <uint Size, typename Type>
@@ -1893,18 +1984,18 @@ INLINE Type STVector<Size, Type>::GetX() const
 	return Data[EAxis::X];
 }
 
-template <uint Size, typename Type>
-INLINE Type& STVector<Size, Type>::Y()
-{
-	return Data[EAxis::Y];
-}
+//template <uint Size, typename Type>
+//INLINE Type& STVector<Size, Type>::Y()
+//{
+//	return Data[EAxis::Y];
+//}
 
 
-template <uint Size, typename Type>
-INLINE Type STVector<Size, Type>::Y() const
-{
-	return Data[EAxis::Y];
-}
+//template <uint Size, typename Type>
+//INLINE Type STVector<Size, Type>::Y() const
+//{
+//	return Data[EAxis::Y];
+//}
 
 
 template <uint Size, typename Type>
@@ -1921,18 +2012,18 @@ INLINE Type STVector<Size, Type>::GetY() const
 }
 
 
-template <uint Size, typename Type>
-INLINE Type& STVector<Size, Type>::Z()
-{
-	return Data[EAxis::Z];
-}
+//template <uint Size, typename Type>
+//INLINE Type& STVector<Size, Type>::Z()
+//{
+//	return Data[EAxis::Z];
+//}
 
 
-template <uint Size, typename Type>
-INLINE Type STVector<Size, Type>::Z() const
-{
-	return Data[EAxis::Z];
-}
+//template <uint Size, typename Type>
+//INLINE Type STVector<Size, Type>::Z() const
+//{
+//	return Data[EAxis::Z];
+//}
 
 
 template <uint Size, typename Type>
@@ -1949,18 +2040,18 @@ INLINE Type STVector<Size, Type>::GetZ() const
 }
 
 
-template <uint Size, typename Type>
-INLINE Type& STVector<Size, Type>::W()
-{
-	return Data[EAxis::W];
-}
+//template <uint Size, typename Type>
+//INLINE Type& STVector<Size, Type>::W()
+//{
+//	return Data[EAxis::W];
+//}
 
 
-template <uint Size, typename Type>
-INLINE Type STVector<Size, Type>::W() const
-{
-	return Data[EAxis::W];
-}
+//template <uint Size, typename Type>
+//INLINE Type STVector<Size, Type>::W() const
+//{
+//	return Data[EAxis::W];
+//}
 
 
 template <uint Size, typename Type>

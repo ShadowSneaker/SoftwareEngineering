@@ -62,6 +62,7 @@ uint32 CSDLSetup::GetWindowFlags() const
 {
 	switch (WindowMode)
 	{
+	default:
 	case EWindowMode::WindowPlayer:
 		return SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE | SDL_WINDOW_INPUT_FOCUS;
 		break;

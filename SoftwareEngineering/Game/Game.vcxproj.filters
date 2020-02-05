@@ -27,6 +27,18 @@
     <ClCompile Include="Engine\Graphics\Image.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\Inventory\Inventory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Inventory\ItemSystem\Item.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Inventory\Inventory.h">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Inventory\ItemSystem\Item.h">
+      <Filter>Header Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Graphics\Renderer\Renderer.h">

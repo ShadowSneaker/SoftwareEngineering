@@ -83,20 +83,34 @@ public:
 	//Get the Image Width
 	INLINE SVector2i GetSize() const { return ImageSize; }
 
-	virtual INLINE SDL_Rect GetCell() const { return SVector4{ 0.0f, ImageSize }.ToRect(); }
+	// 
+	virtual INLINE SDL_Rect GetCell() const { return SVector4{ 0.0f, ImageSize.ToFloat() }.ToRect(); }
 
-	virtual INLINE SVector2 GetWorldPivot() const { return (ImageSize * Transform.GetWorldScale()) / 2.0f; }
+	// 
+	virtual INLINE SVector2 GetWorldPivot() const { return (ImageSize.ToFloat() * Transform.GetWorldScale()) / 2.0f; }
 
+	// 
 	INLINE SVector2i GetImageSize() const { return ImageSize; }
-	INLINE SVector2 GetDisplaySize() const { return ImageSize * Transform.GetWorldScale(); }
+
+	// 
+	INLINE SVector2 GetDisplaySize() const { return ImageSize.ToFloat() * Transform.GetWorldScale(); }
+
+	// 
 	INLINE SColour GetColour() const { return Colour; }
-	INLINE SVector2 GetImageCenter() const { return (ImageSize * Transform.GetWorldScale()) / 2.0f; }
+
+	// 
+	INLINE SVector2 GetImageCenter() const { return (ImageSize.ToFloat() * Transform.GetWorldScale()) / 2.0f; }
 	
+	// 
 	INLINE std::string GetFilePath() const { return FilePath; }
 
+	// 
 	INLINE SDL_Texture* GetTexture() const { return Texture; }
+
+	// 
 	INLINE SDL_Surface* GetSurface() const { return Surface; }
 
+	// 
 	SDL_RendererFlip GetFlip() const;
 
 };

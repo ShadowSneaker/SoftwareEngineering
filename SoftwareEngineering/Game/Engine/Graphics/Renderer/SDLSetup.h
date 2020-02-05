@@ -26,7 +26,7 @@ class CSDLSetup
 	SDL_Renderer* Renderer{ nullptr };
 
 	// The currently used monitor info.
-	SDL_DisplayMode DisplayMode;
+	SDL_DisplayMode DisplayMode{ SDL_DisplayMode{} };
 
 public:
 	// The type of window that should be created on startup.
