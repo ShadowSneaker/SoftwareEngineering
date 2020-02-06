@@ -16,6 +16,7 @@ void Inventory::AddItem(Item* item)
 		item->IncrementStackSize();
 	}
 
+	item->UpdateOwner(this);
 	item->OnAdded();
 	OnItemAdded(item);
 }
@@ -43,6 +44,12 @@ void Inventory::RemoveItem(Item* item)
 		m_items.erase(std::remove(m_items.begin(), m_items.end(), item), m_items.end());
 	}
 
+	item->UpdateOwner(nullptr);
 	item->OnRemoved();
 	OnItemRemoved(item);
+}
+
+bool Inventory::ContainsItem(Item* item)
+{
+	return std::find(m_items.begin(), m_items.end(), item) != m_items.end();
 }

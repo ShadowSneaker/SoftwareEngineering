@@ -10,7 +10,16 @@ void Item::Destroy()
 
 void Item::UpdateOwner(Inventory* newOwner)
 {
-	m_owner = newOwner;
+	//If the new owner is null, set the owner to null and then go no further
+	if (newOwner == nullptr)
+	{
+		m_owner = nullptr;
+		return;
+	}
+
+	//Only update the owner the if new owner actually contains this item
+	if(newOwner->ContainsItem(this))
+		m_owner = newOwner;
 }
 
 void Item::IncrementStackSize()

@@ -11,6 +11,8 @@ public:
 	void AddItem(Item* item);
 	void RemoveItem(Item* item);
 
+	bool ContainsItem(Item* item);
+
 protected:
 	virtual void OnItemAdded(Item* item) = 0;
 	virtual void OnItemRemoved(Item* item) = 0;
