@@ -48,6 +48,12 @@
     <ClCompile Include="Engine\Inventory\Effects\Examples\DamageBuffEffect.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\Inventory\ShopInventory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Inventory\PlayerInventory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="Engine\Inventory\ItemSystem\Consumable.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -58,12 +64,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Inventory\ItemSystem\UsableItem.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Inventory\ShopInventory.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Inventory\PlayerInventory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -92,10 +92,25 @@
     <ClInclude Include="Engine\Inventory\Effects\Examples\DamageBuffEffect.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Engine\Inventory\ShopInventory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Inventory\PlayerInventory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="Engine\Inventory\ItemSystem\Consumable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Inventory\ShopInventory.h">
+    <ClInclude Include="Engine\Inventory\ItemSystem\EquipmentSlots.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Inventory\ItemSystem\Equippable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Inventory\ItemSystem\Switchable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Inventory\ItemSystem\UsableItem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

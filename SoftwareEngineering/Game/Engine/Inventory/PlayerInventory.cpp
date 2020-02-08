@@ -1,10 +1,13 @@
 #include "PlayerInventory.h"
+#include "ItemSystem/UsableItem.h"
 
 void PlayerInventory::UseItem(Item* item)
 {
 	if (ContainsItem(item))
 	{
-		item->Use();
+		UsableItem* usable = dynamic_cast<UsableItem*>(item);
+		if(usable != nullptr)
+			usable->Use();
 	}
 }
 
