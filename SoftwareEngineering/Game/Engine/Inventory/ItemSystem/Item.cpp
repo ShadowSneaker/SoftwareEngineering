@@ -1,5 +1,10 @@
 #include "Item.h"
 
+void Item::Use()
+{
+	OnUsed();
+}
+
 void Item::Destroy()
 {
 	//Remove item from owning inventory

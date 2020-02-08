@@ -1,9 +1,14 @@
 #pragma once
 #include "../Inventory.h"
+#include <string>
+class Image;
 
 class Item
 {
 private:
+	std::string m_name = " ";
+	Image* m_icon = nullptr;
+	bool m_isQuestItem = false;
 	bool m_stackable = false;
 	int m_stackSize = 1;
 	int m_value = 0;
@@ -11,16 +16,22 @@ private:
 
 	Inventory* m_owner = nullptr;
 public:
+	void Use();
 	void Destroy();
 	void UpdateOwner(Inventory* newOwner);
 
 	bool IsStackable()const { return m_stackable; }
-	int Weight()const { return m_weight; }
-	int Value()const { return m_value; }
+	int GetWeight()const { return m_weight; }
+	void SetWeight(int weight) { m_weight = weight; }
+	int GetValue()const { return m_value; }
+	void SetValue(int value) { m_value = value; }
 
+	//The setters for stacksize are the incrementing and decrementing functions
 	void IncrementStackSize();
 	void DecrementStackSize();
 	int GetStackSize()const { return m_stackSize; }
+	
+
 
 	virtual void OnUsed() = 0;
 	virtual void OnAdded() = 0;
