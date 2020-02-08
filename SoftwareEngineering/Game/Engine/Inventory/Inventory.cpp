@@ -89,3 +89,18 @@ int Inventory::CountMoney()
 
 	return count;
 }
+
+std::vector<Item*> Inventory::GetItems()
+{
+	return m_items;
+}
+
+Entity* Inventory::GetOwner()
+{
+	return m_owner;
+}
+
+int Inventory::GetMaxSlots()
+{
+	return m_maxSlots;
+}

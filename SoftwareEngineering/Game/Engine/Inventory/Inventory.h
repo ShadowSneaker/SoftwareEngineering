@@ -27,6 +27,10 @@ public:
 
 protected:
 
+	std::vector<Item*>	GetItems();
+	Entity*				GetOwner();
+	int					GetMaxSlots();
+
 	virtual void OnItemAdded(Item* item) = 0;
 	virtual void OnItemRemoved(Item* item) = 0;
 

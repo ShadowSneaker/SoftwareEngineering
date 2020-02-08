@@ -27,6 +27,7 @@
     <ClCompile Include="Engine\Inventory\ItemSystem\Equippable.cpp" />
     <ClCompile Include="Engine\Inventory\ItemSystem\Switchable.cpp" />
     <ClCompile Include="Engine\Inventory\ItemSystem\UsableItem.cpp" />
+    <ClCompile Include="Engine\Inventory\LootableInventory.cpp" />
     <ClCompile Include="Engine\Inventory\PlayerInventory.cpp" />
     <ClCompile Include="Engine\Source.cpp" />
     <ClCompile Include="Engine\Inventory\Inventory.cpp" />
@@ -52,6 +53,7 @@
     <ClInclude Include="Engine\Inventory\ItemSystem\Equippable.h" />
     <ClInclude Include="Engine\Inventory\ItemSystem\Switchable.h" />
     <ClInclude Include="Engine\Inventory\ItemSystem\UsableItem.h" />
+    <ClInclude Include="Engine\Inventory\LootableInventory.h" />
     <ClInclude Include="Engine\Inventory\PlayerInventory.h" />
     <ClInclude Include="Engine\Inventory\ShopInventory.h" />
     <ClInclude Include="Engine\Inventory\ItemSystem\MoneyItem.h" />
