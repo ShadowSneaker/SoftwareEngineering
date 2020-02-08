@@ -23,6 +23,7 @@
     <ClCompile Include="Engine\Graphics\Image.cpp" />
     <ClCompile Include="Engine\Graphics\Renderer\Renderer.cpp" />
     <ClCompile Include="Engine\Graphics\Renderer\SDLSetup.cpp" />
+    <ClCompile Include="Engine\Inventory\PlayerInventory.cpp" />
     <ClCompile Include="Engine\Source.cpp" />
     <ClCompile Include="Engine\Inventory\Inventory.cpp" />
     <ClCompile Include="Engine\Inventory\ItemSystem\Item.cpp" />
@@ -41,6 +42,8 @@
     <ClCompile Include="Engine\Inventory\ItemSystem\Item.h" />
     <ClInclude Include="Engine\Inventory\Effects\Examples\StaminaEffect.h" />
     <ClInclude Include="Engine\Inventory\Effects\Examples\HealthEffect.h" />
+    <ClInclude Include="Engine\Inventory\ItemSystem\EquipmentSlots.h" />
+    <ClInclude Include="Engine\Inventory\PlayerInventory.h" />
     <ClInclude Include="Engine\Inventory\ShopInventory.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
