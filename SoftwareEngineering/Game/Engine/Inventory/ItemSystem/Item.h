@@ -16,9 +16,10 @@ private:
 
 	Inventory* m_owner = nullptr;
 public:
-	void Use();
+	
 	void Destroy();
 	void UpdateOwner(Inventory* newOwner);
+	Inventory* GetOwner() { return m_owner; }
 
 	bool IsStackable()const { return m_stackable; }
 	int GetWeight()const { return m_weight; }
@@ -32,8 +33,6 @@ public:
 	int GetStackSize()const { return m_stackSize; }
 	
 
-
-	virtual void OnUsed() = 0;
 	virtual void OnAdded() = 0;
 	virtual void OnRemoved() = 0;
 };
