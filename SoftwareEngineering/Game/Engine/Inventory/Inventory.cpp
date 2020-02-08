@@ -53,3 +53,25 @@ bool Inventory::ContainsItem(Item* item)
 {
 	return std::find(m_items.begin(), m_items.end(), item) != m_items.end();
 }
+
+bool Inventory::IsFull()
+{
+	if (m_items.size() >= m_maxSlots)
+	{
+		return true;
+	} 
+	else
+	{
+		return false;
+	}
+}
+
+int Inventory::GetRemainingSlots()
+{
+	return m_maxSlots - m_items.size();
+}
+
+int Inventory::GetTakenSlots()
+{
+	return m_items.size();
+}
