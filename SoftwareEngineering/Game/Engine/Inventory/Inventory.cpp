@@ -1,6 +1,7 @@
 #include "Inventory.h"
 #include "ItemSystem/Item.h"
 #include <algorithm>
+#include "ItemSystem/MoneyItem.h"
 
 void Inventory::AddItem(Item* item)
 {
@@ -74,4 +75,17 @@ int Inventory::GetRemainingSlots()
 int Inventory::GetTakenSlots()
 {
 	return m_items.size();
+}
+
+int Inventory::CountMoney()
+{
+	int count = 0;
+	for (int i = 0; i < m_items.size(); i++)
+	{
+		auto money = dynamic_cast<MoneyItem*>(m_items[i]);
+		if (money != nullptr)
+			count++;
+	}
+
+	return count;
 }

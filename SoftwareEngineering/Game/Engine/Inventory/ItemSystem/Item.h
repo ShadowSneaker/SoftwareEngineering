@@ -1,7 +1,8 @@
 #pragma once
-#include "../Inventory.h"
 #include <string>
+
 class Image;
+class Inventory;
 
 class Item
 {
@@ -9,12 +10,17 @@ private:
 	std::string m_name = " ";
 	Image* m_icon = nullptr;
 	bool m_isQuestItem = false;
-	bool m_stackable = false;
 	int m_stackSize = 1;
+	bool m_stackable = false;
 	int m_value = 0;
 	int m_weight = 0;
 
 	Inventory* m_owner = nullptr;
+	
+protected:
+	void SetIsStackable(bool stackable) { m_stackable = stackable; }
+	void SetIsQuestItem(bool isQuestItem) { m_isQuestItem = isQuestItem; }
+	
 public:
 	
 	void Destroy();

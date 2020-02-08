@@ -34,6 +34,7 @@
     <ClCompile Include="Engine\Inventory\Effects\Examples\StaminaEffect.cpp" />
     <ClCompile Include="Engine\Inventory\Effects\Examples\HealthEffect.cpp" />
     <ClCompile Include="Engine\Inventory\ShopInventory.cpp" />
+    <ClCompile Include="Engine\Inventory\ItemSystem\MoneyItem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Inventory\Effects\Examples\DamageBuffEffect.h" />
@@ -53,6 +54,7 @@
     <ClInclude Include="Engine\Inventory\ItemSystem\UsableItem.h" />
     <ClInclude Include="Engine\Inventory\PlayerInventory.h" />
     <ClInclude Include="Engine\Inventory\ShopInventory.h" />
+    <ClInclude Include="Engine\Inventory\ItemSystem\MoneyItem.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

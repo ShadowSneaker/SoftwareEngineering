@@ -1,4 +1,5 @@
 #include "Item.h"
+#include "../Inventory.h"
 
 void Item::Destroy()
 {
