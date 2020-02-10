@@ -7,6 +7,7 @@ class Inventory;
 class Item
 {
 private:
+	std::string m_id = " ";
 	std::string m_name = " ";
 	Image* m_icon = nullptr;
 	bool m_isQuestItem = false;
