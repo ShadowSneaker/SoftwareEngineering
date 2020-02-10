@@ -139,9 +139,9 @@
     </Link>
     <PostBuildEvent>
       <Command>copy "$(SolutionDir)\Libraries\SDL2-2.0.10\lib\x86\SDL2.dll" "$(TargetDir)"
-copy "$(SolutionDir)\Libraries\SDL2_ttf-2.0.12\lib\x86\libfreetype-6.dll" "$(TargetDir)"
-copy "$(SolutionDir)\Libraries\SDL2_ttf-2.0.12\lib\x86\SDL2_ttf.dll" "$(TargetDir)"
-copy "$(SolutionDir)\Libraries\SDL2_ttf-2.0.12\lib\x86\zlib1.dll" "$(TargetDir)"
+copy "$(SolutionDir)\Libraries\SDL2_ttf-2.0.15\lib\x86\libfreetype-6.dll" "$(TargetDir)"
+copy "$(SolutionDir)\Libraries\SDL2_ttf-2.0.15\lib\x86\SDL2_ttf.dll" "$(TargetDir)"
+copy "$(SolutionDir)\Libraries\SDL2_ttf-2.0.15\lib\x86\zlib1.dll" "$(TargetDir)"
 copy "$(SolutionDir)\Libraries\SDL2_image-2.0.5\lib\x86\SDL2_image.dll" "$(TargetDir)"
 copy "$(SolutionDir)\Libraries\SDL2_image-2.0.5\lib\x86\libjpeg-9.dll" "$(TargetDir)"
 copy "$(SolutionDir)\Libraries\SDL2_image-2.0.5\lib\x86\libpng16-16.dll" "$(TargetDir)"
