@@ -13,7 +13,7 @@ int main(int argc, char** argv)
 	Renderer->AddImage(Image);
 
 	Image->Transform.Location = 300.0f;
-
+	Image->SetColour(0,255,0,255);
 
 	SDL_Event* Event{ new SDL_Event{} };
 
