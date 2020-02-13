@@ -5,9 +5,36 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InventoryEditor"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Button Content="Quit" HorizontalAlignment="Left" Margin="10,307,0,0" VerticalAlignment="Top" Width="772" Height="102" Click="Button_Click"/>
+        Title="Inventory Editor" Height="450" Width="800">
+    <StackPanel>
+        <Menu x:Name="Menu_Top" VerticalAlignment="Top" Margin="0,0,0,0">
+            <MenuItem Header="File">
+                <MenuItem Header="New DB" Click="NewDB_Click"/>
+                <MenuItem Header="Open DB" Click="OpenDB_Click"/>
+                <MenuItem Header="Save DB" Click="SaveDB_Click"/>
+                <MenuItem Header="Save As DB" Click="SaveAsDB_Click"/>
+                <MenuItem Header="Quit" Click="Quit_Click"/>
+            </MenuItem>
+            <MenuItem Header="Edit">
+                <MenuItem Header="New Item" Click="NewItem_Click"/>
+                <MenuItem Header="New Inventory" Click="NewInventory_Click"/>
+                <MenuItem Header="New Effect" Click="NewEffect_Click"/>
+            </MenuItem>
+            <MenuItem Header="Help">
+                <MenuItem Header="Email Support" Click="SupportEmail_Click"/>
+            </MenuItem>
+        </Menu>
+        <TreeView>
+            <TreeViewItem Header="Items">
+                <TreeViewItem Header="Wpn: wpn_Sword"/>
+            </TreeViewItem>
+            <TreeViewItem Header="Inventories">
+                <TreeViewItem Header="Lootable: ltb_Chest"/>
+            </TreeViewItem>
+            <TreeViewItem Header="Effects">
+                <TreeViewItem Header="Health: efct_Health"/>
+            </TreeViewItem>
+        </TreeView>
+    </StackPanel>
 
-    </Grid>
 </Window>
