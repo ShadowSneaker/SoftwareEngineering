@@ -14,5 +14,8 @@ public:
 
 protected:
 	void OnUsed() override;
+	void OnAdded() override;
+	void OnRemoved() override;
+
 };
 

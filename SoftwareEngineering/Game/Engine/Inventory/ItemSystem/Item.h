@@ -28,6 +28,7 @@ public:
 	void UpdateOwner(Inventory* newOwner);
 	Inventory* GetOwner() { return m_owner; }
 
+	std::string GetID() { return m_id; }
 	bool IsStackable()const { return m_stackable; }
 	int GetWeight()const { return m_weight; }
 	void SetWeight(int weight) { m_weight = weight; }
