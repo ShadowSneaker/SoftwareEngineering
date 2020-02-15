@@ -34,6 +34,12 @@
     <ClInclude Include="WorldObject\WorldActor.h" />
     <ClInclude Include="WorldObject\WorldObject.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="Content\Images\Robo.png">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <DeploymentContent>false</DeploymentContent>
+    </Image>
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{97644C40-74AD-48D7-BE29-100F4AAB3D28}</ProjectGuid>
