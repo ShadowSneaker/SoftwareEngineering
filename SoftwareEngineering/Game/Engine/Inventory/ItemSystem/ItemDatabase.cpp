@@ -1,8 +1,8 @@
 #include "ItemDatabase.h"
-#include "Item.h"
 #include "Consumable.h"
 #include "Switchable.h"
 #include "Equippable.h"
+#include "MoneyItem.h"
 
 ItemDatabase* ItemDatabase::m_instance = nullptr;
 
@@ -23,7 +23,24 @@ void ItemDatabase::Init(std::string dbFile)
 	}
 	case '2':
 	{
-		//
+		Switchable* switchable;
+		switchable = new Switchable;
+		m_instance->m_itemList.push_back(switchable);
+		break;
+	}
+	case '3':
+	{
+		Equippable* equippable;
+		equippable = new Equippable;
+		m_instance->m_itemList.push_back(equippable);
+		break;
+	}
+	case '4':
+	{
+		MoneyItem* moneyItem;
+		moneyItem = new MoneyItem;
+		m_instance->m_itemList.push_back(moneyItem);
+		break;
 	}
 	default:
 		break;
