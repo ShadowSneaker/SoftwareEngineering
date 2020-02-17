@@ -11,3 +11,7 @@ void UsableItem::Use()
 	}
 	OnUsed();
 }
+
+void UsableItem::OnUsed()
+{
+}
