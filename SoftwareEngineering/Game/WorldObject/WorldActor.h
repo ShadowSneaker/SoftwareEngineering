@@ -13,10 +13,10 @@ public:
 	void		SetVelocity(SVector3 velocity);
 	void		IncreaseVelocity(SVector3 velocity);
 
-	/*void		MoveLeft(float magnitude);		// Isometric movement
+	void		MoveLeft(float magnitude);		// Isometric movement
 	void		MoveRight(float magnitude);
 	void		MoveUp(float magnitude);
-	void		MoveDown(float magnitude);*/
+	void		MoveDown(float magnitude);
 
 };
 
