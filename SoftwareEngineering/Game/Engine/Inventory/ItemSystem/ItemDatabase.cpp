@@ -56,7 +56,7 @@ Item* ItemDatabase::GetItemByID(std::string id)
 		{
 			if(m_instance->m_itemList[i]->GetID() == id)
 			{
-				return m_instance->m_itemList[i];
+				return m_instance->m_itemList[i]->Clone();
 			}
 		}
 	}
