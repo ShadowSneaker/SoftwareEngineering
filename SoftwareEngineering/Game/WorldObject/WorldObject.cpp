@@ -1,5 +1,33 @@
 #include "WorldObject.h"
 
+int WorldObject::worldObjectIdIndex = 0;
+std::vector<WorldObject*> WorldObject::worldObjects;
+
+WorldObject::WorldObject()
+	: m_heading{ 0.0f }, m_isActive{ true }, m_scale{ 1.0f, 1.0f }, m_position{ 0.0f, 0.0f, 0.0f }
+{
+	m_ID = worldObjectIdIndex;
+	worldObjectIdIndex++;
+}
+
+WorldObject::WorldObject(SVector3 position, float heading, SVector2 scale, int worldObjectId, bool isActive)
+{
+	m_position = position;
+	m_scale = scale;
+	m_heading = heading;
+	m_isActive = isActive;
+
+	if (worldObjectId != -1)
+	{
+		m_ID = worldObjectId;
+	}
+	else
+	{
+		m_ID = worldObjectIdIndex;
+		worldObjectIdIndex++;
+	}
+}
+
 SVector3 WorldObject::Position()
 {
 	return m_position;
@@ -27,10 +55,7 @@ void WorldObject::SetScale(SVector2 scale)
 
 void WorldObject::ScaleBy(SVector2 scalar)
 {
-	//m_scale.X() *= scalar.X;
-	//m_scale.Y() *= scalar.Y;
-
-	//m_scale.Set(m_scale.X() * scalar.X(), m_scale.Y() * scalar.Y());
+	m_scale.Set(m_scale.X() * scalar.X(), m_scale.Y() * scalar.Y());
 }
 
 void WorldObject::ScaleBy(float scalar)
@@ -68,6 +93,21 @@ void WorldObject::SetIsActive(bool isActive)
 void WorldObject::ToggleIsActive()
 {
 	m_isActive = !m_isActive;
+}
+
+int WorldObject::GetId()
+{
+	return m_ID;
+}
+
+WorldObject* WorldObject::GetWorldObjectById(int id)
+{
+	return worldObjects[id];
+}
+
+int WorldObject::NumberOfWorldObjects()
+{
+	return worldObjects.size() - 1;
 }
 
 void WorldObject::validateHeading()
