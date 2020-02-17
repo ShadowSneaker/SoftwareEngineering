@@ -25,14 +25,11 @@
             </MenuItem>
         </Menu>
         <TreeView>
-            <TreeViewItem Header="Items">
-                <TreeViewItem Header="Wpn: wpn_Sword"/>
+            <TreeViewItem Header="Items" Name="ItemList">
             </TreeViewItem>
             <TreeViewItem Header="Inventories">
-                <TreeViewItem Header="Lootable: ltb_Chest"/>
             </TreeViewItem>
             <TreeViewItem Header="Effects">
-                <TreeViewItem Header="Health: efct_Health"/>
             </TreeViewItem>
         </TreeView>
     </StackPanel>
