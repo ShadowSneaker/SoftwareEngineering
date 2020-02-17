@@ -3,6 +3,9 @@
 #include "Consumable.h"
 #include "Switchable.h"
 #include "Equippable.h"
+
+ItemDatabase* ItemDatabase::m_instance = nullptr;
+
 void ItemDatabase::Init(std::string dbFile)
 {
 	m_instance = new ItemDatabase;
