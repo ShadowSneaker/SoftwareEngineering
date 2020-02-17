@@ -26,7 +26,6 @@ class KeyboardInput
 {
 private:
 	static const int m_keylist_size = 6;
-	SDL_Event* m_event;
 
 	//keyboard states compare the current state with the state of the last update
 	bool m_keyboardState[m_keylist_size];
@@ -43,9 +42,9 @@ private:
 		{KEY_DOWN,SDLK_s}
 	};
 public:
-	KeyboardInput(SDL_Event* e);
+	KeyboardInput();
 	~KeyboardInput();
-	void Update( void );
+	void Update( SDL_Event* event );
 	bool IsKeyPressed(KEY_LIST key);
 	bool KeyDown(KEY_LIST key);
 	bool KeyUp(KEY_LIST key);

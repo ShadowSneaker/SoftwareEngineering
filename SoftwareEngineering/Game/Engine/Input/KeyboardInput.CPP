@@ -1,8 +1,7 @@
 #include "KeyboardInput.h"
 
-KeyboardInput::KeyboardInput(SDL_Event* e)
+KeyboardInput::KeyboardInput()
 {
-	m_event = e;
 
 	for (int i = 0; i < m_keylist_size; i++)
 	{
@@ -20,7 +19,7 @@ KeyboardInput::~KeyboardInput()
 {
 }
 
-void KeyboardInput::Update(void)
+void KeyboardInput::Update(SDL_Event* event)
 {
 
 	//transfer the new keyboard state to the old one
@@ -29,11 +28,12 @@ void KeyboardInput::Update(void)
 		m_oldKeyboardState[i] = m_keyboardState[i];
 	}
 
-	while (SDL_PollEvent(m_event) != NULL)
+	if (SDL_PollEvent(event) != NULL)
 	{
-		if (m_event->type == SDL_KEYDOWN)
+		///Check for Key Down
+		if (event->type == SDL_KEYDOWN)
 		{
-			SDL_Keycode keyPressed = m_event->key.keysym.sym;
+			SDL_Keycode keyPressed = event->key.keysym.sym;
 
 			if (keyPressed == keybinds[KEY_CANCEL])
 				m_keyboardState[KEY_CANCEL] = true;
@@ -54,9 +54,10 @@ void KeyboardInput::Update(void)
 				m_keyboardState[KEY_UP] = true;
 		}
 
-		else if (m_event->type == SDL_KEYUP)
+		///Check for Key Up
+		else if (event->type == SDL_KEYUP)
 		{
-			SDL_Keycode keyPressed = m_event->key.keysym.sym;
+			SDL_Keycode keyPressed = event->key.keysym.sym;
 
 			if (keyPressed == keybinds[KEY_CANCEL])
 				m_keyboardState[KEY_CANCEL] = false;
