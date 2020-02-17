@@ -9,7 +9,7 @@ MouseInput::MouseInput()
 }
 
 //Updates the mouse position and buttons							   
-void MouseInput::UpdateMouse(SDL_Event* pass_event)
+bool MouseInput::UpdateMouse(SDL_Event* pass_event)
 {
 	//Button true if pressed
 	if (pass_event->type == SDL_MOUSEBUTTONDOWN)
@@ -29,6 +29,7 @@ void MouseInput::UpdateMouse(SDL_Event* pass_event)
 			break;
 
 		}
+		return true;
 	}
 	//button false if released
 	else if (pass_event->type == SDL_MOUSEBUTTONUP)
@@ -48,8 +49,8 @@ void MouseInput::UpdateMouse(SDL_Event* pass_event)
 		default:
 			break;
 		}
+		return true;
 	}
-
 	//updates the mouse position
 	SDL_GetMouseState(&m_MousePos.x, &m_MousePos.y);
 }

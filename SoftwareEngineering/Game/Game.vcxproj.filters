@@ -72,7 +72,13 @@
     <ClCompile Include="Engine\Inventory\LootableInventory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MouseInput.cpp">
+    <ClCompile Include="Engine\Input\KeyboardInput.CPP">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Input\MouseInput.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Input\InputController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -128,7 +134,13 @@
     <ClInclude Include="Engine\Inventory\LootableInventory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MouseInput.h">
+    <ClInclude Include="Engine\Input\KeyboardInput.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Input\MouseInput.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Input\InputController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
