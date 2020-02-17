@@ -13,6 +13,14 @@ int main(int argc, char** argv)
 	Renderer->AddImage(Image);
 
 	Image->Transform.Location = 300.0f;
+	Image->SetColour(0,255,0,255);
+
+	CImage* ImageTwo{ new CImage() };
+	Renderer->SetImage(ImageTwo, "Content/Images/Robo.png", false);
+	Renderer->AddImage(ImageTwo);
+
+	ImageTwo->Transform.Location = 400.0f;
+
 
 
 	SDL_Event* Event{ new SDL_Event{} };

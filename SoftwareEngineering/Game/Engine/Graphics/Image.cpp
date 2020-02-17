@@ -25,7 +25,13 @@ void CImage::SetImage(const SImageInfo& Info, const std::string& Path)
 
 void CImage::SetColour(const uint8& Red, const uint8& Green, const uint8& Blue, const uint8& Alpha)
 {
-
+	Colour.R = Red;
+	Colour.G = Green;
+	Colour.B = Blue;
+	Colour.A = Alpha;
+	
+	SDL_SetTextureColorMod(Texture, Colour.R, Colour.G, Colour.B);
+	SDL_SetTextureAlphaMod(Texture, Colour.A);
 }
 
 
@@ -36,3 +42,4 @@ SDL_RendererFlip CImage::GetFlip() const
 	if (FlipY) Flip += SDL_FLIP_VERTICAL;
 	return SDL_RendererFlip(Flip);
 }
+
