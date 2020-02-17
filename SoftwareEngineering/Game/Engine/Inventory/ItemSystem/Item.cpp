@@ -40,3 +40,11 @@ void Item::DecrementStackSize()
 	else
 		m_stackSize = 1;
 }
+
+void Item::OnAdded()
+{
+}
+
+void Item::OnRemoved()
+{
+}

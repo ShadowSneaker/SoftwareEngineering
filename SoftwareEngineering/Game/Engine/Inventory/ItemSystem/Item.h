@@ -27,6 +27,7 @@ public:
 	void Destroy();
 	void UpdateOwner(Inventory* newOwner);
 	Inventory* GetOwner() { return m_owner; }
+	virtual Item* Clone() { return new Item(*this); }
 
 	std::string GetID() { return m_id; }
 	bool IsStackable()const { return m_stackable; }
@@ -41,6 +42,6 @@ public:
 	int GetStackSize()const { return m_stackSize; }
 	
 
-	virtual void OnAdded() = 0;
-	virtual void OnRemoved() = 0;
+	virtual void OnAdded();
+	virtual void OnRemoved();
 };
