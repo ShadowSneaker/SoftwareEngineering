@@ -13,7 +13,7 @@ namespace InventoryEditor.Models
         public static void Init()
         {
             types.Add(new ItemType("Consumable", null));
-            types.Add(new ItemType("Equipable", new List<string>() { "m_slot" }));
+            types.Add(new ItemType("Equipable", new List<string>() { "m_slot|combo(head,body,legs,feed)" }));
             types.Add(new ItemType("Switchable", null));
         }
 
@@ -32,7 +32,7 @@ namespace InventoryEditor.Models
             if (properties == null)
                 properties = new List<string>();
 
-            properties.AddRange(new string[] { "m_id", "m_name", "m_icon", "m_isQuestItem", "m_stackable", "m_value", "m_weight" });
+            properties.AddRange(new string[] { "m_id|string", "m_name|string", "m_icon|file", "m_isQuestItem|bool", "m_stackable|bool", "m_value|int", "m_weight|int" });
 
             Properties = properties.ToArray();
         }
