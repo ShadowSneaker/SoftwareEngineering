@@ -10,7 +10,7 @@ namespace InventoryEditor
     /// </summary>
     public partial class MainWindow : Window
     {
-        const string FILTER = "Item Database File (*.kkc)|.kkc";
+        const string FILTER = "Item Database File (.kkc)|*.kkc";
         string lastSaveLocation = "";
 
         ItemDBModel db = new ItemDBModel();

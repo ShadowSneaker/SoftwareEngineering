@@ -11,19 +11,25 @@ namespace InventoryEditor
     public class ItemModel
     {
         public string Type;
-        public Dictionary<string, object> Properties;
+        public Dictionary<string, string> Properties;
 
         public ItemModel(string type, List<string> properties)
         {
             Type = type;
-            Properties = new Dictionary<string, object>(properties.Count);
+            Properties = new Dictionary<string, string>(properties.Count);
             foreach (var item in properties)
             {
                 Properties.Add(item, "");
             }
         }
 
-        public void SetProperty(string name, object val)
+        public ItemModel(string type, Dictionary<string, string> properties)
+        {
+            Type = type;
+            Properties = properties;
+        }
+
+        public void SetProperty(string name, string val)
         {
             if (Properties.ContainsKey(name))
                 Properties[name] = val;

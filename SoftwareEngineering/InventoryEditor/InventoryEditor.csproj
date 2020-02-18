@@ -70,7 +70,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ItemDBModel.cs" />
+    <Compile Include="Models\ItemDBModel.cs" />
     <Compile Include="Models\ItemTypes.cs" />
     <Compile Include="Windows\ItemEditor.xaml.cs">
       <DependentUpon>ItemEditor.xaml</DependentUpon>
