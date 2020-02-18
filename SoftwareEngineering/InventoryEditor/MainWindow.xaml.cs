@@ -108,7 +108,12 @@ namespace InventoryEditor
             foreach (var item in db.Items)
             {
                 var node = new TreeViewItem() {Header = $"{item.Type}: {item.Properties["m_id"]}"};
-                node.MouseDoubleClick += (sender, args) => { ItemEditor.OpenItem(item); };
+                node.MouseDoubleClick += async (sender, args) =>
+                {
+                    int index = db.Items.IndexOf(item);
+                    db.Items[index] = await ItemEditor.OpenItem(item);
+                    Redraw();
+                };
                 ItemList.Items.Add(node);
             }
         }
