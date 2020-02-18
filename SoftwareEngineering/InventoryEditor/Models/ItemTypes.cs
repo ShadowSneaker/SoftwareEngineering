@@ -13,7 +13,7 @@ namespace InventoryEditor.Models
         public static void Init()
         {
             types.Add(new ItemType("Consumable", null));
-            types.Add(new ItemType("Equipable", new List<string>() { "m_slot|combo(head,body,legs,feed)" }));
+            types.Add(new ItemType("Equippable", new List<string>() { "m_slot|combo(head,body,legs,feed)" }));
             types.Add(new ItemType("Switchable", null));
         }
 
@@ -24,6 +24,41 @@ namespace InventoryEditor.Models
     {
         public string Type;
         public string[] Properties;
+
+        public struct ProperyInfo
+        {
+            public string DisplayName;
+            public string Name;
+            public string Type;
+            public string[] Metadata;
+        }
+
+
+        public ProperyInfo[] GetPropertyInfo()
+        {
+            List<ProperyInfo> infos = new List<ProperyInfo>();
+            foreach (var Property in Properties)
+            {
+                var split = Property.Split('|');
+                var name = split[0];
+                var propType = split[1].TrimEnd(')');
+                var propValues = "";
+                split = propType.Split('(');
+                if (split.Length > 0)
+                {
+                    propType = split[0];
+                    if (split.Length > 1)
+                        propValues = split[1];
+                }
+
+                string trimmedName = name.TrimStart('m','_');
+                System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(trimmedName.ToLower());
+
+                infos.Add(new ProperyInfo(){DisplayName = trimmedName, Name = name, Type = propType, Metadata = propValues.Split(',')});
+            }
+
+            return infos.ToArray();
+        }
 
         public ItemType(string type, List<string> properties)
         {

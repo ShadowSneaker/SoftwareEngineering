@@ -1,7 +1,10 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Diagnostics;
+using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace InventoryEditor
 {
@@ -36,6 +39,7 @@ namespace InventoryEditor
         {
             lastSaveLocation = null;
             db = new ItemDBModel();
+            db.GetGameDirectory();
             Redraw();
         }
 
@@ -43,7 +47,8 @@ namespace InventoryEditor
         {
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Filter = FILTER;
-            if(ofd.ShowDialog() == true)
+            ofd.InitialDirectory = db.GameDirectory;
+            if (ofd.ShowDialog() == true)
             {
                 lastSaveLocation = ofd.FileName;
                 db = ItemDBModel.Load(ofd.FileName);
@@ -64,8 +69,15 @@ namespace InventoryEditor
 
         private void SaveAsDB_Click(object sender, RoutedEventArgs e)
         {
+            while (db.GameDirectory == String.Empty)
+            {
+                if(MessageBox.Show("Game Directory not set! Please set it now!", "Hang On!", MessageBoxButton.OK, MessageBoxImage.Stop) == MessageBoxResult.OK)
+                    db.GetGameDirectory();
+            }
+
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.Filter = FILTER;
+            sfd.InitialDirectory = db.GameDirectory;
             if (sfd.ShowDialog() == true)
             {
                 lastSaveLocation = sfd.FileName;
@@ -95,7 +107,9 @@ namespace InventoryEditor
             ItemList.Items.Clear();
             foreach (var item in db.Items)
             {
-                ItemList.Items.Add($"{item.Type}: {item.Properties["m_id"]}");
+                var node = new TreeViewItem() {Header = $"{item.Type}: {item.Properties["m_id"]}"};
+                node.MouseDoubleClick += (sender, args) => { ItemEditor.OpenItem(item); };
+                ItemList.Items.Add(node);
             }
         }
     }

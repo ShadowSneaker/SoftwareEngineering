@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Xceed.Wpf.Toolkit;
 
 namespace InventoryEditor
 {
@@ -43,6 +44,21 @@ namespace InventoryEditor
 
             return completionTask.Task;
         }
+        
+        public static Task<ItemModel> OpenItem(ItemModel item)
+        {
+            completionTask = new TaskCompletionSource<ItemModel>();
+
+            var win = new ItemEditor();
+            win.Show();
+
+            win.ClearControls();
+            win.DrawControls();
+
+            win.SetControlValues(item);
+
+            return completionTask.Task;
+        }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -52,39 +68,29 @@ namespace InventoryEditor
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             var type = Models.ItemTypes.GetTypes().FirstOrDefault(x => x.Type == TypeComboBox.SelectedItem);
+            var infos = type.GetPropertyInfo();
             Item = new ItemModel(type.Type, type.Properties.ToList());
 
-            foreach (var val in Item.Properties.ToArray())
+            foreach (var val in infos)
             {
-                var split = val.Key.Split('|');
-                var name = split[0];
-                var propType = split[1].TrimEnd(')');
-                var propValues = "";
-                split = propType.Split('(');
-                if (split.Length > 0)
-                {
-                    propType = split[0];
-                    if (split.Length > 1)
-                        propValues = split[1];
-                }
-
                 string value = "";
 
-                switch (propType)
+                switch (val.Type)
                 {
                     case "int":
+                        value = ((IntegerUpDown)controls.FirstOrDefault(x => x.Name == val.Name)).Value.Value.ToString();
                         break;
                     case "string":
-                        value = ((TextBox) controls.FirstOrDefault(x=> x.Name == name)).Text;
+                        value = ((WatermarkTextBox) controls.FirstOrDefault(x=> x.Name == val.Name)).Text;
                         break;
                     case "bool":
-                        value = ((CheckBox)controls.FirstOrDefault(x => x.Name == name)).IsChecked.Value.ToString();
+                        value = ((CheckBox)controls.FirstOrDefault(x => x.Name == val.Name)).IsChecked.Value.ToString();
                         break;
                     case "combo":
-                        value = ((ComboBox)controls.FirstOrDefault(x => x.Name == name)).SelectedValue.ToString();
+                        value = ((ComboBox)controls.FirstOrDefault(x => x.Name == val.Name)).SelectedValue.ToString();
                         break;
                 }
-                Item.SetProperty(name, value);
+                Item.SetProperty(val.Name, value);
             }
             completionTask.SetResult(Item);
 
@@ -100,55 +106,76 @@ namespace InventoryEditor
             controls.Clear();
         }
 
-        private void TypeComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        void SetControlValues(ItemModel item)
         {
-            ClearControls();
             var type = Models.ItemTypes.GetTypes().FirstOrDefault(x => x.Type == TypeComboBox.SelectedItem);
-            int propIndex = 1;
-            foreach (var Property in type.Properties)
-            {
-                var split = Property.Split('|');
-                var name = split[0];
-                var propType = split[1].TrimEnd(')');
-                var propValues = "";
-                split = propType.Split('(');
-                if (split.Length > 0)
-                {
-                    propType = split[0];
-                    if(split.Length > 1)
-                        propValues = split[1];
-                }
+            var infos = type.GetPropertyInfo();
+            Item = new ItemModel(type.Type, type.Properties.ToList());
 
-                Control valueControl = null;
-                Label nameTxt = new Label();
-                nameTxt.Content = name.TrimStart('m');
-                switch (propType)
+            foreach (var val in infos)
+            {
+                string value = "";
+
+                switch (val.Type)
                 {
                     case "int":
+                        ((IntegerUpDown) controls.FirstOrDefault(x => x.Name == val.Name)).Value = int.Parse(item.Properties[val.Name]);
                         break;
                     case "string":
-                        valueControl = new TextBox();
-                        valueControl.Name = name;
+                        ((WatermarkTextBox)controls.FirstOrDefault(x => x.Name == val.Name)).Text = item.Properties[val.Name];
+                        break;
+                    case "bool":
+                        ((CheckBox)controls.FirstOrDefault(x => x.Name == val.Name)).IsChecked = Convert.ToBoolean(item.Properties[val.Name]);
+                        break;
+                    case "combo":
+                        ((ComboBox)controls.FirstOrDefault(x => x.Name == val.Name)).SelectedValue = item.Properties[val.Name];
+                        break;
+                }
+                Item.SetProperty(val.Name, value);
+            }
+        }
+
+        void DrawControls()
+        {
+            var type = Models.ItemTypes.GetTypes().FirstOrDefault(x => x.Type == TypeComboBox.SelectedItem);
+            var infos = type.GetPropertyInfo();
+            int propIndex = 1;
+            foreach (var Property in infos)
+            {
+                Control valueControl = null;
+                Label nameTxt = new Label();
+                nameTxt.Content = Property.DisplayName;
+                switch (Property.Type)
+                {
+                    case "int":
+                        valueControl = new IntegerUpDown();
+                        valueControl.Name = Property.Name;
+                        ((IntegerUpDown) valueControl).Value = 0;
+                        break;
+                    case "string":
+                        valueControl = new WatermarkTextBox();
+                        ((WatermarkTextBox)valueControl).Watermark = "...";
+                        valueControl.Name = Property.Name; ;
                         break;
                     case "bool":
                         valueControl = new CheckBox();
-                        valueControl.Name = name;
+                        valueControl.Name = Property.Name; ;
                         break;
                     case "combo":
                         valueControl = new ComboBox();
-                        valueControl.Name = name;
-                        split = propValues.Split(',');
-                        foreach (var s in split)
+                        valueControl.Name = Property.Name;
+                        foreach (var s in Property.Metadata)
                         {
-                            ((ComboBox) valueControl).Items.Add(s);
+                            ((ComboBox)valueControl).Items.Add(s);
                         }
+
+                        ((ComboBox)valueControl).SelectedIndex = 0;
                         break;
                 }
 
                 theGrid.Children.Add(nameTxt);
                 controls.Add(nameTxt);
-                nameTxt.Margin = new Thickness(0, (propIndex * 26) + 5,0,0);
-               // nameTxt.Height = 26;
+                nameTxt.Margin = new Thickness(0, (propIndex * 26) + 5, 0, 0);
                 if (valueControl != null)
                 {
                     Grid.SetColumn(valueControl, 1);
@@ -161,7 +188,16 @@ namespace InventoryEditor
                 }
 
                 propIndex++;
+
             }
+            this.MinHeight = (propIndex + 1 * 26) * 10;
+            this.Height = (propIndex + 1 * 26) * 10;
+        }
+
+        private void TypeComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ClearControls();
+            DrawControls();
         }
     }
 }
