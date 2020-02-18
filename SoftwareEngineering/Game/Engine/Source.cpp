@@ -1,10 +1,13 @@
 #include "Graphics/Renderer/SDLSetup.h"
 #include "Graphics/Renderer/Renderer.h"
+#include "Systems/Time.h"
 
 
 int main(int argc, char** argv)
 {
 	// Temporary code, this should be changed!
+	TTime* Time{ new TTime{} };
+
 	CRenderer* Renderer{ new CRenderer() };
 	Renderer->SetBackgroundColour(SColour::Pink());
 	
@@ -33,6 +36,8 @@ int main(int argc, char** argv)
 
 	while (Event->type != SDL_QUIT)
 	{
+		Time->Update();
+
 		Renderer->DrawAllImages();
 		SDL_PollEvent(Event);
 		ImageTwo->Transform.Rotation += 1.0f;
