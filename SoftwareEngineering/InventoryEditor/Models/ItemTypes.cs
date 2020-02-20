@@ -12,9 +12,10 @@ namespace InventoryEditor.Models
 
         public static void Init()
         {
-            types.Add(new ItemType("Consumable", null));
-            types.Add(new ItemType("Equippable", new List<string>() { "m_slot|combo(head,body,legs,feed)" }));
-            types.Add(new ItemType("Switchable", null));
+            types.Add(new ItemType("Consumable", new List<string>() { "m_effects|efxlist" }));
+            types.Add(new ItemType("Equippable", new List<string>() { "m_slot|combo(head,body,legs,feed)", "m_effects|efxlist" }));
+            types.Add(new ItemType("Switchable", new List<string>() { "m_effects|efxlist" }));
+            types.Add(new ItemType("Item", null));
         }
 
         public static ItemType[] GetTypes() { return types.ToArray(); }
@@ -34,7 +35,7 @@ namespace InventoryEditor.Models
         }
 
 
-        public ProperyInfo[] GetPropertyInfo()
+        public ProperyInfo[] GetPropertiesInfo()
         {
             List<ProperyInfo> infos = new List<ProperyInfo>();
             foreach (var Property in Properties)
@@ -52,7 +53,7 @@ namespace InventoryEditor.Models
                 }
 
                 string trimmedName = name.TrimStart('m','_');
-                System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(trimmedName.ToLower());
+                trimmedName = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(trimmedName.ToLower());
 
                 infos.Add(new ProperyInfo(){DisplayName = trimmedName, Name = name, Type = propType, Metadata = propValues.Split(',')});
             }

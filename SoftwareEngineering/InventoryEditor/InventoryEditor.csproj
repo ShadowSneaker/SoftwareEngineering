@@ -74,6 +74,22 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Controls\EfxList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\FileSelector.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\EfxAddWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\EfxListWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\ItemEditor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -86,8 +102,22 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Controls\EfxList.xaml.cs">
+      <DependentUpon>EfxList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FileSelector.xaml.cs">
+      <DependentUpon>FileSelector.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EffectModel.cs" />
+    <Compile Include="Models\EffectTypes.cs" />
     <Compile Include="Models\ItemDBModel.cs" />
     <Compile Include="Models\ItemTypes.cs" />
+    <Compile Include="Windows\EfxAddWindow.xaml.cs">
+      <DependentUpon>EfxAddWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\EfxListWindow.xaml.cs">
+      <DependentUpon>EfxListWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\ItemEditor.xaml.cs">
       <DependentUpon>ItemEditor.xaml</DependentUpon>
     </Compile>
@@ -124,5 +154,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

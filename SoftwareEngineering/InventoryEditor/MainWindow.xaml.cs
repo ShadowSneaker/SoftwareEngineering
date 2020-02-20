@@ -16,13 +16,14 @@ namespace InventoryEditor
         const string FILTER = "Item Database File (.kkc)|*.kkc";
         string lastSaveLocation = "";
 
-        ItemDBModel db = new ItemDBModel();
+        public static ItemDBModel Database { get; set; } = new ItemDBModel();
 
         public MainWindow()
         {
             InitializeComponent();
 
             Models.ItemTypes.Init();
+            Models.EffectTypes.Init();
         }
 
         private void Quit_Click(object sender, RoutedEventArgs e)
@@ -38,8 +39,8 @@ namespace InventoryEditor
         private void NewDB_Click(object sender, RoutedEventArgs e)
         {
             lastSaveLocation = null;
-            db = new ItemDBModel();
-            db.GetGameDirectory();
+            Database = new ItemDBModel();
+            Database.GetGameDirectory();
             Redraw();
         }
 
@@ -47,11 +48,11 @@ namespace InventoryEditor
         {
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Filter = FILTER;
-            ofd.InitialDirectory = db.GameDirectory;
+            ofd.InitialDirectory = Database.GameDirectory;
             if (ofd.ShowDialog() == true)
             {
                 lastSaveLocation = ofd.FileName;
-                db = ItemDBModel.Load(ofd.FileName);
+                Database = ItemDBModel.Load(ofd.FileName);
             }
             Redraw();
         }
@@ -64,31 +65,31 @@ namespace InventoryEditor
                 return;
             }
 
-            db.Save(lastSaveLocation);
+            Database.Save(lastSaveLocation);
         }
 
         private void SaveAsDB_Click(object sender, RoutedEventArgs e)
         {
-            while (db.GameDirectory == String.Empty)
+            while (Database.GameDirectory == String.Empty)
             {
                 if(MessageBox.Show("Game Directory not set! Please set it now!", "Hang On!", MessageBoxButton.OK, MessageBoxImage.Stop) == MessageBoxResult.OK)
-                    db.GetGameDirectory();
+                    Database.GetGameDirectory();
             }
 
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.Filter = FILTER;
-            sfd.InitialDirectory = db.GameDirectory;
+            sfd.InitialDirectory = Database.GameDirectory;
             if (sfd.ShowDialog() == true)
             {
                 lastSaveLocation = sfd.FileName;
-                db.Save(sfd.FileName);
+                Database.Save(sfd.FileName);
             }
         }
 
         private async void NewItem_Click(object sender, RoutedEventArgs e)
         {
             var item = await ItemEditor.RequestItem();
-            db.Items.Add(item);
+            Database.Items.Add(item);
             Redraw();
         }
 
@@ -105,13 +106,13 @@ namespace InventoryEditor
         void Redraw()
         {
             ItemList.Items.Clear();
-            foreach (var item in db.Items)
+            foreach (var item in Database.Items)
             {
                 var node = new TreeViewItem() {Header = $"{item.Type}: {item.Properties["m_id"]}"};
                 node.MouseDoubleClick += async (sender, args) =>
                 {
-                    int index = db.Items.IndexOf(item);
-                    db.Items[index] = await ItemEditor.OpenItem(item);
+                    int index = Database.Items.IndexOf(item);
+                    Database.Items[index] = await ItemEditor.OpenItem(item);
                     Redraw();
                 };
                 ItemList.Items.Add(node);
