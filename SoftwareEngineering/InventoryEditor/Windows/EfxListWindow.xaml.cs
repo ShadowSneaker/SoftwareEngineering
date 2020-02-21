@@ -26,6 +26,7 @@ namespace InventoryEditor.Windows
         public EfxListWindow()
         {
             InitializeComponent();
+            
         }
 
         public static Task<List<EffectModel>> GetEffects(List<EffectModel> effects)

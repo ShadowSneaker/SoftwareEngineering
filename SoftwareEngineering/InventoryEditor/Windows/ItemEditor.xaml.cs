@@ -50,6 +50,8 @@ namespace InventoryEditor
 
             win.Item = item;
 
+            win.TypeComboBox.SelectedValue = item.Type;
+
             win.ClearControls();
             win.DrawControls();
 
@@ -65,7 +67,7 @@ namespace InventoryEditor
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            var type = Models.ItemTypes.GetTypes().FirstOrDefault(x => x.Type == TypeComboBox.SelectedItem);
+            var type = Models.ItemTypes.GetTypes().FirstOrDefault(x => x.Type == TypeComboBox.SelectedItem.ToString());
             var infos = type.GetPropertiesInfo();
             Item = new ItemModel(type.Type, type.Properties.ToList());
 
@@ -112,7 +114,7 @@ namespace InventoryEditor
 
         void SetControlValues(ItemModel item)
         {
-            var type = Models.ItemTypes.GetTypes().FirstOrDefault(x => x.Type == TypeComboBox.SelectedItem);
+            var type = Models.ItemTypes.GetTypes().FirstOrDefault(x => x.Type == TypeComboBox.SelectedItem.ToString());
             var infos = type.GetPropertiesInfo();
             Item = new ItemModel(type.Type, type.Properties.ToList());
 
@@ -153,7 +155,7 @@ namespace InventoryEditor
 
         void DrawControls()
         {
-            var type = Models.ItemTypes.GetTypes().FirstOrDefault(x => x.Type == TypeComboBox.SelectedItem);
+            var type = Models.ItemTypes.Types.FirstOrDefault(x => x.Type == TypeComboBox.SelectedItem.ToString());
             var infos = type.GetPropertiesInfo();
             int propIndex = 1;
             foreach (var Property in infos)

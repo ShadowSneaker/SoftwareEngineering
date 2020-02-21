@@ -15,10 +15,14 @@ namespace InventoryEditor.Models
             types.Add(new ItemType("Consumable", new List<string>() { "m_effects|efxlist" }));
             types.Add(new ItemType("Equippable", new List<string>() { "m_slot|combo(head,body,legs,feed)", "m_effects|efxlist" }));
             types.Add(new ItemType("Switchable", new List<string>() { "m_effects|efxlist" }));
-            types.Add(new ItemType("Item", null));
+            types.Add(new ItemType("Item", new List<string>()));
         }
 
         public static ItemType[] GetTypes() { return types.ToArray(); }
+        public static List<ItemType> Types
+        {
+            get { return types; }
+        }
     }
 
     public class ItemType

@@ -6,8 +6,13 @@
         xmlns:local="clr-namespace:InventoryEditor"
         mc:Ignorable="d"
         Title="Inventory Editor" Height="450" Width="318" KeyDown="MainWindow_OnKeyDown">
-    <StackPanel>
-        <Menu x:Name="Menu_Top" VerticalAlignment="Top" Margin="0,0,0,0">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Menu Grid.Row="0" x:Name="Menu_Top" VerticalAlignment="Top" Margin="0,0,0,0" Height="18">
             <MenuItem Header="File">
                 <MenuItem Header="New DB" Click="NewDB_Click"/>
                 <MenuItem Header="Open DB" Click="OpenDB_Click"/>
@@ -24,7 +29,7 @@
                 <MenuItem Header="Email Support" Click="SupportEmail_Click"/>
             </MenuItem>
         </Menu>
-        <TreeView>
+        <TreeView Grid.Row="1">
             <TreeViewItem Header="Items" Name="ItemList">
             </TreeViewItem>
             <TreeViewItem Header="Inventories">
@@ -32,6 +37,6 @@
             <TreeViewItem Header="Effects">
             </TreeViewItem>
         </TreeView>
-    </StackPanel>
-
+        <StatusBar Grid.Row="2" Height="24" VerticalAlignment="Bottom" Name="StatusBar"/>
+    </Grid>
 </Window>

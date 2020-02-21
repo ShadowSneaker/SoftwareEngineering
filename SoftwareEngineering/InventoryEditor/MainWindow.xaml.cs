@@ -22,8 +22,12 @@ namespace InventoryEditor
         {
             InitializeComponent();
 
+            StatusBar.Items.Add("Program Opened");
+
             Models.ItemTypes.Init();
+            UpdateStatusBar("Items Initialized");
             Models.EffectTypes.Init();
+            UpdateStatusBar("Effects Initialized");
         }
 
         private void Quit_Click(object sender, RoutedEventArgs e)
@@ -42,6 +46,7 @@ namespace InventoryEditor
             Database = new ItemDBModel();
             Database.GetGameDirectory();
             Redraw();
+            UpdateStatusBar("New Database created");
         }
 
         private void OpenDB_Click(object sender, RoutedEventArgs e)
@@ -55,6 +60,7 @@ namespace InventoryEditor
                 Database = ItemDBModel.Load(ofd.FileName);
             }
             Redraw();
+            UpdateStatusBar("Opened Database file");
         }
 
         private void SaveDB_Click(object sender, RoutedEventArgs e)
@@ -66,6 +72,7 @@ namespace InventoryEditor
             }
 
             Database.Save(lastSaveLocation);
+            UpdateStatusBar("Saved Database file");
         }
 
         private void SaveAsDB_Click(object sender, RoutedEventArgs e)
@@ -84,6 +91,7 @@ namespace InventoryEditor
                 lastSaveLocation = sfd.FileName;
                 Database.Save(sfd.FileName);
             }
+            UpdateStatusBar("Saved Database file");
         }
 
         private async void NewItem_Click(object sender, RoutedEventArgs e)
@@ -91,6 +99,7 @@ namespace InventoryEditor
             var item = await ItemEditor.RequestItem();
             Database.Items.Add(item);
             Redraw();
+            UpdateStatusBar("Added new item");
         }
 
         private void NewInventory_Click(object sender, RoutedEventArgs e)
@@ -113,10 +122,16 @@ namespace InventoryEditor
                 {
                     int index = Database.Items.IndexOf(item);
                     Database.Items[index] = await ItemEditor.OpenItem(item);
+                    UpdateStatusBar("Updated item");
                     Redraw();
                 };
                 ItemList.Items.Add(node);
             }
+        }
+
+        void UpdateStatusBar(string status)
+        {
+            StatusBar.Items[0] = DateTime.Now.TimeOfDay.ToString(@"hh\:mm\:ss") + ": " + status;
         }
 
         private void MainWindow_OnKeyDown(object sender, KeyEventArgs e)
