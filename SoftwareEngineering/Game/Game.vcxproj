@@ -19,8 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Engine\Graphics\Images\Animation.cpp" />
     <ClCompile Include="Engine\Inventory\Effects\Examples\DamageBuffEffect.cpp" />
-    <ClCompile Include="Engine\Graphics\Image.cpp" />
+    <ClCompile Include="Engine\Graphics\Images\Image.cpp" />
     <ClCompile Include="Engine\Graphics\Renderer\Renderer.cpp" />
     <ClCompile Include="Engine\Graphics\Renderer\SDLSetup.cpp" />
     <ClCompile Include="Engine\Inventory\ItemSystem\Consumable.cpp" />
@@ -38,10 +39,11 @@
     <ClCompile Include="Engine\Inventory\ItemSystem\MoneyItem.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Engine\Graphics\Images\Animation.h" />
     <ClInclude Include="Engine\Inventory\Effects\Examples\DamageBuffEffect.h" />
     <ClInclude Include="Engine\Inventory\Effects\Effect.h" />
     <ClInclude Include="Engine\Graphics\Colour.h" />
-    <ClInclude Include="Engine\Graphics\Image.h" />
+    <ClInclude Include="Engine\Graphics\Images\Image.h" />
     <ClInclude Include="Engine\Graphics\Renderer\Renderer.h" />
     <ClInclude Include="Engine\Graphics\Renderer\SDLSetup.h" />
     <ClCompile Include="Engine\Inventory\Inventory.h" />

@@ -1,6 +1,6 @@
 #pragma once
 #include <CopiriteMath/Datatypes/Transform.h>
-#include "Colour.h"
+#include "../Colour.h"
 
 
 struct SImageInfo
@@ -73,6 +73,8 @@ public:
 	// @param FilePath - The file path to this texture.
 	void SetImage(const SImageInfo& Info, const std::string& Path);
 
+	void SetImage(const std::string& Path);
+
 	void SetColour(const uint8& Red, const uint8& Green, const uint8& Blue, const uint8& Alpha = 255);
 
 
@@ -84,7 +86,7 @@ public:
 	INLINE SVector2i GetSize() const { return ImageSize; }
 
 	// 
-	virtual INLINE SDL_Rect GetCell() const { return SVector4{ 0.0f, ImageSize.ToFloat() }.ToRect(); }
+	virtual SDL_Rect GetCell() const { return SVector4{ 0.0f, ImageSize.ToFloat() }.ToRect(); }
 
 	// 
 	virtual INLINE SVector2 GetWorldPivot() const { return (ImageSize.ToFloat() * Transform.GetWorldScale()) / 2.0f; }

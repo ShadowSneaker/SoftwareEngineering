@@ -1,4 +1,7 @@
 #include "Image.h"
+#include "../Renderer/Renderer.h"
+
+
 
 // the defualt constructor for the image
 CImage::CImage()
@@ -15,6 +18,17 @@ CImage::~CImage()
 
 void CImage::SetImage(const SImageInfo& Info, const std::string& Path)
 {
+	Surface = Info.Surface;
+	Texture = Info.Texture;
+	ImageSize = Info.ImageSize;
+	FilePath = Path;
+	Pivot = GetImageCenter();
+}
+
+
+void CImage::SetImage(const std::string& Path)
+{
+	SImageInfo Info{ CRenderer::Instance->GetImage(Path) };
 	Surface = Info.Surface;
 	Texture = Info.Texture;
 	ImageSize = Info.ImageSize;

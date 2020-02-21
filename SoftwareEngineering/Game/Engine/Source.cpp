@@ -1,5 +1,6 @@
 #include "Graphics/Renderer/SDLSetup.h"
 #include "Graphics/Renderer/Renderer.h"
+#include "Graphics/Images/Animation.h"
 
 
 int main(int argc, char** argv)
@@ -8,9 +9,10 @@ int main(int argc, char** argv)
 	CRenderer* Renderer{ new CRenderer() };
 	Renderer->SetBackgroundColour(SColour::DarkGray());
 	
-	CImage* Image{ new CImage() };
-	Renderer->SetImage(Image, "Content/Images/HappyBoi.png", false);
-	Renderer->AddImage(Image);
+	CAnimation* Image{ new CAnimation() };
+	Image->SetImage("Content/Images/HappyBoi.png");
+	Image->SetCellCount(1, 5);
+	//Renderer->AddImage(Image);
 
 	Image->Transform.Location = 300.0f;
 	Image->SetColour(0,255,0,255);
