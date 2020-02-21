@@ -11,9 +11,9 @@ int main(int argc, char** argv)
 	
 	CAnimation* Image{ new CAnimation() };
 	Image->SetImage("Content/Images/HappyBoi.png");
-	Image->SetCellCount(1, 5);
-	//Renderer->AddImage(Image);
+	Renderer->AddImage(Image);
 
+	Image->SetCellCount(1, 5);
 	Image->Transform.Location = 300.0f;
 	Image->SetColour(0,255,0,255);
 

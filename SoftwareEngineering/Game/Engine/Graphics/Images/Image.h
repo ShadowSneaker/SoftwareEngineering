@@ -73,7 +73,7 @@ public:
 	// @param FilePath - The file path to this texture.
 	void SetImage(const SImageInfo& Info, const std::string& Path);
 
-	void SetImage(const std::string& Path);
+	virtual void SetImage(const std::string& Path);
 
 	void SetColour(const uint8& Red, const uint8& Green, const uint8& Blue, const uint8& Alpha = 255);
 

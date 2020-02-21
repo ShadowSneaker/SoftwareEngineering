@@ -12,7 +12,7 @@ private:
 	SDL_Rect Cell;
 
 	// The total amount of images per row/column.
-	SVector2i CellSize;
+	SVector2i CellSize{ 1 };
 
 	
 
@@ -58,6 +58,8 @@ public:
 	virtual void Update() override;
 
 	virtual SDL_Rect GetCell() const override;
+
+	virtual void SetImage(const std::string& Path) override;
 
 
 
