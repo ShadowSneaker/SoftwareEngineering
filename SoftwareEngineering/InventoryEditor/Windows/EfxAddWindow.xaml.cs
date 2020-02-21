@@ -34,7 +34,7 @@ namespace InventoryEditor.Windows
                     var effect = EffectTypes.GetTypes().FirstOrDefault(x => x.EffectClass == type.EffectClass);
                     if (effect != null)
                     {
-                        task.SetResult(effect);
+                        task.SetResult(effect.Clone());
                         Close();
                     }
                 };

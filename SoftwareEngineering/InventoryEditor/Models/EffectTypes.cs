@@ -12,7 +12,7 @@ namespace InventoryEditor.Models
 
         public static void Init()
         {
-            types.Add(new EffectModel(){EffectClass = "DamageBuffEffect", EffectProperty = 0});
+            types.Add(new EffectModel(){  EffectClass = "DamageBuffEffect", EffectProperty = 0});
             types.Add(new EffectModel() { EffectClass = "HealthEffect", EffectProperty = 0 });
             types.Add(new EffectModel() { EffectClass = "StaminaEffect", EffectProperty = 0 });
         }

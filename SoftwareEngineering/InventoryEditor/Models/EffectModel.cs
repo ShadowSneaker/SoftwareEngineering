@@ -10,5 +10,10 @@ namespace InventoryEditor.Models
     {
         public string EffectClass { get; set; }
         public object EffectProperty { get; set; }
+
+        public EffectModel Clone()
+        {
+            return new EffectModel() {EffectClass = EffectClass, EffectProperty = EffectProperty};
+        }
     }
 }

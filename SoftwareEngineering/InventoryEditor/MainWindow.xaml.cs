@@ -118,5 +118,13 @@ namespace InventoryEditor
                 ItemList.Items.Add(node);
             }
         }
+
+        private void MainWindow_OnKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.S && Keyboard.Modifiers == ModifierKeys.Control)
+            {
+                SaveDB_Click(null, null);
+            }
+        }
     }
 }

@@ -48,7 +48,7 @@ namespace InventoryEditor.Windows
             list.Items.Clear();
             foreach (var effect in effects)
             {
-                list.Items.Add($"{effect.EffectClass} : {effect.EffectProperty}");
+                list.Items.Add(effect);
             }
         }
 
@@ -75,7 +75,7 @@ namespace InventoryEditor.Windows
 
             deleteBtn.Click += (o, args) =>
             {
-                list.Items.RemoveAt(list.SelectedIndex);
+                effects.RemoveAt(list.SelectedIndex);
                 Redraw();
             };
 
