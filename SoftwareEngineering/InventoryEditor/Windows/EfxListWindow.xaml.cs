@@ -67,7 +67,7 @@ namespace InventoryEditor.Windows
 
         private void List_OnMouseRightButtonUp(object sender, MouseButtonEventArgs e)
         {
-            System.Windows.Controls.ContextMenu menu = new ContextMenu();
+            ContextMenu menu = new ContextMenu();
 
             var deleteBtn = new MenuItem();
             deleteBtn.Header = "Remove Selected";

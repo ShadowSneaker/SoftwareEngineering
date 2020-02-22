@@ -13,6 +13,21 @@ namespace InventoryEditor
         public string Type;
         public Dictionary<string, string> Properties;
 
+        public string Id
+        {
+            get { return Properties["m_id"]; }
+        }
+
+        public string Name
+        {
+            get { return Properties["m_name"]; }
+        }
+
+        public string ItemType
+        {
+            get { return Type; }
+        }
+
         public ItemModel(string type, List<string> properties)
         {
             Type = type;

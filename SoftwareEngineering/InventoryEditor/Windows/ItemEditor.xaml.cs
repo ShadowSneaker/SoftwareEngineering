@@ -11,9 +11,6 @@ using Xceed.Wpf.Toolkit;
 
 namespace InventoryEditor
 {
-    /// <summary>
-    /// Interaction logic for ItemEditor.xaml
-    /// </summary>
     public partial class ItemEditor : Window
     {
         private TaskCompletionSource<ItemModel> completionTask;

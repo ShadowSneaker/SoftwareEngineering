@@ -102,9 +102,12 @@ namespace InventoryEditor
             UpdateStatusBar("Added new item");
         }
 
-        private void NewInventory_Click(object sender, RoutedEventArgs e)
+        private async void NewInventory_Click(object sender, RoutedEventArgs e)
         {
-
+            var item = await Windows.InventoryEditor.GetInventory();
+            Database.Inventories.Add(item);
+            Redraw();
+            UpdateStatusBar("Added new inventory");
         }
 
         private void NewEffect_Click(object sender, RoutedEventArgs e)
@@ -115,6 +118,7 @@ namespace InventoryEditor
         void Redraw()
         {
             ItemList.Items.Clear();
+            InventoryList.Items.Clear();
             foreach (var item in Database.Items)
             {
                 var node = new TreeViewItem() {Header = $"{item.Type}: {item.Properties["m_id"]}"};
@@ -126,6 +130,19 @@ namespace InventoryEditor
                     Redraw();
                 };
                 ItemList.Items.Add(node);
+            }
+
+            foreach (var item in Database.Inventories)
+            {
+                var node = new TreeViewItem() { Header = $"{item.m_owner}: {item.m_id}" };
+                node.MouseDoubleClick += async (sender, args) =>
+                {
+                    int index = Database.Inventories.IndexOf(item);
+                    Database.Inventories[index] = await Windows.InventoryEditor.GetInventory(item);
+                    UpdateStatusBar("Updated item");
+                    Redraw();
+                };
+                InventoryList.Items.Add(node);
             }
         }
 

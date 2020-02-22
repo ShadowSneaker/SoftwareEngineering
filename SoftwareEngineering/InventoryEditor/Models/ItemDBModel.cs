@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
+using InventoryEditor.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -14,7 +15,13 @@ namespace InventoryEditor
     public class ItemDBModel
     {
         public List<ItemModel> Items = new List<ItemModel>();
+        public List<InventoryModel> Inventories = new List<InventoryModel>();
         public string GameDirectory = "";
+
+        public ItemModel GetItemById(string id)
+        {
+            return Items.FirstOrDefault(x => x.Properties["m_id"] == id);
+        }
 
         public void GetGameDirectory()
         {
@@ -41,6 +48,8 @@ namespace InventoryEditor
             ItemDBModel model = new ItemDBModel();
             List<ItemModel> items = new List<ItemModel>();
 
+            model.Inventories = new List<InventoryModel>();
+
             string json = File.ReadAllText(path);
             JObject jObj = JObject.Parse(json);
             model.GameDirectory = jObj["GameDirectory"]?.Value<string>();
@@ -56,6 +65,21 @@ namespace InventoryEditor
                 }
                 ItemModel item = new ItemModel(type, propsDictionary);
                 items.Add(item);
+            }
+
+            JArray jInventories = (JArray)jObj["Inventories"];
+            for (int i = 0; i < jInventories.Count; i++)
+            {
+                InventoryModel inventory = new InventoryModel();
+
+                inventory.items = new List<string>();
+                inventory.m_id = jInventories[i]["m_id"].Value<string>();
+                inventory.m_owner = jInventories[i]["m_owner"].Value<string>();
+                foreach (var value in jInventories[i]["items"].Values())
+                {
+                    inventory.items.Add(value.Value<string>());
+                }
+                model.Inventories.Add(inventory);
             }
 
             model.Items = items;

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InventoryEditor"
         mc:Ignorable="d"
-        Title="Inventory Editor" Height="450" Width="318" KeyDown="MainWindow_OnKeyDown">
+        Title="Inventory Database Editor" Height="450" Width="318" KeyDown="MainWindow_OnKeyDown">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -32,10 +32,10 @@
         <TreeView Grid.Row="1">
             <TreeViewItem Header="Items" Name="ItemList">
             </TreeViewItem>
-            <TreeViewItem Header="Inventories">
+            <TreeViewItem Header="Inventories" Name="InventoryList">
             </TreeViewItem>
-            <TreeViewItem Header="Effects">
-            </TreeViewItem>
+            <!--<TreeViewItem Header="Effects">
+            </TreeViewItem>-->
         </TreeView>
         <StatusBar Grid.Row="2" Height="24" VerticalAlignment="Bottom" Name="StatusBar"/>
     </Grid>

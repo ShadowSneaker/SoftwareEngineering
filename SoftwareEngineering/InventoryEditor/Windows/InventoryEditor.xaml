@@ -1,0 +1,53 @@
+﻿<Window x:Class="InventoryEditor.Windows.InventoryEditor"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:InventoryEditor.Windows"
+        mc:Ignorable="d"
+        Title="InventoryEditor" Height="385.333" Width="360.5">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <Label Content="Owner Id" VerticalAlignment="Top" Height="23" Margin="0,28,0,0"/>
+        <TextBox Height="23" TextWrapping="Wrap" Text="" Name ="IdBox" VerticalAlignment="Top" TextInput="Id_OnTextInput" Margin="0,28,0,0" Grid.Column="1"/>
+        <Label Content="Item List" VerticalAlignment="Top" Height="26" Margin="0,56,0,0" RenderTransformOrigin="0.473,0.372"/>
+        <ListView Grid.Column="1" Margin="0,56,0,25" Name="ListView" MouseRightButtonDown="List_OnMouseRightButtonDown">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Item Id">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label Content="{Binding Id}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Item Name">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label Content="{Binding Name}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Item Type">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Label Content="{Binding ItemType}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button Content="Save" Grid.Column="1" HorizontalAlignment="Right" Width="75" Height="20" VerticalAlignment="Bottom" Click="Save_Click"/>
+        <Button Content="Cancel" Grid.Column="1" HorizontalAlignment="Right" Width="75" Height="20" VerticalAlignment="Bottom" Margin="0,0,80,0" Click="Cancel_Click"/>
+        <Label Content="Inventory Id" VerticalAlignment="Top" Height="23"/>
+        <TextBox Height="23" TextWrapping="Wrap" Text="" x:Name ="InventoryIdBox" VerticalAlignment="Top" TextInput="Id_OnTextInput" Grid.Column="1"/>
+
+    </Grid>
+</Window>
