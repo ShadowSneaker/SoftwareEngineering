@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 
 namespace InventoryEditor
@@ -109,12 +110,7 @@ namespace InventoryEditor
             Redraw();
             UpdateStatusBar("Added new inventory");
         }
-
-        private void NewEffect_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
+        
         void Redraw()
         {
             ItemList.Items.Clear();
@@ -129,6 +125,24 @@ namespace InventoryEditor
                     UpdateStatusBar("Updated item");
                     Redraw();
                 };
+                node.MouseRightButtonUp += (sender, args) =>
+                {
+                    ContextMenu menu = new ContextMenu();
+
+                    var deleteBtn = new MenuItem();
+                    deleteBtn.Header = "Remove Selected";
+
+                    deleteBtn.Click += (o, args1) =>
+                    {
+                        Database.Items.Remove(item);
+                        Redraw();
+                    };
+
+                    menu.Items.Add(deleteBtn);
+
+                    menu.Placement = PlacementMode.MousePoint;
+                    menu.IsOpen = true;
+                };
                 ItemList.Items.Add(node);
             }
 
@@ -141,6 +155,25 @@ namespace InventoryEditor
                     Database.Inventories[index] = await Windows.InventoryEditor.GetInventory(item);
                     UpdateStatusBar("Updated item");
                     Redraw();
+                };
+
+                node.MouseRightButtonUp += (sender, args) =>
+                {
+                    ContextMenu menu = new ContextMenu();
+
+                    var deleteBtn = new MenuItem();
+                    deleteBtn.Header = "Remove Selected";
+
+                    deleteBtn.Click += (o, args1) =>
+                    {
+                        Database.Inventories.Remove(item);
+                        Redraw();
+                    };
+
+                    menu.Items.Add(deleteBtn);
+
+                    menu.Placement = PlacementMode.MousePoint;
+                    menu.IsOpen = true;
                 };
                 InventoryList.Items.Add(node);
             }

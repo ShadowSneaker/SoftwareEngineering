@@ -23,7 +23,6 @@
             <MenuItem Header="Edit">
                 <MenuItem Header="New Item" Click="NewItem_Click"/>
                 <MenuItem Header="New Inventory" Click="NewInventory_Click"/>
-                <MenuItem Header="New Effect" Click="NewEffect_Click"/>
             </MenuItem>
             <MenuItem Header="Help">
                 <MenuItem Header="Email Support" Click="SupportEmail_Click"/>
@@ -34,8 +33,6 @@
             </TreeViewItem>
             <TreeViewItem Header="Inventories" Name="InventoryList">
             </TreeViewItem>
-            <!--<TreeViewItem Header="Effects">
-            </TreeViewItem>-->
         </TreeView>
         <StatusBar Grid.Row="2" Height="24" VerticalAlignment="Bottom" Name="StatusBar"/>
     </Grid>

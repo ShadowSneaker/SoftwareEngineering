@@ -99,9 +99,13 @@ namespace InventoryEditor.Windows
         void Redraw()
         {
             ListView.Items.Clear();
-            foreach (var item in inventory.items)
+            foreach (var item in inventory.items.ToArray())
             {
-                ListView.Items.Add(MainWindow.Database.GetItemById(item));
+                var it = MainWindow.Database.GetItemById(item);
+                if (it != null)
+                    ListView.Items.Add(it);
+                else
+                    inventory.items.Remove(item);
             }
         }
     }
