@@ -19,6 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Engine\DataManagement\AssetLoader.cpp" />
+    <ClCompile Include="Engine\DataManagement\JsonHandler.cpp" />
     <ClCompile Include="Engine\Graphics\Images\Animation.cpp" />
     <ClCompile Include="Engine\Inventory\Effects\Examples\DamageBuffEffect.cpp" />
     <ClCompile Include="Engine\Graphics\Images\Image.cpp" />
@@ -39,6 +41,8 @@
     <ClCompile Include="Engine\Inventory\ItemSystem\MoneyItem.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Engine\DataManagement\AssetLoader.h" />
+    <ClInclude Include="Engine\DataManagement\JsonHandler.h" />
     <ClInclude Include="Engine\Graphics\Images\Animation.h" />
     <ClInclude Include="Engine\Inventory\Effects\Examples\DamageBuffEffect.h" />
     <ClInclude Include="Engine\Inventory\Effects\Effect.h" />
@@ -59,6 +63,9 @@
     <ClInclude Include="Engine\Inventory\PlayerInventory.h" />
     <ClInclude Include="Engine\Inventory\ShopInventory.h" />
     <ClInclude Include="Engine\Inventory\ItemSystem\MoneyItem.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Engine\DataManagement\Fruits.json" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
