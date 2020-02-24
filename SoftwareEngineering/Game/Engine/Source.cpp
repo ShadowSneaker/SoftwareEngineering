@@ -3,6 +3,7 @@
 #include "Graphics/Images/Animation.h"
 
 
+
 int main(int argc, char** argv)
 {
 	// Temporary code, this should be changed!
@@ -10,12 +11,12 @@ int main(int argc, char** argv)
 	Renderer->SetBackgroundColour(SColour::DarkGray());
 	
 	CAnimation* Image{ new CAnimation() };
-	Image->SetImage("Content/Images/HappyBoi.png");
+	Image->SetImage("Content/Images/Anim.png");
 	Renderer->AddImage(Image);
 
-	Image->SetCellCount(1, 5);
+	Image->SetCellCount(1, 6);
 	Image->Transform.Location = 300.0f;
-	Image->SetColour(0,255,0,255);
+	Image->Speed = 0.1f;
 
 	SDL_Event* Event{ new SDL_Event{} };
 

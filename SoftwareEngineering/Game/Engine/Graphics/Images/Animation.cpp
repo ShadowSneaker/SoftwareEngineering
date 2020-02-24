@@ -27,7 +27,7 @@ void CAnimation::Update()
 	if (Playing)
 	{
 		Timer += Speed * 0.5f; //TTime::DeltaTime;
-		FrameIndex = TMath::FloorInt(Timer) % TotalFrames;
+		FrameIndex = TMath::FloorInt(Timer) % (TotalFrames);
 
 		if (!Reversed && !Loop && FrameIndex == TotalFrames) Stop();
 		else if (Reversed && !Loop && FrameIndex == 0) Stop();
@@ -99,7 +99,7 @@ void CAnimation::SetCellCount(const uint& Rows, const uint& Columns)
 
 	Cell.w = GetImageSize()[X] / Columns;
 	Cell.h = GetImageSize()[Y] / Rows;
-	TotalFrames = Columns * Rows - 1;
+	TotalFrames = Columns * Rows;
 }
 
 
@@ -108,5 +108,5 @@ void CAnimation::SetCellCount(SVector2i InCells)
 	CellSize = InCells;
 	Cell.w = GetImageSize()[X] / CellSize[X];
 	Cell.h = GetImageSize()[Y] / CellSize[Y];
-	TotalFrames = (CellSize[X] * CellSize[Y]) - 1;
+	TotalFrames = (CellSize[X] * CellSize[Y]);
 }
