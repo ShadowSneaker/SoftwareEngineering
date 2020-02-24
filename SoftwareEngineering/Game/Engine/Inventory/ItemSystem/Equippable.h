@@ -11,8 +11,12 @@ private:
 public:
 	SlotName GetSlot() { return m_slot; }
 	void SetSlot(SlotName slot) { m_slot = slot; }
+	Item* Clone() override { return new Equippable(*this); }
 
 protected:
 	void OnUsed() override;
+	void OnAdded() override;
+	void OnRemoved() override;
+
 };
 
