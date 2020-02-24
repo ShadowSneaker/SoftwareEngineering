@@ -1,6 +1,4 @@
 #pragma once
-#pragma warning(disable : 26812)
-#pragma warning(disable : C26495)
 
 #include <map>
 #include <SDL.h>

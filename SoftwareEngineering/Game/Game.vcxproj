@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\Input\InputController.cpp" />
+    <ClCompile Include="Engine\Input\InputManager.cpp" />
     <ClCompile Include="Engine\Input\KeyboardInput.CPP" />
     <ClCompile Include="Engine\Input\MouseInput.cpp" />
     <ClCompile Include="Engine\Inventory\Effects\Examples\DamageBuffEffect.cpp" />
@@ -42,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Input\InputController.h" />
+    <ClInclude Include="Engine\Input\InputManager.h" />
     <ClInclude Include="Engine\Input\KeyboardInput.h" />
     <ClInclude Include="Engine\Input\MouseInput.h" />
     <ClInclude Include="Engine\Inventory\Effects\Examples\DamageBuffEffect.h" />
