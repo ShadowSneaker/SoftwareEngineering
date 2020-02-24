@@ -103,7 +103,7 @@ void CAnimation::SetCellCount(const uint& Rows, const uint& Columns)
 }
 
 
-void CAnimation::SetCellCount(SVector2i InCells)
+void CAnimation::SetCellCount(const SVector2i& InCells)
 {
 	CellSize = InCells;
 	Cell.w = GetImageSize()[X] / CellSize[X];

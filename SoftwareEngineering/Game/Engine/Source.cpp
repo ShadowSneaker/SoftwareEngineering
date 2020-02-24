@@ -17,6 +17,7 @@ int main(int argc, char** argv)
 	Image->SetCellCount(1, 6);
 	Image->Transform.Location = 300.0f;
 	Image->Speed = 0.1f;
+	Image->Transform.Scale = 1.0f;
 
 	SDL_Event* Event{ new SDL_Event{} };
 

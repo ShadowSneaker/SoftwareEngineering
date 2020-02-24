@@ -91,7 +91,7 @@ public:
 
 	// Sets how many frames are in the animation.
 	// @param InCells - The amount of frames there are in the X and Y axis'.
-	void SetCellCount(SVector2i InCells);
+	void SetCellCount(const SVector2i& InCells);
 
 
 

@@ -118,4 +118,8 @@ private:
 
 public:
 	SImageInfo GetImage(const std::string& Path);
+
+
+	// Returns the size of the window.
+	INLINE SVector2i GetWindowSize() const { Setup->WindowSize; }
 };
