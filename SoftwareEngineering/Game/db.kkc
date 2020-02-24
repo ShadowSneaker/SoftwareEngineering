@@ -1,0 +1,11 @@
+{
+"Items":
+[
+	{"Type":"Item","Properties":{"m_id":"item_smiley_boi","m_name":"Smiley Boi","m_icon":"C:\\Users\\2CONSJ16\\Downloads\\softengin\\SoftwareEngineering\\Game\\Content\\Images\\HappyBoi.png","m_isQuestItem":"False","m_stackable":"False","m_value":"5","m_weight":"9"},"Id":"item_smiley_boi","Name":"Smiley Boi","ItemType":"Item"}
+],
+"Inventories":
+[
+	{"m_owner":"obj_chest","m_id":"inventory_test_chest","items":["item_smiley_boi"]}
+],
+"GameDirectory":"C:\\Users\\2CONSJ16\\Downloads\\softengin\\SoftwareEngineering\\Game"
+}
