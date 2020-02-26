@@ -100,7 +100,7 @@ public:
 	// 
 	INLINE SColour GetColour() const { return Colour; }
 
-	// 
+	//Get the center point of an image
 	INLINE SVector2 GetImageCenter() const { return (ImageSize.ToFloat() * Transform.GetWorldScale()) / 2.0f; }
 	
 	// 
@@ -112,7 +112,7 @@ public:
 	// 
 	INLINE SDL_Surface* GetSurface() const { return Surface; }
 
-	// 
+	//Get the image flipped data
 	SDL_RendererFlip GetFlip() const;
 
 };

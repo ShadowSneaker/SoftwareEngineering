@@ -24,19 +24,19 @@ CRenderer::~CRenderer()
 	delete Setup;
 }
 
-
+// Clears the renderer within object
 void CRenderer::Clear()
 {
 	SDL_RenderClear(Setup->GetRenderer());
 }
 
-
+// Presents the renderer window
 void CRenderer::Present()
 {
 	SDL_RenderPresent(Setup->GetRenderer());
 }
 
-
+// Removes all images from the renderer object
 void CRenderer::DeleteAllImages()
 {
 	while (!Images.empty())
@@ -49,7 +49,7 @@ void CRenderer::DeleteAllImages()
 	}
 }
 
-
+// Removes all textures from this object
 void CRenderer::DeleteAllTextures()
 {
 	for (auto i = Textures.begin(); i != Textures.end(); ++i)
@@ -59,7 +59,8 @@ void CRenderer::DeleteAllTextures()
 	}
 }
 
-
+// Draws all stored images to the screen then presents
+// @Note does not cull
 void CRenderer::DrawAllImages() 
 {
 	Clear();
@@ -74,7 +75,8 @@ void CRenderer::DrawAllImages()
 	Present();
 }
 
-
+// Draws inputted image to screen then presents
+// @param Image - points to the image being inputted
 void CRenderer::DrawImage(CImage* Image) const
 {
 	SDL_Rect Cell{ Image->GetCell() };
