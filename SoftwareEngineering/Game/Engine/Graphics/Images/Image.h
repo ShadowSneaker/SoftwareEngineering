@@ -52,10 +52,10 @@ public:
 
 	/// Constructors
 
-	// basic constructor
+	// Constructor, Default.
 	CImage();
 
-	//Destructor
+	// Destructor.
 	~CImage();
 
 
@@ -66,10 +66,10 @@ public:
 
 	
 
-	///Functions
+	/// Functions
 
 	// Sets a texture to this image using the inputted information.
-	// @param Info - the image info to use.
+	// @param Info - The image info to use.
 	// @param FilePath - The file path to this texture.
 	void SetImage(const SImageInfo& Info, const std::string& Path);
 
@@ -80,9 +80,9 @@ public:
 
 
 
-	///Getters
+	/// Getters
 
-	//Get the Image Width
+	// Get the image width.
 	INLINE SVector2i GetSize() const { return ImageSize; }
 
 	// 
@@ -100,7 +100,7 @@ public:
 	// 
 	INLINE SColour GetColour() const { return Colour; }
 
-	//Get the center point of an image
+	// Get the center point of the image.
 	INLINE SVector2 GetImageCenter() const { return (ImageSize.ToFloat() * Transform.GetWorldScale()) / 2.0f; }
 	
 	// 
@@ -112,7 +112,7 @@ public:
 	// 
 	INLINE SDL_Surface* GetSurface() const { return Surface; }
 
-	//Get the image flipped data
+	// Get the image flipped data.
 	SDL_RendererFlip GetFlip() const;
 
 };

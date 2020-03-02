@@ -57,11 +57,11 @@ public:
 	// Updates the animation.
 	virtual void Update() override;
 
-	// Gets the frame point of an image
+	// Gets the frame point of an image.
 	virtual SDL_Rect GetCell() const override;
 
-	// Sets the cell position of an image to be displayed
-	// @param Path - the filepath for the image being used
+	// Sets image based off of file path.
+	// @param Path - the filepath for the image being used.
 	virtual void SetImage(const std::string& Path) override;
 
 
@@ -87,7 +87,7 @@ public:
 
 	/// Setters
 
-	// Sets how manay frame tare in the animation.
+	// Sets how manay frame there are in the animation.
 	// @param Rows - The amount of frames there are in the Y axis.
 	// @param Columns - The amount of frames there are in the X axis.
 	void SetCellCount(const uint& Rows, const uint& Columns);
