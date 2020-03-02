@@ -1,7 +1,9 @@
+#include <algorithm>
 #include "Inventory.h"
 #include "ItemSystem/Item.h"
-#include <algorithm>
 #include "ItemSystem/MoneyItem.h"
+#include "..//WorldObject/WorldObject.h"
+
 
 void Inventory::AddItem(Item* item)
 {
@@ -95,7 +97,7 @@ std::vector<Item*> Inventory::GetItems()
 	return m_items;
 }
 
-Entity* Inventory::GetOwner()
+WorldObject* Inventory::GetOwner()
 {
 	return m_owner;
 }
