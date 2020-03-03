@@ -48,6 +48,18 @@ void CImage::SetColour(const uint8& Red, const uint8& Green, const uint8& Blue, 
 	SDL_SetTextureAlphaMod(Texture, Colour.A);
 }
 
+void CImage::SetColour(const SColour& Colour)
+{
+	SDL_SetTextureColorMod(Texture, Colour.R, Colour.G, Colour.B);
+	SDL_SetTextureAlphaMod(Texture, Colour.A);
+}
+
+void CImage::SetColour(const SDL_Color& Colour)
+{
+	SDL_SetTextureColorMod(Texture, Colour.r, Colour.g, Colour.b);
+	SDL_SetTextureAlphaMod(Texture, Colour.a);
+}
+
 
 SDL_RendererFlip CImage::GetFlip() const
 {
