@@ -2,8 +2,8 @@
 
 InputManager::InputManager()
 {
-	p_controller = new InputController();
-	p_controller->Initialize();
+	p_controller = new ControllerInput();
+	p_controller->Initialization();
 
 
 }
@@ -20,7 +20,7 @@ void InputManager::Update(SDL_Event* event)
 {
 	if (event->type == SDL_CONTROLLERDEVICEADDED || event->type == SDL_CONTROLLERDEVICEREMOVED)
 	{
-		p_controller->ReceiveEvent(*event);
+		p_controller->ReceiveEvent(event);
 	}
 
 
@@ -32,10 +32,10 @@ void InputManager::Update(SDL_Event* event)
 
 	p_mouse->UpdateMouse(event);
 
-	p_controller->Update();
+	//p_controller->Update();
 }
 
-InputController* InputManager::GetController()
+ControllerInput* InputManager::GetController()
 {
 	return p_controller;
 }

@@ -1,18 +1,18 @@
 #pragma once
 #include "MouseInput.h"
 #include "KeyboardInput.h"
-#include "InputController.h"
+#include "ControllerInput.h"
 class InputManager
 {
 private:
-	InputController* p_controller;
+	ControllerInput* p_controller;
 	MouseInput* p_mouse;
 	KeyboardInput* p_keyboard;
 public:
 	InputManager();
 	~InputManager();
 	void Update(SDL_Event* event);
-	InputController* GetController();
+	ControllerInput* GetController();
 	MouseInput* GetMouse();
 	KeyboardInput* GetKeyboard();
 };

@@ -10,8 +10,8 @@ private:
 	int yDirection = 0;
 public:
 	bool Initialization();
-	void ReceiveInput(SDL_Event* event);
-	void Something();
+	void ReceiveEvent(SDL_Event* event);
+	void Release();
 	~ControllerInput();
 	ControllerInput();
 

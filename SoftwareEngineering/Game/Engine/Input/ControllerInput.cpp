@@ -32,6 +32,7 @@ bool ControllerInput::Initialization()
     return success;
 }
 
+
 ControllerInput::ControllerInput()
 {
 
@@ -41,7 +42,7 @@ ControllerInput::~ControllerInput()
 {
 }
 
-void ControllerInput::ReceiveInput(SDL_Event* event)
+void ControllerInput::ReceiveEvent(SDL_Event* event)
 {
     if (event->type == SDL_JOYAXISMOTION)
     {
@@ -55,7 +56,8 @@ void ControllerInput::ReceiveInput(SDL_Event* event)
     }
 }
 
-void ControllerInput::Something()
+void ControllerInput::Release()
 {
 }
+
 
