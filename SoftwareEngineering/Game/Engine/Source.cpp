@@ -2,6 +2,7 @@
 #include "Graphics/Renderer/Renderer.h"
 #include "Input/MouseInput.h"
 #include "Input/KeyboardInput.h"
+#include "Input/ControllerInput.h"
 
 
 int main(int argc, char** argv)
@@ -11,6 +12,9 @@ int main(int argc, char** argv)
 
 	MouseInput* mouse = new MouseInput();
 	KeyboardInput* Keyboard = new KeyboardInput();
+	ControllerInput* Controller = new ControllerInput();
+
+	Controller->Initialization();
 
 	Renderer->SetBackgroundColour(SColour::DarkGray());
 	
@@ -24,10 +28,16 @@ int main(int argc, char** argv)
 	SDL_Event* Event{ new SDL_Event{} };
 
 
+
 	while (Event->type != SDL_QUIT)
 	{
 		Renderer->DrawAllImages();
 		SDL_PollEvent(Event);
+
+
+		Controller->ReceiveEvent(Event);
+
+
 		//mouse stuff
 		if(mouse->UpdateMouse(Event));
 		{
@@ -50,6 +60,9 @@ int main(int argc, char** argv)
 
 	delete Keyboard;
 	Keyboard = nullptr;
+
+	delete Controller;
+	Controller = nullptr;
 
 	return 1;
 }
