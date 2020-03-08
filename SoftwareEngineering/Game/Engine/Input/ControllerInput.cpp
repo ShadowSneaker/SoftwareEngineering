@@ -46,18 +46,72 @@ void ControllerInput::ReceiveEvent(SDL_Event* event)
 {
     if (event->type == SDL_JOYAXISMOTION)
     {
+        //Motion on controller 0
         if (event->jaxis.which == 0)
         {
+            //X axis motion
             if (event->jaxis.axis == 0)
             {
-                std::cout << event->jaxis.value << std::endl;
+                //Left of dead zone
+                if (event->jaxis.value < -JOYSTICK_DEAD_ZONE)
+                {
+                    xDirection = -1;
+                }
+                //Right of dead zone
+                else if (event->jaxis.value > JOYSTICK_DEAD_ZONE)
+                {
+                    xDirection = 1;
+                }
+                else
+                {
+                    xDirection = 0;
+                }
+                //Y axis motion
             }
+            else if (event->jaxis.axis == 1)
+            {
+                //Below of dead zone
+                if (event->jaxis.value < -JOYSTICK_DEAD_ZONE)
+                {
+                    yDirection = -1;
+                }
+                //Above of dead zone
+                else if (event->jaxis.value > JOYSTICK_DEAD_ZONE)
+                {
+                    yDirection = 1;
+                }
+                else
+                {
+                    yDirection = 0;
+                }
+            }
+
         }
     }
 }
 
+void ControllerInput::MoveImage(CImage* Image)
+{
+    
+}
+
 void ControllerInput::Release()
 {
+}
+
+double ControllerInput::CalculateJSAngle(int xDirecton, int yDirection)
+{
+    JoyStickAngle = atan2((double)yDirection, (double)xDirecton) * (180.0 / M_PI);
+
+    //Correct angle
+    if (xDirection == 0 && yDirection == 0)
+    {
+        JoyStickAngle = 0;
+        return JoyStickAngle;
+    }
+
+   
+    return JoyStickAngle;
 }
 
 

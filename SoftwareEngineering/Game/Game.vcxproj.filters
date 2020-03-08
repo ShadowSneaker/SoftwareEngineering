@@ -149,5 +149,8 @@
     <ClInclude Include="Engine\Input\ControllerInput.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Engine\Source.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
