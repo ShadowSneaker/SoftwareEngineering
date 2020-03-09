@@ -66,21 +66,33 @@ int main(int argc, char** argv)
 		SDL_Thread* threadID = SDL_CreateThread(ControllerThread,"Controller Thread", (void*)data);
 
 		//mouse stuff
-		//if(mouse->UpdateMouse(Event));
-		//{
-		//	if ((mouse->CheckButton(Left) && (mouse->OnImage(Image))) || mouse->ImageSelected)
-		//	{
-		//		Image->SetColour(255, 0, 0, 255);
-		//		mouse->MoveImage(Image);
-		//	}
-		//	else if (mouse->CheckButton(Left))
-		//		Image->SetColour(0, 255, 0, 255);
-
-		//	if (mouse->CheckButton(Right) && mouse->OnImage(Image))
-		//		Renderer->SetBackgroundColour(SColour::Blue());
-		//	else if (mouse->CheckButton(Right))
-		//		Renderer->SetBackgroundColour(SColour::Black());
-		//}
+		if(mouse->UpdateMouse(Event));
+		{
+			if ((mouse->CheckMouse(Mouse_Button_Left) && (mouse->OnImage(Image))) || mouse->ImageSelected)
+			{
+				Image->SetColour(255, 0, 0, 255);
+				mouse->MoveImage(Image);
+			}
+			else if (mouse->CheckMouse(Mouse_Button_Left))
+			{
+				SDL_ShowCursor(0);//switches cursor off
+				Image->SetColour(0, 255, 0, 255);
+			}
+			else if (mouse->CheckMouse(Mouse_Button_Right) && mouse->OnImage(Image))
+			{
+				Renderer->SetBackgroundColour(SColour::Blue());
+			}
+			else if (mouse->CheckMouse(Mouse_Button_Right))
+			{
+				SDL_ShowCursor(1); //switches cursor on
+				Renderer->SetBackgroundColour(SColour::Black());
+			}
+			else if (mouse->CheckMouse(Mouse_Wheel_Down) || mouse->CheckMouse(Mouse_Wheel_Up))
+			{
+				Image->Transform.Location.SetY(mouse->GetMouseWheel());
+			}
+		}
+		mouse->SetMouseWheel(Image->Transform.Location.GetY());
 
 		Renderer->DrawAllImages();
 		SDL_WaitThread(threadID, NULL);
