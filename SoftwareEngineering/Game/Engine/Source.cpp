@@ -15,18 +15,19 @@ CImage* Image{ new CImage() };
 
 int ControllerThread(void* threadData)
 {
-
+  
 	Controller->ReceiveEvent(Event);
-	Controller->CalculateJSAngle(Controller->xDirection, Controller->yDirection);
-
+		Controller->CalculateJSAngle(Controller->xDirection, Controller->yDirection);
 	if (Controller->JoyStickAngle == -45)
 		Image->Transform.Location.SetX(Image->Transform.Location.GetX() += 1);
 	else if (Controller->JoyStickAngle == 180)
 		Image->Transform.Location.SetX(Image->Transform.Location.GetX() -= 1);
-	else if (Controller->JoyStickAngle == -90)
+	else if (Controller->JoyStickAngle == 90)
 		Image->Transform.Location.SetY(Image->Transform.Location.GetY() -= 1);
 	else if (Controller->JoyStickAngle == -180)
 		Image->Transform.Location.SetY(Image->Transform.Location.GetY() += 1);
+
+	std::cout << Controller->CalculateJSAngle(Controller->xDirection, Controller->yDirection) << std::endl;
 
 	return 0;
 }
@@ -53,37 +54,40 @@ int main(int argc, char** argv)
 	Image->SetColour(0,255,0,255);
 
 
+	bool quit = false;
 
-
-
+	
 	while (Event->type != SDL_QUIT)
 	{
+		
+		while (SDL_PollEvent(Event))
+		{
+			int data = 10;
 
-		SDL_PollEvent(Event);
+			SDL_Thread* threadID = SDL_CreateThread(ControllerThread, "Controller Thread", (void*)data);
 
-		int data = 10;
-		//int threadFunction(void* data);
-		SDL_Thread* threadID = SDL_CreateThread(ControllerThread,"Controller Thread", (void*)data);
+			//mouse stuff
+			if (mouse->UpdateMouse(Event));
+			{
+				if ((mouse->CheckButton(Left) && (mouse->OnImage(Image))) || mouse->ImageSelected)
+				{
+					Image->SetColour(255, 0, 0, 255);
+					mouse->MoveImage(Image);
+				}
+				else if (mouse->CheckButton(Left))
+					Image->SetColour(0, 255, 0, 255);
 
-		//mouse stuff
-		//if(mouse->UpdateMouse(Event));
-		//{
-		//	if ((mouse->CheckButton(Left) && (mouse->OnImage(Image))) || mouse->ImageSelected)
-		//	{
-		//		Image->SetColour(255, 0, 0, 255);
-		//		mouse->MoveImage(Image);
-		//	}
-		//	else if (mouse->CheckButton(Left))
-		//		Image->SetColour(0, 255, 0, 255);
+				if (mouse->CheckButton(Right) && mouse->OnImage(Image))
+					Renderer->SetBackgroundColour(SColour::Blue());
+				else if (mouse->CheckButton(Right))
+					Renderer->SetBackgroundColour(SColour::Black());
+			}
 
-		//	if (mouse->CheckButton(Right) && mouse->OnImage(Image))
-		//		Renderer->SetBackgroundColour(SColour::Blue());
-		//	else if (mouse->CheckButton(Right))
-		//		Renderer->SetBackgroundColour(SColour::Black());
-		//}
+			SDL_WaitThread(threadID, NULL);
+		}
+
 
 		Renderer->DrawAllImages();
-		SDL_WaitThread(threadID, NULL);
 	}
 
 
