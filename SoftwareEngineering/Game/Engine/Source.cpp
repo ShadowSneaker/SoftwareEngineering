@@ -89,7 +89,7 @@ int main(int argc, char** argv)
 				Image->Transform.Location.SetY(inputManager->GetMouse()->GetMouseWheel());
 			}
 
-			if (inputManager->GetKeyboard()->KeyDown(KEY_CONFIRM))
+			if (inputManager->GetKeyboard()->IsKeyPressed(KEY_CONFIRM))
 			{
 				Image->SetColour(0, 0, 255, 255);
 				//std::cout << "Test" << std::endl;

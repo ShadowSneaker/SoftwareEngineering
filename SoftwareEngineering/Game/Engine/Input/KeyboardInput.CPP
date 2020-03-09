@@ -23,13 +23,12 @@ void KeyboardInput::Update(SDL_Event* event)
 {
 
 	//transfer the new keyboard state to the old one
-	for (int i = 0; i < m_keylist_size; i++)
+	/*for (int i = 0; i < m_keylist_size; i++)
 	{
 		m_oldKeyboardState[i] = m_keyboardState[i];
-	}
+	}*/
 
-	if (SDL_PollEvent(event) != NULL)
-	{
+
 		///Check for Key Down
 		if (event->type == SDL_KEYDOWN)
 		{
@@ -78,7 +77,6 @@ void KeyboardInput::Update(SDL_Event* event)
 				m_keyboardState[KEY_UP] = false;
 		}
 
-	};
 }
 
 bool KeyboardInput::IsKeyPressed(KEY_LIST key)
