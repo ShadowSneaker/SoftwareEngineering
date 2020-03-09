@@ -7,3 +7,11 @@ MoneyItem::MoneyItem()
 	SetIsStackable(true);
 	SetIsQuestItem(false);
 }
+
+void MoneyItem::OnAdded()
+{
+}
+
+void MoneyItem::OnRemoved()
+{
+}

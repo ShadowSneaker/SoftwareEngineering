@@ -10,8 +10,9 @@ private:
 
 public:
 	void Use();
+	Item* Clone() override { return new UsableItem(*this); }
 
 protected:
-	virtual void OnUsed() = 0;
+	virtual void OnUsed();
 };
 

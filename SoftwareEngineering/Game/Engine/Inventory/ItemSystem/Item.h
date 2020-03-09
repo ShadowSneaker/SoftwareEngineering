@@ -7,6 +7,7 @@ class Inventory;
 class Item
 {
 private:
+	std::string m_id = " ";
 	std::string m_name = " ";
 	Image* m_icon = nullptr;
 	bool m_isQuestItem = false;
@@ -26,7 +27,9 @@ public:
 	void Destroy();
 	void UpdateOwner(Inventory* newOwner);
 	Inventory* GetOwner() { return m_owner; }
+	virtual Item* Clone() { return new Item(*this); }
 
+	std::string GetID() { return m_id; }
 	bool IsStackable()const { return m_stackable; }
 	int GetWeight()const { return m_weight; }
 	void SetWeight(int weight) { m_weight = weight; }
@@ -39,6 +42,6 @@ public:
 	int GetStackSize()const { return m_stackSize; }
 	
 
-	virtual void OnAdded() = 0;
-	virtual void OnRemoved() = 0;
+	virtual void OnAdded();
+	virtual void OnRemoved();
 };
