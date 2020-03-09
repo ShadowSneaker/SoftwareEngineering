@@ -2,12 +2,19 @@
 
 
 
+CRenderer* CRenderer::Instance{ nullptr };
+
+
+
 CRenderer::CRenderer()
 {
-	Setup = new CSDLSetup();
-	Setup->Initialize();
+	if (!Instance)
+	{
+		Setup = new CSDLSetup();
+		Setup->Initialize();
+		Instance = this;
+	}
 }
-
 
 
 CRenderer::~CRenderer()
@@ -60,6 +67,7 @@ void CRenderer::DrawAllImages()
 	{
 		if (Image->Enabled)
 		{
+			Image->Update();
 			DrawImage(Image);
 		}
 	}
@@ -184,4 +192,15 @@ void CRenderer::SetBackgroundColour(const uint8& Red, const uint8& Green, const 
 void CRenderer::SetBackgroundColour(const SDL_Color& Colour)
 {
 	SetBackgroundColour(SColour{ Colour });
+}
+
+
+SImageInfo CRenderer::GetImage(const std::string& Path)
+{
+	if (!Textures.count(Path))
+	{
+		AddTexture(Path, false);
+	}
+
+	return Textures[Path];
 }

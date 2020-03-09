@@ -1,0 +1,10 @@
+Apfel = {
+    "fruit": "Apple",
+    "size": "Large",
+    "color": 2.5,
+}
+Banane = {
+    "fruit": "Apple",
+    "size": "Large",
+    "color": true,
+}

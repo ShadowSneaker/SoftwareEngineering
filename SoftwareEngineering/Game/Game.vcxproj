@@ -19,26 +19,60 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Engine\Graphics\Image.cpp" />
+    <ClCompile Include="Engine\DataManagement\AssetLoader.cpp" />
+    <ClCompile Include="Engine\DataManagement\JsonHandler.cpp" />
+    <ClCompile Include="Engine\Graphics\Images\Animation.cpp" />
+    <ClCompile Include="Engine\Inventory\Effects\Examples\DamageBuffEffect.cpp" />
+    <ClCompile Include="Engine\Graphics\Images\Image.cpp" />
     <ClCompile Include="Engine\Graphics\Renderer\Renderer.cpp" />
     <ClCompile Include="Engine\Graphics\Renderer\SDLSetup.cpp" />
+    <ClCompile Include="Engine\Inventory\Inventory.cpp" />
+    <ClCompile Include="Engine\Inventory\ItemSystem\Consumable.cpp" />
+    <ClCompile Include="Engine\Inventory\ItemSystem\Equippable.cpp" />
+    <ClCompile Include="Engine\Inventory\ItemSystem\Item.cpp" />
+    <ClCompile Include="Engine\Inventory\ItemSystem\Switchable.cpp" />
+    <ClCompile Include="Engine\Inventory\ItemSystem\UsableItem.cpp" />
+    <ClCompile Include="Engine\Inventory\LootableInventory.cpp" />
+    <ClCompile Include="Engine\Inventory\PlayerInventory.cpp" />
     <ClCompile Include="Engine\Source.cpp" />
-    <ClCompile Include="WorldObject\WorldActor.cpp" />
-    <ClCompile Include="WorldObject\WorldObject.cpp" />
+    <ClCompile Include="Engine\Inventory\Effects\Examples\StaminaEffect.cpp" />
+    <ClCompile Include="Engine\Inventory\Effects\Examples\HealthEffect.cpp" />
+    <ClCompile Include="Engine\Inventory\ShopInventory.cpp" />
+    <ClCompile Include="Engine\Inventory\ItemSystem\MoneyItem.cpp" />
+    <ClCompile Include="Engine\Inventory\ItemSystem\ItemDatabase.cpp" />
+    <ClCompile Include="Engine\System\Time.cpp" />
+    <ClCompile Include="Engine\WorldObject\WorldActor.cpp" />
+    <ClCompile Include="Engine\WorldObject\WorldObject.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Engine\DataManagement\AssetLoader.h" />
+    <ClInclude Include="Engine\DataManagement\JsonHandler.h" />
+    <ClInclude Include="Engine\Graphics\Images\Animation.h" />
+    <ClInclude Include="Engine\Inventory\Effects\Examples\DamageBuffEffect.h" />
+    <ClInclude Include="Engine\Inventory\Effects\Effect.h" />
     <ClInclude Include="Engine\Graphics\Colour.h" />
-    <ClInclude Include="Engine\Graphics\Image.h" />
+    <ClInclude Include="Engine\Graphics\Images\Image.h" />
     <ClInclude Include="Engine\Graphics\Renderer\Renderer.h" />
     <ClInclude Include="Engine\Graphics\Renderer\SDLSetup.h" />
-    <ClInclude Include="WorldObject\WorldActor.h" />
-    <ClInclude Include="WorldObject\WorldObject.h" />
+    <ClInclude Include="Engine\Inventory\Effects\Examples\StaminaEffect.h" />
+    <ClInclude Include="Engine\Inventory\Effects\Examples\HealthEffect.h" />
+    <ClInclude Include="Engine\Inventory\Inventory.h" />
+    <ClInclude Include="Engine\Inventory\ItemSystem\Consumable.h" />
+    <ClInclude Include="Engine\Inventory\ItemSystem\EquipmentSlots.h" />
+    <ClInclude Include="Engine\Inventory\ItemSystem\Equippable.h" />
+    <ClInclude Include="Engine\Inventory\ItemSystem\Item.h" />
+    <ClInclude Include="Engine\Inventory\ItemSystem\Switchable.h" />
+    <ClInclude Include="Engine\Inventory\ItemSystem\UsableItem.h" />
+    <ClInclude Include="Engine\Inventory\LootableInventory.h" />
+    <ClInclude Include="Engine\Inventory\PlayerInventory.h" />
+    <ClInclude Include="Engine\Inventory\ShopInventory.h" />
+    <ClInclude Include="Engine\Inventory\ItemSystem\MoneyItem.h" />
+    <ClInclude Include="Engine\Inventory\ItemSystem\ItemDatabase.h" />
+    <ClInclude Include="Engine\WorldObject\WorldActor.h" />
+    <ClInclude Include="Engine\WorldObject\WorldObject.h" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Content\Images\Robo.png">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <DeploymentContent>false</DeploymentContent>
-    </Image>
+    <None Include="Engine\DataManagement\Fruits.json" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

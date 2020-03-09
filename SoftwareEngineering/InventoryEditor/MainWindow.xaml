@@ -1,0 +1,39 @@
+﻿<Window x:Class="InventoryEditor.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:InventoryEditor"
+        mc:Ignorable="d"
+        Title="Inventory Database Editor" Height="450" Width="318" KeyDown="MainWindow_OnKeyDown">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Menu Grid.Row="0" x:Name="Menu_Top" VerticalAlignment="Top" Margin="0,0,0,0" Height="18">
+            <MenuItem Header="File">
+                <MenuItem Header="New DB" Click="NewDB_Click"/>
+                <MenuItem Header="Open DB" Click="OpenDB_Click"/>
+                <MenuItem Header="Save DB" Click="SaveDB_Click"/>
+                <MenuItem Header="Save As DB" Click="SaveAsDB_Click"/>
+                <MenuItem Header="Quit" Click="Quit_Click"/>
+            </MenuItem>
+            <MenuItem Header="Edit">
+                <MenuItem Header="New Item" Click="NewItem_Click"/>
+                <MenuItem Header="New Inventory" Click="NewInventory_Click"/>
+            </MenuItem>
+            <MenuItem Header="Help">
+                <MenuItem Header="Email Support" Click="SupportEmail_Click"/>
+            </MenuItem>
+        </Menu>
+        <TreeView Grid.Row="1">
+            <TreeViewItem Header="Items" Name="ItemList">
+            </TreeViewItem>
+            <TreeViewItem Header="Inventories" Name="InventoryList">
+            </TreeViewItem>
+        </TreeView>
+        <StatusBar Grid.Row="2" Height="24" VerticalAlignment="Bottom" Name="StatusBar"/>
+    </Grid>
+</Window>
