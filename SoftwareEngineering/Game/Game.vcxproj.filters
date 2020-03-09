@@ -13,6 +13,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\UI">
+      <UniqueIdentifier>{4c7795a1-6776-4a82-824d-4734c8f15aec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\UI">
+      <UniqueIdentifier>{37d7ce63-fbd6-410c-b7e2-4b1f02e036a9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\Source.cpp">
@@ -24,20 +30,11 @@
     <ClCompile Include="Engine\Graphics\Renderer\SDLSetup.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Graphics\Image.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Engine\Inventory\Inventory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Inventory\ItemSystem\Item.cpp">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Inventory\Inventory.h">
-      <Filter>Header Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Inventory\ItemSystem\Item.h">
-      <Filter>Header Files</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Inventory\Effects\Examples\StaminaEffect.cpp">
       <Filter>Source Files</Filter>
@@ -95,6 +92,9 @@
     </ClCompile>
     <ClCompile Include="Engine\System\Time.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\UI\UIElement.cpp">
+      <Filter>Source Files\UI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -167,8 +167,14 @@
     <ClInclude Include="Engine\WorldObject\WorldObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\System\Time.h">
+    <ClInclude Include="Engine\Inventory\Inventory.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Inventory\ItemSystem\Item.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\UI\UIElement.h">
+      <Filter>Header Files\UI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
