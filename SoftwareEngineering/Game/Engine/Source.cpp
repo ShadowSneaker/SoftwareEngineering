@@ -1,8 +1,6 @@
 #include "Graphics/Renderer/SDLSetup.h"
 #include "Graphics/Renderer/Renderer.h"
-#include "Input/MouseInput.h"
-#include "Input/KeyboardInput.h"
-#include "Input/ControllerInput.h"
+#include "Input/InputManager.h"
 #include <SDL_thread.h>
 #include <SDL.h>
 #include "Source.h"
@@ -10,24 +8,23 @@
 #include <string>
 
 SDL_Event* Event{ new SDL_Event{} };
-ControllerInput* Controller = new ControllerInput();
+InputManager* inputManager = new InputManager();
 CImage* Image{ new CImage() };
 
 int ControllerThread(void* threadData)
 {
-  
-	Controller->ReceiveEvent(Event);
-		Controller->CalculateJSAngle(Controller->xDirection, Controller->yDirection);
-	if (Controller->JoyStickAngle == -45)
-		Image->Transform.Location.SetX(Image->Transform.Location.GetX() += 1);
-	else if (Controller->JoyStickAngle == 180)
-		Image->Transform.Location.SetX(Image->Transform.Location.GetX() -= 1);
-	else if (Controller->JoyStickAngle == 90)
-		Image->Transform.Location.SetY(Image->Transform.Location.GetY() -= 1);
-	else if (Controller->JoyStickAngle == -180)
-		Image->Transform.Location.SetY(Image->Transform.Location.GetY() += 1);
 
-	std::cout << Controller->CalculateJSAngle(Controller->xDirection, Controller->yDirection) << std::endl;
+	inputManager->GetController()->ReceiveEvent(Event);
+	inputManager->GetController()->CalculateJSAngle(inputManager->GetController()->xDirection, inputManager->GetController()->yDirection);
+
+	if (inputManager->GetController()->JoyStickAngle == -45)
+		Image->Transform.Location.SetX(Image->Transform.Location.GetX() += 1);
+	else if (inputManager->GetController()->JoyStickAngle == 180)
+		Image->Transform.Location.SetX(Image->Transform.Location.GetX() -= 1);
+	else if (inputManager->GetController()->JoyStickAngle == -90)
+		Image->Transform.Location.SetY(Image->Transform.Location.GetY() -= 1);
+	else if (inputManager->GetController()->JoyStickAngle == -180)
+		Image->Transform.Location.SetY(Image->Transform.Location.GetY() += 1);
 
 	return 0;
 }
@@ -39,67 +36,76 @@ int main(int argc, char** argv)
 	// Temporary code, this should be changed!
 	CRenderer* Renderer{ new CRenderer() };
 
-	MouseInput* mouse = new MouseInput();
-	KeyboardInput* Keyboard = new KeyboardInput();
 
-	Controller->Initialization();
+
 
 	Renderer->SetBackgroundColour(SColour::DarkGray());
-	
+
 
 	Renderer->SetImage(Image, "Content/Images/HappyBoi.png", false);
 	Renderer->AddImage(Image);
 
 	Image->Transform.Location = 300.0f;
-	Image->SetColour(0,255,0,255);
+	Image->SetColour(0, 255, 0, 255);
 
 
-	bool quit = false;
 
-	
+
+
 	while (Event->type != SDL_QUIT)
 	{
-		
 		while (SDL_PollEvent(Event))
 		{
 			int data = 10;
 
-			SDL_Thread* threadID = SDL_CreateThread(ControllerThread, "Controller Thread", (void*)data);
+			//SDL_Thread* threadID = SDL_CreateThread(ControllerThread, "Controller Thread", (void*)data);
 
+
+			inputManager->Update(Event);
 			//mouse stuff
-			if (mouse->UpdateMouse(Event));
-			{
-				if ((mouse->CheckButton(Left) && (mouse->OnImage(Image))) || mouse->ImageSelected)
-				{
-					Image->SetColour(255, 0, 0, 255);
-					mouse->MoveImage(Image);
-				}
-				else if (mouse->CheckButton(Left))
-					Image->SetColour(0, 255, 0, 255);
 
-				if (mouse->CheckButton(Right) && mouse->OnImage(Image))
-					Renderer->SetBackgroundColour(SColour::Blue());
-				else if (mouse->CheckButton(Right))
-					Renderer->SetBackgroundColour(SColour::Black());
+
+			if ((inputManager->GetMouse()->CheckMouse(Mouse_Button_Left) && (inputManager->GetMouse()->OnImage(Image))) || inputManager->GetMouse()->ImageSelected)
+			{
+				Image->SetColour(255, 0, 0, 255);
+				inputManager->GetMouse()->MoveImage(Image);
+			}
+			else if (inputManager->GetMouse()->CheckMouse(Mouse_Button_Left))
+			{
+				SDL_ShowCursor(0);//switches cursor off
+				Image->SetColour(0, 255, 0, 255);
+			}
+			else if (inputManager->GetMouse()->CheckMouse(Mouse_Button_Right) && inputManager->GetMouse()->OnImage(Image))
+			{
+				Renderer->SetBackgroundColour(SColour::Blue());
+			}
+			else if (inputManager->GetMouse()->CheckMouse(Mouse_Button_Right))
+			{
+				SDL_ShowCursor(1); //switches cursor on
+				Renderer->SetBackgroundColour(SColour::Black());
+			}
+			else if (inputManager->GetMouse()->CheckMouse(Mouse_Wheel_Down) || inputManager->GetMouse()->CheckMouse(Mouse_Wheel_Up))
+			{
+				Image->Transform.Location.SetY(inputManager->GetMouse()->GetMouseWheel());
 			}
 
-			SDL_WaitThread(threadID, NULL);
+			if (inputManager->GetKeyboard()->KeyDown(KEY_CONFIRM))
+			{
+				Image->SetColour(0, 0, 255, 255);
+				//std::cout << "Test" << std::endl;
+			}
+
+			inputManager->GetMouse()->SetMouseWheel(Image->Transform.Location.GetY());
+
+			Renderer->DrawAllImages();
 		}
-
-
-		Renderer->DrawAllImages();
+		//SDL_WaitThread(threadID, NULL);
 	}
 
 
 
-	delete mouse;
-	mouse = nullptr;
-
-	delete Keyboard;
-	Keyboard = nullptr;
-
-	delete Controller;
-	Controller = nullptr;
+	delete inputManager;
+	inputManager = nullptr;
 
 	return 1;
 }

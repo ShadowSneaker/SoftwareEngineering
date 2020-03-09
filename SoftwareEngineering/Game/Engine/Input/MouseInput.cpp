@@ -4,8 +4,8 @@
 MouseInput::MouseInput()
 {
 	SDL_GetMouseState(&m_MousePos.x, &m_MousePos.y);
-	for (int i = 0; i < sizeof(m_Mouse_Buttons_Pressed); ++i)
-		m_Mouse_Buttons_Pressed[i] = false;
+	for (int i = 0; i < sizeof(m_Mouse_Change); ++i)
+		m_Mouse_Change[i] = false;
 }
 
 //Updates the mouse position and buttons							   
@@ -19,11 +19,11 @@ bool MouseInput::UpdateMouse(SDL_Event* pass_event)
 		switch (Mouse_Button.button)
 		{
 		case SDL_BUTTON_LEFT:
-			m_Mouse_Buttons_Pressed[Left] = true;
+			m_Mouse_Change[Mouse_Button_Left] = true;
 			break;
 
 		case SDL_BUTTON_RIGHT:
-			m_Mouse_Buttons_Pressed[Right] = true;
+			m_Mouse_Change[Mouse_Button_Right] = true;
 			break;
 		default:
 			break;
@@ -34,39 +34,74 @@ bool MouseInput::UpdateMouse(SDL_Event* pass_event)
 	//button false if released
 	else if (pass_event->type == SDL_MOUSEBUTTONUP)
 	{
+		//unselect image
+		if (ImageSelected) ImageSelected = false;
+
 		//which button
 		SDL_MouseButtonEvent Mouse_Button = pass_event->button;
 		switch (Mouse_Button.button)
 		{
 		case SDL_BUTTON_LEFT:
-			m_Mouse_Buttons_Pressed[Left] = false;
-			if (ImageSelected) ImageSelected = false;
+			m_Mouse_Change[Mouse_Button_Left] = false;
 			break;
-
 		case SDL_BUTTON_RIGHT:
-			m_Mouse_Buttons_Pressed[Right] = false;
+			m_Mouse_Change[Mouse_Button_Right] = false;
 			break;
 		default:
 			break;
 		}
 		return true;
 	}
+	else if (pass_event->type == SDL_MOUSEWHEEL)
+	{
+		if (pass_event->wheel.y > 0)
+		{
+			MouseWheel_y -= WheelStrength;
+			m_Mouse_Change[Mouse_Wheel_Up] = true; m_Mouse_Change[Mouse_Wheel_Down] = false;
+
+		}
+		else if (pass_event->wheel.y < 0)
+		{
+			MouseWheel_y += WheelStrength;
+			m_Mouse_Change[Mouse_Wheel_Down] = true; m_Mouse_Change[Mouse_Wheel_Up] = false;
+
+		}
+	}
+	//else
+	//{
+	//	m_Mouse_Change[Mouse_Wheel_Down] = false; m_Mouse_Change[Mouse_Wheel_Up] = false;
+	//}
 	//updates the mouse position
 	SDL_GetMouseState(&m_MousePos.x, &m_MousePos.y);
+	return false;
 }
 
-bool MouseInput::CheckButton(Clicks button)
+bool MouseInput::CheckMouse(Mouse_enum Mouse_Change)
 {
-	if (button == Left)
-		if (m_Mouse_Buttons_Pressed[Left])
-		{
+	if (Mouse_Change == Mouse_Button_Left)
+	{
+		if (m_Mouse_Change[Mouse_Button_Left])
 			return true;
-		}
-	if (button == Right)
-		if (m_Mouse_Buttons_Pressed[Right])
-		{
+	}
+
+	else if (Mouse_Change == Mouse_Button_Right)
+	{
+		if (m_Mouse_Change[Mouse_Button_Right])
 			return true;
-		}
+	}
+
+	else if (Mouse_Change == Mouse_Wheel_Down)
+	{
+		if (m_Mouse_Change[Mouse_Wheel_Down])
+			return true;
+	}
+
+	else if (Mouse_Change == Mouse_Wheel_Up)
+	{
+		if (m_Mouse_Change[Mouse_Wheel_Up])
+			return true;
+	}
+
 	return false;
 }
 
@@ -90,9 +125,4 @@ void MouseInput::MoveImage(CImage* Image)
 		ImageSelected = true;
 	}
 
-}
-
-SDL_Point MouseInput::getMousePos()
-{
-	return {m_MousePos};
 }
