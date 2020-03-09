@@ -82,6 +82,7 @@ public:
 	void SetColour(const SDL_Color& Colour);
 
 
+
 	/// Getters
 
 	// Get the image width.
@@ -119,3 +120,12 @@ public:
 
 };
 
+
+
+struct IMAGE_ZORDER_SORTER
+{
+	INLINE bool operator()(const CImage* Image1, const CImage* Image2) const
+	{
+		return (Image1->ZOrder < Image2->ZOrder);
+	}
+};
