@@ -2,14 +2,14 @@
 #include <vector>
 
 class Item;
-class Entity;
+class WorldObject;
 
 class Inventory
 {
 private:
 
 	std::vector<Item*>	m_items;
-	Entity*				m_owner;
+	WorldObject*				m_owner;
 
 	int					m_maxSlots;
 
@@ -28,7 +28,7 @@ public:
 protected:
 
 	std::vector<Item*>	GetItems();
-	Entity*				GetOwner();
+	WorldObject*		GetOwner();
 	int					GetMaxSlots();
 
 	virtual void OnItemAdded(Item* item) = 0;

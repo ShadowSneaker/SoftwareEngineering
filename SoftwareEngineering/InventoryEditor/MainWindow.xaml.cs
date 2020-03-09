@@ -66,12 +66,13 @@ namespace InventoryEditor
 
         private void SaveDB_Click(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrEmpty(lastSaveLocation))
+            if (string.IsNullOrEmpty(Database.GameDirectory))
             {
                 SaveAsDB_Click(sender, e);
                 return;
             }
 
+            lastSaveLocation = Database.GameDirectory + "\\db.kkc";
             Database.Save(lastSaveLocation);
             UpdateStatusBar("Saved Database file");
         }
@@ -84,15 +85,19 @@ namespace InventoryEditor
                     Database.GetGameDirectory();
             }
 
-            SaveFileDialog sfd = new SaveFileDialog();
-            sfd.Filter = FILTER;
-            sfd.InitialDirectory = Database.GameDirectory;
-            if (sfd.ShowDialog() == true)
+
+            if (Database.GameDirectory != String.Empty)
             {
-                lastSaveLocation = sfd.FileName;
-                Database.Save(sfd.FileName);
+                if (MessageBox.Show(
+                        "Are you sure you want to Save As? Doing so will change the \"Game Directory\" and will break any selected files or directories!",
+                        "Hang On!", MessageBoxButton.YesNo, MessageBoxImage.Stop) == MessageBoxResult.Yes)
+                {
+                    Database.GetGameDirectory();
+                    lastSaveLocation = Database.GameDirectory + "\\db.kkc";
+                    Database.Save(lastSaveLocation);
+                    UpdateStatusBar("Saved Database file");
+                }
             }
-            UpdateStatusBar("Saved Database file");
         }
 
         private async void NewItem_Click(object sender, RoutedEventArgs e)

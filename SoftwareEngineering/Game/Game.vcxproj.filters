@@ -24,6 +24,9 @@
     <ClCompile Include="Engine\Graphics\Renderer\SDLSetup.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\Graphics\Image.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="Engine\Inventory\Inventory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

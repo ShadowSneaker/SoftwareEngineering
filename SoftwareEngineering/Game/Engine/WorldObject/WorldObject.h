@@ -1,9 +1,8 @@
 #pragma once
 
-#include <CopiriteMath/Datatypes/Vector.h>
-#include <string>
 #include <vector>
-
+#include <string>
+#include <CopiriteMath/Datatypes/Vector.h>
 class WorldObject
 {
 private:

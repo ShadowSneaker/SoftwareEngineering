@@ -160,6 +160,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Documentation\Item Editor Documentation_files\themedata.thmx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -169,6 +170,23 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Documentation\Item Editor Documentation.htm" />
+    <Resource Include="Documentation\Item Editor Documentation_files\colorschememapping.xml" />
+    <Resource Include="Documentation\Item Editor Documentation_files\filelist.xml" />
+    <Resource Include="Documentation\Item Editor Documentation_files\image001.png" />
+    <Resource Include="Documentation\Item Editor Documentation_files\image002.png" />
+    <Resource Include="Documentation\Item Editor Documentation_files\image003.jpg" />
+    <Resource Include="Documentation\Item Editor Documentation_files\image004.png" />
+    <Resource Include="Documentation\Item Editor Documentation_files\image005.png" />
+    <Resource Include="Documentation\Item Editor Documentation_files\item0001.xml" />
+    <Resource Include="Documentation\Item Editor Documentation_files\item0003.xml" />
+    <Resource Include="Documentation\Item Editor Documentation_files\item0005.xml" />
+    <Resource Include="Documentation\Item Editor Documentation_files\item0007.xml" />
+    <Resource Include="Documentation\Item Editor Documentation_files\props002.xml" />
+    <Resource Include="Documentation\Item Editor Documentation_files\props004.xml" />
+    <Resource Include="Documentation\Item Editor Documentation_files\props006.xml" />
+    <Resource Include="Documentation\Item Editor Documentation_files\props008.xml" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

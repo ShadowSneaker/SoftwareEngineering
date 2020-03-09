@@ -36,6 +36,7 @@ namespace InventoryEditor
 
         public void Save(string path)
         {
+            GameDirectory = Path.GetDirectoryName(path);
             Cursor.Current = Cursors.WaitCursor;
             string json = JsonConvert.SerializeObject(this);
             File.WriteAllText(path, json);
@@ -84,6 +85,7 @@ namespace InventoryEditor
 
             model.Items = items;
             Cursor.Current = Cursors.Default;
+            model.GameDirectory = Path.GetDirectoryName(path);
             return model;
         }
     }
