@@ -18,16 +18,28 @@ int main(int argc, char** argv)
 	Image->SetImage("Content/Images/Anim.png");
 	Renderer->AddImage(Image);
 
-	Image->SetCellCount(1, 6);
+	Image->SetCellCount(1, 5);
 	Image->Transform.Location = 300.0f;
-	Image->Speed = 0.1f;
+	//Image->ReverseFromEnd();
+	Image->Stop();
 	Image->Transform.Scale = 1.0f;
 
 	SDL_Event* Event{ new SDL_Event{} };
 
+	float Timer = 0.0f;
+	bool Bop = false;
 
 	while (Event->type != SDL_QUIT)
 	{
+		Timer += TTime::DeltaTime;
+		if (Timer > 2.0f && !Bop)
+		{
+			Timer = 0.0f;
+			Bop = true;
+			//if (Image->IsPlaying()) Image->ReverseFromEnd();
+			Image->ReverseFromEnd();
+		}
+
 		Time->Update();
 		Renderer->DrawAllImages();
 		SDL_PollEvent(Event);

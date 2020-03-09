@@ -22,6 +22,9 @@ private:
 	// The current timer before the next frame is displayed.
 	float Timer{ 0.0f };
 
+
+	float PauseTime{ 0.0f };
+
 protected:
 	// Determines if the animation is playing.
 	bool Playing{ true };
