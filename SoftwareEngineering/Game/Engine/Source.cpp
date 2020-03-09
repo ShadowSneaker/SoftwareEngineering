@@ -1,12 +1,16 @@
 #include "Graphics/Renderer/SDLSetup.h"
 #include "Graphics/Renderer/Renderer.h"
 #include "Graphics/Images/Animation.h"
+#include "System/Time.h"
 
 
 
 int main(int argc, char** argv)
 {
 	// Temporary code, this should be changed!
+
+	TTime* Time{ new TTime{} };
+
 	CRenderer* Renderer{ new CRenderer() };
 	Renderer->SetBackgroundColour(SColour::DarkGray());
 	
@@ -24,6 +28,7 @@ int main(int argc, char** argv)
 
 	while (Event->type != SDL_QUIT)
 	{
+		Time->Update();
 		Renderer->DrawAllImages();
 		SDL_PollEvent(Event);
 	}
