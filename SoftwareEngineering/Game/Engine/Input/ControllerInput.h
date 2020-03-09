@@ -21,8 +21,6 @@ public:
 	double CalculateJSAngle(int xDirecton, int yDirection);
 	~ControllerInput();
 	ControllerInput();
-
-
-
+	   
 };
 

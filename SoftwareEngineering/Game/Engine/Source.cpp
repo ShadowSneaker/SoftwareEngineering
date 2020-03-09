@@ -35,21 +35,13 @@ int main(int argc, char** argv)
 {
 	// Temporary code, this should be changed!
 	CRenderer* Renderer{ new CRenderer() };
-
-
-
-
+	
 	Renderer->SetBackgroundColour(SColour::DarkGray());
-
-
 	Renderer->SetImage(Image, "Content/Images/HappyBoi.png", false);
 	Renderer->AddImage(Image);
 
 	Image->Transform.Location = 300.0f;
 	Image->SetColour(0, 255, 0, 255);
-
-
-
 
 
 	while (Event->type != SDL_QUIT)
@@ -58,12 +50,9 @@ int main(int argc, char** argv)
 		{
 			int data = 10;
 
-			//SDL_Thread* threadID = SDL_CreateThread(ControllerThread, "Controller Thread", (void*)data);
-
+			SDL_Thread* threadID = SDL_CreateThread(ControllerThread, "Controller Thread", (void*)data);
 
 			inputManager->Update(Event);
-			//mouse stuff
-
 
 			if ((inputManager->GetMouse()->CheckMouse(Mouse_Button_Left) && (inputManager->GetMouse()->OnImage(Image))) || inputManager->GetMouse()->ImageSelected)
 			{
@@ -97,9 +86,10 @@ int main(int argc, char** argv)
 
 			inputManager->GetMouse()->SetMouseWheel(Image->Transform.Location.GetY());
 
+			SDL_WaitThread(threadID, NULL);
 			Renderer->DrawAllImages();
 		}
-		//SDL_WaitThread(threadID, NULL);
+
 	}
 
 

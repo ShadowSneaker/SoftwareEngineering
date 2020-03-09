@@ -3,10 +3,7 @@
 InputManager::InputManager()
 {
 	p_controller = new ControllerInput();
-	p_controller->Initialization();
-
 	p_mouse = new MouseInput();
-
 	p_keyboard = new KeyboardInput();
 }
 
@@ -25,19 +22,10 @@ InputManager::~InputManager()
 
 void InputManager::Update(SDL_Event* event)
 {
-
-	//p_controller->ReceiveEvent(event);
-
-
-
-
+	p_controller->Initialization();
+	p_controller->ReceiveEvent(event);
 	p_keyboard->Update(event);
-
-
-
 	p_mouse->UpdateMouse(event);
-
-
 }
 
 ControllerInput* InputManager::GetController()
