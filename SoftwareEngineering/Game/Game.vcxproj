@@ -26,15 +26,15 @@
     <ClCompile Include="Engine\Graphics\Images\Image.cpp" />
     <ClCompile Include="Engine\Graphics\Renderer\Renderer.cpp" />
     <ClCompile Include="Engine\Graphics\Renderer\SDLSetup.cpp" />
+    <ClCompile Include="Engine\Inventory\Inventory.cpp" />
     <ClCompile Include="Engine\Inventory\ItemSystem\Consumable.cpp" />
     <ClCompile Include="Engine\Inventory\ItemSystem\Equippable.cpp" />
+    <ClCompile Include="Engine\Inventory\ItemSystem\Item.cpp" />
     <ClCompile Include="Engine\Inventory\ItemSystem\Switchable.cpp" />
     <ClCompile Include="Engine\Inventory\ItemSystem\UsableItem.cpp" />
     <ClCompile Include="Engine\Inventory\LootableInventory.cpp" />
     <ClCompile Include="Engine\Inventory\PlayerInventory.cpp" />
     <ClCompile Include="Engine\Source.cpp" />
-    <ClCompile Include="Engine\Inventory\Inventory.cpp" />
-    <ClCompile Include="Engine\Inventory\ItemSystem\Item.cpp" />
     <ClCompile Include="Engine\Inventory\Effects\Examples\StaminaEffect.cpp" />
     <ClCompile Include="Engine\Inventory\Effects\Examples\HealthEffect.cpp" />
     <ClCompile Include="Engine\Inventory\ShopInventory.cpp" />
@@ -53,13 +53,13 @@
     <ClInclude Include="Engine\Graphics\Images\Image.h" />
     <ClInclude Include="Engine\Graphics\Renderer\Renderer.h" />
     <ClInclude Include="Engine\Graphics\Renderer\SDLSetup.h" />
-    <ClCompile Include="Engine\Inventory\Inventory.h" />
-    <ClCompile Include="Engine\Inventory\ItemSystem\Item.h" />
     <ClInclude Include="Engine\Inventory\Effects\Examples\StaminaEffect.h" />
     <ClInclude Include="Engine\Inventory\Effects\Examples\HealthEffect.h" />
+    <ClInclude Include="Engine\Inventory\Inventory.h" />
     <ClInclude Include="Engine\Inventory\ItemSystem\Consumable.h" />
     <ClInclude Include="Engine\Inventory\ItemSystem\EquipmentSlots.h" />
     <ClInclude Include="Engine\Inventory\ItemSystem\Equippable.h" />
+    <ClInclude Include="Engine\Inventory\ItemSystem\Item.h" />
     <ClInclude Include="Engine\Inventory\ItemSystem\Switchable.h" />
     <ClInclude Include="Engine\Inventory\ItemSystem\UsableItem.h" />
     <ClInclude Include="Engine\Inventory\LootableInventory.h" />
@@ -67,11 +67,6 @@
     <ClInclude Include="Engine\Inventory\ShopInventory.h" />
     <ClInclude Include="Engine\Inventory\ItemSystem\MoneyItem.h" />
     <ClInclude Include="Engine\Inventory\ItemSystem\ItemDatabase.h" />
-    <ClInclude Include="Engine\WorldObject\WorldActor.h" />
-    <ClInclude Include="Engine\WorldObject\WorldObject.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Engine\DataManagement\Fruits.json" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

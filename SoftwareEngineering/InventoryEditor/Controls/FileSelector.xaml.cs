@@ -59,7 +59,19 @@ namespace InventoryEditor.Controls
                 }
                 else
                 {
-                    FilePath = ofd.FileName;
+                    string op = "";
+                    for (int i = 0; i < ofd.FileName.Length; i++)
+                    {
+                        if (db.GameDirectory.Length > i)
+                        {
+                            if (ofd.FileName[i] == db.GameDirectory[i])
+                                continue;
+                        }
+
+                        op += ofd.FileName[i];
+                    }
+                    // System.Diagnostics.Debug.WriteLine($"{ofd.FileName} - {db.GameDirectory}");
+                    FilePath = op;
                 }
             }
         }

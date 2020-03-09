@@ -24,6 +24,9 @@
     <ClCompile Include="Engine\Graphics\Renderer\SDLSetup.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\Graphics\Image.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="Engine\Inventory\Inventory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -82,12 +85,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Inventory\ItemSystem\ItemDatabase.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\WorldObject\WorldActor.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\WorldObject\WorldObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -155,14 +152,5 @@
     <ClInclude Include="Engine\Inventory\ItemSystem\ItemDatabase.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\WorldObject\WorldActor.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\WorldObject\WorldObject.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Engine\DataManagement\Fruits.json" />
   </ItemGroup>
 </Project>
