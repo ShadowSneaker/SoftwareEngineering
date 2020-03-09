@@ -4,30 +4,30 @@
 
 bool ControllerInput::Initialization()
 {
-    ////Initialization flag
+    //Initialization flag
     bool success = true;
 
-    ////Initialize SDL
-    //if (SDL_Init(SDL_INIT_JOYSTICK < 0))
-    //{
-    //    printf("SDL could not initialize! SDL Error: %s\n", SDL_GetError());
-    //    success = false;
-    //}
+    //Initialize SDL
+    if (SDL_Init(SDL_INIT_JOYSTICK < 0))
+    {
+        printf("SDL could not initialize! SDL Error: %s\n", SDL_GetError());
+        success = false;
+    }
 
-    ////Check for joysticks
-    //if (SDL_NumJoysticks() < 1)
-    //{
-    //    printf("Warning: No joysticks connected!\n");
-    //}
-    //else
-    //{
-    //    //Load joystick
-    //    Controller = SDL_JoystickOpen(0);
-    //    if (Controller == NULL)
-    //    {
-    //        printf("Warning: Unable to open game controller! SDL Error: %s\n", SDL_GetError());
-    //    }
-    //}
+    //Check for joysticks
+    if (SDL_NumJoysticks() < 1)
+    {
+        printf("Warning: No joysticks connected!\n");
+    }
+    else
+    {
+        //Load joystick
+        Controller = SDL_JoystickOpen(0);
+        if (Controller == NULL)
+        {
+            printf("Warning: Unable to open game controller! SDL Error: %s\n", SDL_GetError());
+        }
+    }
 
     return success;
 }
