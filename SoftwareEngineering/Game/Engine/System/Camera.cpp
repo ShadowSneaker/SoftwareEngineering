@@ -38,6 +38,5 @@ SVector2i CCamera::GetCameraPosition()
 	SVector2i Temp;
 	Temp.SetX(Camera.x);
 	Temp.SetY(Camera.y);
-
 	return Temp;
 }

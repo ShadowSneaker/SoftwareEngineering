@@ -14,7 +14,7 @@ int main(int argc, char** argv)
 	CRenderer* Renderer{ new CRenderer() };
 	Renderer->SetBackgroundColour(SColour::DarkGray());
 	
-	CCamera* TheCamera{new CCamera()};
+	//CCamera* TheCamera{new CCamera(Renderer->GetWindowSize())};
 
 
 	CAnimation* Image{ new CAnimation() };
