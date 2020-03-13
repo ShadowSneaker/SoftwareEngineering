@@ -75,7 +75,10 @@
     <ClCompile Include="Engine\Inventory\Inventory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MoneyCountTest.cpp">
+    <ClCompile Include="Engine\Inventory\Tests\Joe\MoneyCountTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Inventory\Tests\Joe\ShopInventoryTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -146,7 +149,10 @@
     <ClInclude Include="Engine\Inventory\Inventory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MoneyCountTest.h">
+    <ClInclude Include="Engine\Inventory\Tests\Joe\MoneyCountTest.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Inventory\Tests\Joe\ShopInventoryTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

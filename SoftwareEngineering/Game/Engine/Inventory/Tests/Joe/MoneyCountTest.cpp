@@ -1,7 +1,7 @@
 #include <iostream>
 #include "MoneyCountTest.h"
-#include "Engine/Inventory/Inventory.h"
-#include "Engine/Inventory/ItemSystem/MoneyItem.h"
+#include "../../Inventory.h"
+#include "../../ItemSystem/MoneyItem.h"
 
 void MoneyCountTest::Test(int moneyToAdd)
 {
