@@ -24,20 +24,11 @@
     <ClCompile Include="Engine\Graphics\Renderer\SDLSetup.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Graphics\Image.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Engine\Inventory\Inventory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Inventory\ItemSystem\Item.cpp">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Inventory\Inventory.h">
-      <Filter>Header Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Inventory\ItemSystem\Item.h">
-      <Filter>Header Files</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Inventory\Effects\Examples\StaminaEffect.cpp">
       <Filter>Source Files</Filter>
@@ -94,6 +85,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Engine\System\Time.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\System\Camera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -167,7 +161,13 @@
     <ClInclude Include="Engine\WorldObject\WorldObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\System\Time.h">
+    <ClInclude Include="Engine\Inventory\Inventory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Inventory\ItemSystem\Item.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\System\Camera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

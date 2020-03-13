@@ -2,7 +2,7 @@
 #include "Graphics/Renderer/Renderer.h"
 #include "Graphics/Images/Animation.h"
 #include "System/Time.h"
-
+#include "System/Camera.h"
 
 
 int main(int argc, char** argv)
@@ -14,6 +14,9 @@ int main(int argc, char** argv)
 	CRenderer* Renderer{ new CRenderer() };
 	Renderer->SetBackgroundColour(SColour::DarkGray());
 	
+	CCamera* TheCamera{new CCamera()};
+
+
 	CAnimation* Image{ new CAnimation() };
 	Image->SetImage("Content/Images/Anim.png");
 	Renderer->AddImage(Image);

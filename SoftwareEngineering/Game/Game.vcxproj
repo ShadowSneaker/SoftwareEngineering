@@ -40,6 +40,7 @@
     <ClCompile Include="Engine\Inventory\ShopInventory.cpp" />
     <ClCompile Include="Engine\Inventory\ItemSystem\MoneyItem.cpp" />
     <ClCompile Include="Engine\Inventory\ItemSystem\ItemDatabase.cpp" />
+    <ClCompile Include="Engine\System\Camera.cpp" />
     <ClCompile Include="Engine\System\Time.cpp" />
     <ClCompile Include="Engine\WorldObject\WorldActor.cpp" />
     <ClCompile Include="Engine\WorldObject\WorldObject.cpp" />
@@ -68,6 +69,7 @@
     <ClInclude Include="Engine\Inventory\ShopInventory.h" />
     <ClInclude Include="Engine\Inventory\ItemSystem\MoneyItem.h" />
     <ClInclude Include="Engine\Inventory\ItemSystem\ItemDatabase.h" />
+    <ClInclude Include="Engine\System\Camera.h" />
     <ClInclude Include="Engine\WorldObject\WorldActor.h" />
     <ClInclude Include="Engine\WorldObject\WorldObject.h" />
   </ItemGroup>
