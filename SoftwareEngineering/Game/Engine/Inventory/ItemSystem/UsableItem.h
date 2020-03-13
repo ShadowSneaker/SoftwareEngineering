@@ -9,6 +9,8 @@ private:
 	std::vector<Effect*> m_effects;
 
 public:
+	~UsableItem();
+	
 	void Use();
 	Item* Clone() override { return new UsableItem(*this); }
 

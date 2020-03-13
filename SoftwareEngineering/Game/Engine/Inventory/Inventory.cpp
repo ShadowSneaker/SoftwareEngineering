@@ -5,6 +5,15 @@
 #include "..//WorldObject/WorldObject.h"
 
 
+Inventory::~Inventory()
+{
+	for (int i = 0; i < m_items.size(); i++)
+	{
+		delete m_items[i];
+	}
+	m_items.clear();
+}
+
 void Inventory::AddItem(Item* item)
 {
 	bool containsItem = std::find(m_items.begin(), m_items.end(), item) != m_items.end();
@@ -16,7 +25,6 @@ void Inventory::AddItem(Item* item)
 	else
 	{
 		m_items.push_back(item);
-		item->IncrementStackSize();
 	}
 
 	item->UpdateOwner(this);
@@ -86,7 +94,7 @@ int Inventory::CountMoney()
 	{
 		auto money = dynamic_cast<MoneyItem*>(m_items[i]);
 		if (money != nullptr)
-			count++;
+			count += money->GetStackSize();
 	}
 
 	return count;

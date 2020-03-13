@@ -39,6 +39,7 @@
     <ClCompile Include="Engine\Inventory\ItemSystem\ItemDatabase.cpp" />
     <ClCompile Include="Engine\WorldObject\WorldActor.cpp" />
     <ClCompile Include="Engine\WorldObject\WorldObject.cpp" />
+    <ClCompile Include="MoneyCountTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Inventory\Effects\Examples\DamageBuffEffect.h" />
@@ -63,6 +64,7 @@
     <ClInclude Include="Engine\Inventory\ItemSystem\ItemDatabase.h" />
     <ClInclude Include="Engine\WorldObject\WorldActor.h" />
     <ClInclude Include="Engine\WorldObject\WorldObject.h" />
+    <ClInclude Include="MoneyCountTest.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

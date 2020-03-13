@@ -9,12 +9,14 @@ class Inventory
 private:
 
 	std::vector<Item*>	m_items;
-	WorldObject*				m_owner;
+	WorldObject*		m_owner;
 
 	int					m_maxSlots;
 
 public:
 
+	~Inventory();
+	
 	void	AddItem(Item* item);
 	void	RemoveItem(Item* item);
 
@@ -31,7 +33,7 @@ protected:
 	WorldObject*		GetOwner();
 	int					GetMaxSlots();
 
-	virtual void OnItemAdded(Item* item) = 0;
-	virtual void OnItemRemoved(Item* item) = 0;
+	virtual void OnItemAdded(Item* item) {};
+	virtual void OnItemRemoved(Item* item) {};
 
 };
