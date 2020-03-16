@@ -5,9 +5,9 @@
 
 struct SImageInfo
 {
-	SDL_Surface* Surface;
-	SDL_Texture* Texture;
-	SVector2i ImageSize;
+	SDL_Surface* Surface{ nullptr };
+	SDL_Texture* Texture{ nullptr };
+	SVector2i ImageSize{ 0 };
 };
 
 

@@ -7,7 +7,7 @@
 #include <vector>
 #include <SDL.h>
 #include <SDL_image.h>
-
+#include "../..//System/Camera.h"
 
 
 // 
@@ -18,7 +18,7 @@ public:
 
 	static CRenderer* Instance;
 
-
+	
 
 private:
 	/// Properties
@@ -31,6 +31,8 @@ private:
 	// A list of all stored image objects to render.
 	std::vector<CImage*> Images;
 
+	// A Refernce to the Camera
+	CCamera* MainCamera{ nullptr };
 
 public:
 	/// Constructors
@@ -107,7 +109,7 @@ public:
 	void SetBackgroundColour(const uint8& Red, const uint8& Green, const uint8& Blue, const uint8& Alpha = 255);
 	void SetBackgroundColour(const SDL_Color& Colour);
 
-
+	void SetMainCamera(CCamera* TheMainCamera);
 
 private:
 	/// Getters

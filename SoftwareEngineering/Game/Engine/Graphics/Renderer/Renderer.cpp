@@ -91,8 +91,8 @@ void CRenderer::DrawImage(CImage* Image) const
 	STransform2 WorldTransform{ Local.GetWorldTransform() };
 
 	SDL_FRect Rect;
-	Rect.x = WorldTransform.Location[X];
-	Rect.y = WorldTransform.Location[Y];
+	Rect.x = WorldTransform.Location[X] - MainCamera->GetCameraX();
+	Rect.y = WorldTransform.Location[Y] - MainCamera->GetCameraY();
 	Rect.w = Cell.w * WorldTransform.Scale[X];
 	Rect.h = Cell.h * WorldTransform.Scale[Y];
 
@@ -208,4 +208,9 @@ SImageInfo CRenderer::GetImage(const std::string& Path)
 	}
 
 	return Textures[Path];
+}
+
+void CRenderer::SetMainCamera(CCamera* TheMainCamera)
+{
+	MainCamera = TheMainCamera;
 }

@@ -114,5 +114,5 @@ public:
 	INLINE SVector2i GetCellSize() const { return SVector2i{ Cell.w, Cell.h }; }
 
 	// Returns the position of the center of the displayed cell.
-	INLINE const SVector2i GetCellCenter() const { return 0; };
+	INLINE const SVector2i GetCellCenter() const { return (GetCellSize() * Transform.GetWorldScale()) / 2.0f; };
 };

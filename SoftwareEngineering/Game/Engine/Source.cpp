@@ -14,17 +14,22 @@ int main(int argc, char** argv)
 	CRenderer* Renderer{ new CRenderer() };
 	Renderer->SetBackgroundColour(SColour::DarkGray());
 	
-	CCamera* TheCamera{new CCamera(Renderer->GetWindowSize())};
+	CCamera* TheCamera{ new CCamera() };
 
+	Renderer->SetMainCamera(TheCamera);
 
 	CAnimation* Image{ new CAnimation() };
 	Image->SetImage("Content/Images/Anim.png");
+
+
+	TheCamera->SetCameraPosition(300.0f,300.0f);
 
 	Image->SetCellCount(1, 5);
 	Image->Transform.Location = 300.0f;
 	//Image->ReverseFromEnd();
 	Image->Stop();
 	Image->Transform.Scale = 1.0f;
+	Image->Pivot = Image->GetCellCenter();
 
 	SDL_Event* Event{ new SDL_Event{} };
 
@@ -41,6 +46,7 @@ int main(int argc, char** argv)
 			//if (Image->IsPlaying()) Image->ReverseFromEnd();
 			Image->ReverseFromEnd();
 		}
+
 
 		Time->Update();
 		Renderer->DrawAllImages();

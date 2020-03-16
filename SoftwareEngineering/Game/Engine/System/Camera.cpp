@@ -5,38 +5,24 @@ CCamera::CCamera()
 
 }
 
-CCamera::CCamera(CSDLSetup* TheSetUp)
+CCamera::CCamera(SVector2 Position)
 {
-	SetUp = TheSetUp;
-	Camera.w = TheSetUp->WindowSize.GetX();
-	Camera.h = TheSetUp->WindowSize.GetY();
-
+	CameraPosition = Position;
 }
-
-CCamera::CCamera(SVector2i WindowSize)
-{
-	Camera.w = WindowSize.GetX();
-	Camera.h = WindowSize.GetY();
-}
-
 
 CCamera::~CCamera()
 {
-	if (SetUp) delete SetUp;
 }
 
 
 void CCamera::SetCameraPosition(float X, float Y)
 {
-	Camera.x = X;
-	Camera.y = Y;
+	CameraPosition.SetX(X);
+	CameraPosition.SetY(Y);
 }
 
 
-SVector2i CCamera::GetCameraPosition()
+SVector2 CCamera::GetCameraPosition()
 {
-	SVector2i Temp;
-	Temp.SetX(Camera.x);
-	Temp.SetY(Camera.y);
-	return Temp;
+	return CameraPosition;
 }
