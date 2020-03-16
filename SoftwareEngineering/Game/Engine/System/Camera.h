@@ -11,7 +11,7 @@ private:
 	SDL_Rect Camera = {0,0,0,0};
 	
 	// The SDL Setup
-	CSDLSetup* SetUp = NULL;
+	CSDLSetup* SetUp = nullptr;
 
 public: 
 	///Constructors

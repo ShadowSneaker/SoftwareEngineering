@@ -3,16 +3,16 @@
 
 
 
-// the defualt constructor for the image
+
 CImage::CImage()
 {
-
+	CRenderer::Instance->AddImage(this);
 }
 
-// default Destructor
+
 CImage::~CImage()
 {
-
+	CRenderer::Instance->RemoveImage(this);
 }
 
 

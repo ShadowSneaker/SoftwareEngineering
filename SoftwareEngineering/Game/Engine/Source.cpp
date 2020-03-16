@@ -14,12 +14,11 @@ int main(int argc, char** argv)
 	CRenderer* Renderer{ new CRenderer() };
 	Renderer->SetBackgroundColour(SColour::DarkGray());
 	
-	//CCamera* TheCamera{new CCamera(Renderer->GetWindowSize())};
+	CCamera* TheCamera{new CCamera(Renderer->GetWindowSize())};
 
 
 	CAnimation* Image{ new CAnimation() };
 	Image->SetImage("Content/Images/Anim.png");
-	Renderer->AddImage(Image);
 
 	Image->SetCellCount(1, 5);
 	Image->Transform.Location = 300.0f;

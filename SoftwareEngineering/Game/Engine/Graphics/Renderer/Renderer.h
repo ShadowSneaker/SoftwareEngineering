@@ -121,5 +121,5 @@ public:
 
 
 	// Returns the size of the window.
-	INLINE SVector2i GetWindowSize() const { Setup->WindowSize; }
+	INLINE SVector2i GetWindowSize() const { return Setup->WindowSize; }
 };
