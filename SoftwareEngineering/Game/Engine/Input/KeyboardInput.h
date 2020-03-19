@@ -3,13 +3,6 @@
 #include <map>
 #include <SDL.h>
 
-//each of the keys in the following list needs to have an if case in the update method for a key up event as well as a key down event
-//it should look like this
-//
-//if (keyPressed == keybinds[KEYNAME])
-//m_keyboardState[KEYNAME] = true/false;
-//
-//true for keydown and false for keyup
 enum KEY_LIST
 {
 	KEY_CANCEL,
