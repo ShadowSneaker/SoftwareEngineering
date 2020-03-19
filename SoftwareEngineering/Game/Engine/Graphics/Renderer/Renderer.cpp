@@ -91,8 +91,8 @@ void CRenderer::DrawImage(CImage* Image) const
 	STransform2 WorldTransform{ Local.GetWorldTransform() };
 
 	SDL_FRect Rect;
-	Rect.x = WorldTransform.Location[X] - MainCamera->GetCameraX();
-	Rect.y = WorldTransform.Location[Y] - MainCamera->GetCameraY();
+	Rect.x = WorldTransform.Location[X] - MainCamera->GetCameraX() + MainCamera->GetCameraOffSetX();
+	Rect.y = WorldTransform.Location[Y] - MainCamera->GetCameraY() + MainCamera->GetCameraOffSetY();
 	Rect.w = Cell.w * WorldTransform.Scale[X];
 	Rect.h = Cell.h * WorldTransform.Scale[Y];
 

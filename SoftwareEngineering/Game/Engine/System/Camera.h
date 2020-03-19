@@ -10,6 +10,9 @@ private:
 	// The Cameras Position
 	SVector2 CameraPosition = { 0,0 };
 
+	// The Cameras OffSet
+	SVector2 CameraOffSet = {0, 0};
+
 	// The SDL Setup
 	CSDLSetup* SetUp = nullptr;
 
@@ -47,6 +50,12 @@ public:
 
 	// this function returns the cameras Y position
 	INLINE float GetCameraY() { return CameraPosition.GetY(); };
+
+	// this function returns the Cameras Offset X position
+	INLINE float GetCameraOffSetX() { return CameraOffSet.GetX(); };
+
+	// this function returns the Cameras Offset Y position
+	INLINE float GetCameraOffSetY() { return CameraOffSet.GetY(); };
 
 	//this function Returns the Camera position vector
 	SVector2 GetCameraPosition();
