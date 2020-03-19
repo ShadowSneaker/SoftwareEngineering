@@ -67,12 +67,21 @@ bool MouseInput::UpdateMouse(SDL_Event* pass_event)
 
 		}
 	}
-	//else
-	//{
-	//	m_Mouse_Change[Mouse_Wheel_Down] = false; m_Mouse_Change[Mouse_Wheel_Up] = false;
-	//}
-	//updates the mouse position
+
+	//get new mouse pos
 	SDL_GetMouseState(&m_MousePos.x, &m_MousePos.y);
+	//get distance from old mouse pos
+	m_posDistX = m_MousePos.x - m_OldMousePos.x;
+	m_posDistY = m_MousePos.y - m_OldMousePos.y;
+	//set pos as old pos + the dist * sensitivity
+	m_MousePos.x = m_OldMousePos.x + (m_posDistX * m_Sensitivy);
+	m_MousePos.y = m_OldMousePos.y + (m_posDistY * m_Sensitivy);
+	if (m_CursorImage)
+	{
+		m_CursorImage->Transform.Location.SetX(m_MousePos.x);
+		m_CursorImage->Transform.Location.SetY(m_MousePos.y);
+	}
+	m_OldMousePos = m_MousePos;
 	return false;
 }
 

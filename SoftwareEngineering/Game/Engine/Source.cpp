@@ -43,6 +43,13 @@ int main(int argc, char** argv)
 	Image->Transform.Location = 300.0f;
 	Image->SetColour(0, 255, 0, 255);
 
+	//-----------------------------------MOUSE STUFF--------------------------//
+	//how much the mouse wheel affects stuff
+	inputManager->GetMouse()->SetWheelStrength(100);
+	float cursor_Sensitivity = 1;
+	//makes the image the cursor
+	inputManager->GetMouse()->SetCursorImage(Image);//UNCOMMENT IF YOU WANT TO USE MOUSE !ON_IMAGE
+	SDL_ShowCursor(0);//switches cursor off
 
 	while (Event->type != SDL_QUIT)
 	{
@@ -57,25 +64,25 @@ int main(int argc, char** argv)
 			if ((inputManager->GetMouse()->CheckMouse(Mouse_Button_Left) && (inputManager->GetMouse()->OnImage(Image))) || inputManager->GetMouse()->ImageSelected)
 			{
 				Image->SetColour(255, 0, 0, 255);
+				cursor_Sensitivity*=1.05;
 				inputManager->GetMouse()->MoveImage(Image);
 			}
 			else if (inputManager->GetMouse()->CheckMouse(Mouse_Button_Left))
 			{
-				SDL_ShowCursor(0);//switches cursor off
-				Image->SetColour(0, 255, 0, 255);
+				
 			}
 			else if (inputManager->GetMouse()->CheckMouse(Mouse_Button_Right) && inputManager->GetMouse()->OnImage(Image))
 			{
-				Renderer->SetBackgroundColour(SColour::Blue());
+				cursor_Sensitivity*=0.9;
+				SDL_ShowCursor(1); //switches cursor on
 			}
 			else if (inputManager->GetMouse()->CheckMouse(Mouse_Button_Right))
 			{
-				SDL_ShowCursor(1); //switches cursor on
-				Renderer->SetBackgroundColour(SColour::Black());
+				SDL_ShowCursor(1);
 			}
+			//move something up and down using mouse wheel
 			else if (inputManager->GetMouse()->CheckMouse(Mouse_Wheel_Down) || inputManager->GetMouse()->CheckMouse(Mouse_Wheel_Up))
 			{
-				Image->Transform.Location.SetY(inputManager->GetMouse()->GetMouseWheel());
 			}
 
 			if (inputManager->GetKeyboard()->IsKeyPressed(KEY_CONFIRM))
@@ -85,7 +92,7 @@ int main(int argc, char** argv)
 			}
 
 			inputManager->GetMouse()->SetMouseWheel(Image->Transform.Location.GetY());
-
+			inputManager->GetMouse()->SetSensitivity(cursor_Sensitivity);
 			SDL_WaitThread(threadID, NULL);
 			Renderer->DrawAllImages();
 		}

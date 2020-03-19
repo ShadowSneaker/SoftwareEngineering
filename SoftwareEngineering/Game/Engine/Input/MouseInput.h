@@ -10,9 +10,15 @@ class MouseInput
 {
 private:
 	SDL_Point m_MousePos;
+	SDL_Point m_OldMousePos;
+	float m_posDistX;
+	float m_posDistY;
 	bool m_Mouse_Change[sizeof(Mouse_enum)];
-	float MouseWheel_y;
+	float MouseWheel_y = 0;
 	float WheelStrength = 0.05;
+
+	CImage* m_CursorImage = NULL;
+	float	m_Sensitivy = 1;
 public:
 	MouseInput();
 	~MouseInput() {};
@@ -24,6 +30,7 @@ public:
 	bool OnImage(CImage* Image);
 	//moves image
 	void MoveImage(CImage* Image);
+	
 	SDL_Point getMousePos() { return m_MousePos; };
 
 	float GetMouseWheel() { return MouseWheel_y; };
@@ -31,6 +38,10 @@ public:
 	void  SetMouseWheel(float image_y) { MouseWheel_y = image_y; };
 
 	void  SetWheelStrength(float strength) { WheelStrength = strength; };
+
+	void  SetCursorImage(CImage* image) { m_CursorImage = image; };
+
+	void  SetSensitivity(float Sensitivity) { m_Sensitivy = Sensitivity; };
 
 	bool ImageSelected = false;
 };
