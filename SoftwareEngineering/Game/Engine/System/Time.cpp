@@ -22,7 +22,7 @@ void TTime::Update()
 	Current = SDL_GetPerformanceCounter();
 
 
-	float DT = (float)((Current - Previous) / (float)SDL_GetPerformanceFrequency());
+	float DT = (float)((Current - Previous) * 1000.0f / (float)SDL_GetPerformanceFrequency());
 	DeltaTime = DT * TimeScale;
 
 	Time += DT;
