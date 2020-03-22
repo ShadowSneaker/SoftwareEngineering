@@ -14,4 +14,5 @@ public:
 	static ItemDatabase* getInstance() { return m_instance; }
 	static void DeleteInstance();
 
+	~ItemDatabase();
 };

@@ -69,3 +69,13 @@ void ItemDatabase::DeleteInstance()
 	delete m_instance;
 	m_instance = nullptr;
 }
+
+ItemDatabase::~ItemDatabase()
+{
+	for (int i = 0; i < m_itemList.size(); i++)
+	{
+		delete m_itemList[i];
+	}
+
+	m_itemList.clear();
+}
