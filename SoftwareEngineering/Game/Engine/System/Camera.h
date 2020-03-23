@@ -2,63 +2,68 @@
 #include "..//Graphics/Renderer/SDLSetup.h"
 
 
+
+//
 class CCamera
 {
 private: 
 	///properties
 	
-	// The Cameras Position
-	SVector2 CameraPosition = { 0,0 };
+	// The Cameras Position.
+	SVector2 CameraPosition { 0.0f };
 
-	// The Cameras OffSet
-	SVector2 CameraOffSet = {0, 0};
+	// The Cameras OffSet.
+	SVector2 CameraOffSet { 0.0f };
 
-	// The SDL Setup
-	CSDLSetup* SetUp = nullptr;
+
 
 public: 
 	///Constructors
 
-	// constructor, default
+	// Constructor, Default.
 	CCamera();
 
-	//
+	// Constructor, Initiates the camera with a default position.
+	// @param Position - The location this camera should be created at.
 	CCamera(SVector2 Position);
 
-	//destructor
+	// Destructor.
 	~CCamera();
 
-public:
-	///functions 
 
-	// this function takes the variable and sets the cameras x position to this variable
-	// @Param X - the X position for the Camera
+
+public:
+	/// Setters
+
+	// Sets the X location of this camera.
+	// @param X - The value to set X.
 	INLINE void SetCameraX(float X) { CameraPosition.SetX(X); }
 
-	// this function takes the variable and sets the cameras y position to this vairbale
-	// @Param Y - The Y position for the Camera
+	// Sets the Y location of this camera.
+	// @param Y - The value to set Y.
 	INLINE void SetCameraY(float Y) { CameraPosition.SetY(Y); }
 
-	// this function takes the vairable and sets the cameras x and y position to the variables put it
-	// @Param X - The X position for the Camera
-	// @Param Y - The Y position for the Camera
-	void SetCameraPosition(float X, float Y);
+	// Sets the location of this camera.
+	// @param X - The value to set X.
+	// @param Y - The value to set Y.
+	INLINE void SetCameraPosition(float X, float Y) { CameraPosition = { X, Y }; }
 
 
-	// this function returns the cameras X posiion
-	INLINE float GetCameraX() { return CameraPosition.GetX(); }
 
-	// this function returns the cameras Y position
-	INLINE float GetCameraY() { return CameraPosition.GetY(); };
+	/// Getters
 
-	// this function returns the Cameras Offset X position
-	INLINE float GetCameraOffSetX() { return CameraOffSet.GetX(); };
+	// Returns the X location of this camera.
+	INLINE float GetCameraX() const { return CameraPosition.GetX(); }
 
-	// this function returns the Cameras Offset Y position
-	INLINE float GetCameraOffSetY() { return CameraOffSet.GetY(); };
+	// Returns the Y location of this camera.
+	INLINE float GetCameraY() const { return CameraPosition.GetY(); };
 
-	//this function Returns the Camera position vector
-	SVector2 GetCameraPosition();
+	// Returns the X offet of this camera.
+	INLINE float GetCameraOffSetX() const { return CameraOffSet.GetX(); };
 
+	// Returns the Y offset of this camera.
+	INLINE float GetCameraOffSetY() const { return CameraOffSet.GetY(); };
 
+	// Returns the location of this camera.
+	INLINE SVector2 GetCameraPosition() const { return CameraPosition; }
 };

@@ -14,15 +14,13 @@ private:
 	// The total amount of images per row/column.
 	SVector2i CellSize{ 1 };
 
-	
-
 	// The total amount of frames in this animation.
 	uint TotalFrames{ 0 };
 
 	// The current timer before the next frame is displayed.
 	float Timer{ 0.0f };
 
-
+	// The offset of time when this animation was resumed.
 	float PauseTime{ 0.0f };
 
 protected:
@@ -102,7 +100,6 @@ public:
 
 
 	/// Getters
-
 
 	// Returns true if the animtion is currently playing.
 	INLINE bool IsPlaying() const { return Playing; }

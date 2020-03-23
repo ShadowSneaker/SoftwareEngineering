@@ -16,12 +16,15 @@ class CRenderer
 public:
 	/// Static Properties
 
+	// The pointer refernce to the Renderer.
 	static CRenderer* Instance;
 
 	
 
 private:
 	/// Properties
+
+	// The setup object of SDL.
 	CSDLSetup* Setup{ nullptr };
 
 	// A reference to all loaded textures.
@@ -31,8 +34,10 @@ private:
 	// A list of all stored image objects to render.
 	std::vector<CImage*> Images;
 
-	// A Refernce to the Camera
+	// A refernce to the camera.
 	CCamera* MainCamera{ nullptr };
+
+
 
 public:
 	/// Constructors
@@ -40,7 +45,7 @@ public:
 	// Constructor, Default.
 	CRenderer();
 
-	// Destructor
+	// Destructor.
 	~CRenderer();
 
 
@@ -60,7 +65,6 @@ public:
 
 	// Presents the current frame to the window.
 	void Present();
-
 
 	// Draws all stored images on to the screen then presents it.
 	// @Note - Does not cull any images.
@@ -102,14 +106,32 @@ public:
 
 
 
+	/// Setters
+
+	// Sets the colour the window refreshes with.
+	// @param Colour - The red, green and blue colour to set the window.
+	void SetBackgroundColour(const SColour& Colour);
+
+	// Sets the colour the window refreshes with.
+	// @param Red - The red component to set the background with.
+	// @param Green - The green component to set the background with.
+	// @param Blue - The blue component to set the background with.
+	// @param Alpha - The alpha component to set the background with.
+	void SetBackgroundColour(const uint8& Red, const uint8& Green, const uint8& Blue, const uint8& Alpha = 255);
+	
+	// Sets the colour the window refreshes with.
+	// @param Colour - The red, green and blue colour to set the window.
+	void SetBackgroundColour(const SDL_Color& Colour);
+
+	
 
 	/// Setters
 
-	void SetBackgroundColour(const SColour& Colour);
-	void SetBackgroundColour(const uint8& Red, const uint8& Green, const uint8& Blue, const uint8& Alpha = 255);
-	void SetBackgroundColour(const SDL_Color& Colour);
+	// Sets the reference to the main camera.
+	// @param Camera - The reference to the camera to set as the main camera.
+	void SetMainCamera(CCamera* Camera);
 
-	void SetMainCamera(CCamera* TheMainCamera);
+
 
 private:
 	/// Getters
@@ -117,8 +139,10 @@ private:
 	// Returns the file built filepath of an inputted file.
 	INLINE std::string GetPath(const std::string& Path, const bool& UseDefaultPath = true) const { return std::string{ (UseDefaultPath) ? "" + Path : Path }; }
 
-
 public:
+	// Returns the image info of a loaded image.
+	// @note - The images is not returned if the image has not been loaded yet.
+	// @param - The file path to the image to get the info of.
 	SImageInfo GetImage(const std::string& Path);
 
 

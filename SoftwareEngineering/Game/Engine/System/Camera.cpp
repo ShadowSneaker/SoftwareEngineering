@@ -1,32 +1,20 @@
 #include "Camera.h"
+#include "../Graphics/Renderer/Renderer.h"
+
+
 
 CCamera::CCamera()
 {
-	CameraOffSet.SetX(400);
-	CameraOffSet.SetY(300);
+	CameraOffSet = CRenderer::Instance->GetWindowSize().ToFloat() / 2.0f;
 }
+
 
 CCamera::CCamera(SVector2 Position)
 {
-	CameraOffSet.SetX(400);
-	CameraOffSet.SetY(300);
-
+	CameraOffSet = CRenderer::Instance->GetWindowSize().ToFloat() / 2.0f;
 	CameraPosition = Position;
 }
 
+
 CCamera::~CCamera()
-{
-}
-
-
-void CCamera::SetCameraPosition(float X, float Y)
-{
-	CameraPosition.SetX(X);
-	CameraPosition.SetY(Y);
-}
-
-
-SVector2 CCamera::GetCameraPosition()
-{
-	return CameraPosition;
-}
+{}
