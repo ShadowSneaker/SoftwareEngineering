@@ -2,7 +2,7 @@
 
 Label::Label(SDL_Renderer* temprenderer, TTF_Font* tempFont) : renderer(temprenderer), font(tempFont)
 {
-
+	
 }
 
 Label::~Label()
@@ -55,6 +55,7 @@ void Label::RenderFont(int x, int y, Uint8 red, Uint8 green, Uint8 blue, Uint8 a
 	buttonSize.y = 0;
 	buttonSize.w = bTexture.getWidth();
 	buttonSize.h = bTexture.getHeight();
+
 
 	//Render background color
 

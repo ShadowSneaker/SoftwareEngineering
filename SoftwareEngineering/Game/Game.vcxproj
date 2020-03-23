@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ButtonTexture.cpp" />
     <ClCompile Include="Engine\DataManagement\AssetLoader.cpp" />
     <ClCompile Include="Engine\DataManagement\JsonHandler.cpp" />
     <ClCompile Include="Engine\Graphics\Images\Animation.cpp" />
@@ -44,8 +45,10 @@
     <ClCompile Include="Engine\UI\UIElement.cpp" />
     <ClCompile Include="Engine\WorldObject\WorldActor.cpp" />
     <ClCompile Include="Engine\WorldObject\WorldObject.cpp" />
+    <ClCompile Include="Label.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ButtonTexture.h" />
     <ClInclude Include="Engine\DataManagement\AssetLoader.h" />
     <ClInclude Include="Engine\DataManagement\JsonHandler.h" />
     <ClInclude Include="Engine\Graphics\Images\Animation.h" />
@@ -72,6 +75,7 @@
     <ClInclude Include="Engine\UI\UIElement.h" />
     <ClInclude Include="Engine\WorldObject\WorldActor.h" />
     <ClInclude Include="Engine\WorldObject\WorldObject.h" />
+    <ClInclude Include="Label.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Engine\DataManagement\Fruits.json" />
