@@ -55,7 +55,7 @@ public:
 	//sets the position of the mouse wheel
 	void  SetMouseWheel(float image_y) { MouseWheel_y = image_y; };
 	//Wheel Sensitivity
-	void  SetWheelStrength(float strength) { WheelStrength = strength; };
+	void  SetWheelStrength(float strength) { WheelStrength = strength;};
 	//Sets the speed this class thinks the mouse is moving at
 	void  SetSensitivity(float Sensitivity) { m_Sensitivy = Sensitivity; };
 

@@ -3,6 +3,7 @@
 //initialise mouse position and buttons
 MouseInput::MouseInput()
 {
+
 	SDL_GetMouseState(&m_MousePos.x, &m_MousePos.y);
 	m_TrueMousePos = m_MousePos;
 	for (int i = 0; i < sizeof(m_Mouse_Change); ++i)

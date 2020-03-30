@@ -85,6 +85,8 @@ int main(int argc, char** argv)
 			//move something up and down using mouse wheel
 			else if (inputManager->GetMouse()->CheckMouse(Mouse_Wheel_Down) || inputManager->GetMouse()->CheckMouse(Mouse_Wheel_Up))
 			{
+				//moves image with wheel
+	/*			Image->Transform.Location.SetY(inputManager->GetMouse()->GetMouseWheel());*/
 			}
 
 			if (inputManager->GetKeyboard()->IsKeyPressed(KEY_CONFIRM))

@@ -22,8 +22,8 @@ InputManager::~InputManager()
 
 void InputManager::Update(SDL_Event* event)
 {
-	p_controller->Initialization();
-	p_controller->ReceiveEvent(event);
+	if(p_controller->Initialization())
+		p_controller->ReceiveEvent(event);
 	p_keyboard->Update(event);
 	p_mouse->UpdateMouse(event);
 }
