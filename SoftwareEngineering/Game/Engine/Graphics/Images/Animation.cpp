@@ -33,6 +33,8 @@ void CAnimation::Update()
 
 		if (!IsReversed() && !Loop && FrameIndex == TotalFrames) Stop();
 		else if (IsReversed() && !Loop && FrameIndex == 0) Stop();
+
+		
 	}
 }
 
@@ -124,4 +126,9 @@ void CAnimation::SetCellCount(const SVector2i& InCells)
 	Cell.w = GetImageSize()[X] / CellSize[X];
 	Cell.h = GetImageSize()[Y] / CellSize[Y];
 	TotalFrames = (CellSize[X] * CellSize[Y]);
+}
+
+void CAnimation::AnimationTestFunction()
+{
+	printf("The Current Frame the animation is on --> Frame: %i\n", FrameIndex);
 }

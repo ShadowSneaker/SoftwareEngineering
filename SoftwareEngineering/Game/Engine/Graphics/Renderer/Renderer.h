@@ -132,6 +132,9 @@ public:
 	void SetMainCamera(CCamera* Camera);
 
 
+	// a test function used to test the images surface for pixel information
+	void RenderImagePixelTest(CImage* TheTestImage, int x, int y);
+
 
 private:
 	/// Getters

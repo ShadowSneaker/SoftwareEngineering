@@ -84,6 +84,8 @@ public:
 	// Plays the animation in reverse, starting from the last frame index.
 	void ReverseFromEnd();
 
+	// a function to test what frame the animation is on
+	void AnimationTestFunction();
 
 
 	/// Setters

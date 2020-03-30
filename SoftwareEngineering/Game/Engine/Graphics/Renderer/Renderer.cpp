@@ -212,3 +212,95 @@ void CRenderer::SetMainCamera(CCamera* TheMainCamera)
 {
 	MainCamera = TheMainCamera;
 }
+
+
+void CRenderer::RenderImagePixelTest(CImage* TheImage, int x, int y)
+{
+	SDL_Surface* TempSurface = TheImage->GetSurface();
+
+
+	SImageInfo Info{ CRenderer::Instance->GetImage("Content/Images/HappyBoi.png") };
+
+	SDL_Surface* SurfaceToTest = Info.Surface;
+
+	Uint32 temp, pixel, pixelTest;
+	Uint8 Red, Green, Blue, Alpha;
+
+	Uint8 Red2, Green2, Blue2, Alpha2;
+
+	Uint8 index;
+	SDL_Color* colour;
+
+	SDL_PixelFormat* pixelformat;
+	pixelformat = TempSurface->format;
+
+	SDL_PixelFormat* pixelformattest;
+	pixelformattest = TempSurface->format;
+
+	
+	for (int i = 0; i <= 32; i++)
+	{
+
+		for (int j = 0; j <= 32; j++)
+		{
+
+			SDL_LockSurface(TempSurface);
+			pixel = *((Uint32*)TempSurface->pixels) + (i * TempSurface->pitch) + (j * pixelformat->BytesPerPixel);
+			SDL_UnlockSurface(TempSurface);
+
+			SDL_LockSurface(SurfaceToTest);
+			pixelTest = *((Uint32*)SurfaceToTest->pixels) + (i * SurfaceToTest->pitch) + (j * pixelformattest->BytesPerPixel);
+			SDL_UnlockSurface(SurfaceToTest);
+
+			temp = pixel & pixelformat->Rmask;
+			temp = temp >> pixelformat->Rshift;
+			temp = temp << pixelformat->Rloss;
+			Red = (Uint8)temp;
+
+			temp = pixel & pixelformat->Gmask;
+			temp = temp >> pixelformat->Gshift;
+			temp = temp << pixelformat->Gloss;
+			Green = (Uint8)temp;
+
+			temp = pixel & pixelformat->Bmask;
+			temp = temp >> pixelformat->Bshift;
+			temp = temp << pixelformat->Bloss;
+			Blue = (Uint8)temp;
+
+
+			temp = pixelTest & pixelformat->Rmask;
+			temp = temp >> pixelformat->Rshift;
+			temp = temp << pixelformat->Rloss;
+			Red2 = (Uint8)temp;
+
+			temp = pixelTest & pixelformat->Gmask;
+			temp = temp >> pixelformat->Gshift;
+			temp = temp << pixelformat->Gloss;
+			Green2 = (Uint8)temp;
+
+			temp = pixelTest & pixelformat->Bmask;
+			temp = temp >> pixelformat->Bshift;
+			temp = temp << pixelformat->Bloss;
+			Blue2 = (Uint8)temp;
+
+			printf("Pixel Colour - > R: %d, G: %d, B:%d\n", Red, Green, Blue);
+			printf("Pixel Colour of stored image - > R: %d, G: %d, B:%d\n", Red2, Green2, Blue2);
+		}
+	}
+
+
+	//for (int i = 0; i <= 40; i++)
+	//{
+	//	Uint8* TargetPixel = (Uint8*)TempSurface->pixels + (y + i) * TempSurface->pitch + (x + i) * sizeof * TargetPixel;
+	//
+	//
+	//	if (TargetPixel == (Uint8*)255)
+	//	{
+	//		std::cout << "Confirmed Pixel drawing" << std::endl;
+	//	}
+	//	else
+	//	{
+	//		std::cout << "pixel not in that position" << std::endl;
+	//	}
+	//}
+}
