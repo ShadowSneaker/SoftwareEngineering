@@ -4,6 +4,7 @@
 MouseInput::MouseInput()
 {
 	SDL_GetMouseState(&m_MousePos.x, &m_MousePos.y);
+	m_TrueMousePos = m_MousePos;
 	for (int i = 0; i < sizeof(m_Mouse_Change); ++i)
 		m_Mouse_Change[i] = false;
 }
@@ -67,21 +68,21 @@ bool MouseInput::UpdateMouse(SDL_Event* pass_event)
 
 		}
 	}
-
 	//get new mouse pos
-	SDL_GetMouseState(&m_MousePos.x, &m_MousePos.y);
+	SDL_GetMouseState(&m_TrueMousePos.x, &m_TrueMousePos.y);
+	
 	//get distance from old mouse pos
-	m_posDistX = m_MousePos.x - m_OldMousePos.x;
-	m_posDistY = m_MousePos.y - m_OldMousePos.y;
+	m_posDistX = m_TrueMousePos.x - m_OldMousePos.x;
+	m_posDistY = m_TrueMousePos.y - m_OldMousePos.y;
 	//set pos as old pos + the dist * sensitivity
-	m_MousePos.x = m_OldMousePos.x + (m_posDistX * m_Sensitivy);
-	m_MousePos.y = m_OldMousePos.y + (m_posDistY * m_Sensitivy);
+	m_MousePos.x += m_posDistX * m_Sensitivy;
+	m_MousePos.y += m_posDistY * m_Sensitivy;
 	if (m_CursorImage)
 	{
 		m_CursorImage->Transform.Location.SetX(m_MousePos.x);
 		m_CursorImage->Transform.Location.SetY(m_MousePos.y);
 	}
-	m_OldMousePos = m_MousePos;
+	SDL_GetMouseState(&m_OldMousePos.x, &m_OldMousePos.y);
 	return false;
 }
 
@@ -127,7 +128,7 @@ bool MouseInput::OnImage(CImage* Image)
 
 void MouseInput::MoveImage(CImage* Image)
 {
-	if (OnImage(Image) || ImageSelected)
+	if (OnImage(Image) || ImageSelected)//ImageSelected will be Image.ImageSelected, or something to that effect
 	{
 		Image->Transform.Location.SetX(m_MousePos.x);
 		Image->Transform.Location.SetY(m_MousePos.y);

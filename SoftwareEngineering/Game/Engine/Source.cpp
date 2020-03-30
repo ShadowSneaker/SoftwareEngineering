@@ -48,7 +48,7 @@ int main(int argc, char** argv)
 	inputManager->GetMouse()->SetWheelStrength(100);
 	float cursor_Sensitivity = 1;
 	//makes the image the cursor
-	inputManager->GetMouse()->SetCursorImage(Image);//UNCOMMENT IF YOU WANT TO USE MOUSE !ON_IMAGE
+	inputManager->GetMouse()->SetCursorImage(Image);//COMMENT IF YOU WANT TO USE MOUSE !ON_IMAGE
 	SDL_ShowCursor(0);//switches cursor off
 
 	while (Event->type != SDL_QUIT)
@@ -61,11 +61,12 @@ int main(int argc, char** argv)
 
 			inputManager->Update(Event);
 
+
 			if ((inputManager->GetMouse()->CheckMouse(Mouse_Button_Left) && (inputManager->GetMouse()->OnImage(Image))) || inputManager->GetMouse()->ImageSelected)
 			{
 				Image->SetColour(255, 0, 0, 255);
 				cursor_Sensitivity*=1.05;
-				inputManager->GetMouse()->MoveImage(Image);
+				//inputManager->GetMouse()->MoveImage(Image);
 			}
 			else if (inputManager->GetMouse()->CheckMouse(Mouse_Button_Left))
 			{
@@ -73,12 +74,13 @@ int main(int argc, char** argv)
 			}
 			else if (inputManager->GetMouse()->CheckMouse(Mouse_Button_Right) && inputManager->GetMouse()->OnImage(Image))
 			{
-				cursor_Sensitivity*=0.9;
+				cursor_Sensitivity/=1.05;
 				SDL_ShowCursor(1); //switches cursor on
 			}
 			else if (inputManager->GetMouse()->CheckMouse(Mouse_Button_Right))
 			{
-				SDL_ShowCursor(1);
+				//Switches cursor on
+				//SDL_ShowCursor(1);
 			}
 			//move something up and down using mouse wheel
 			else if (inputManager->GetMouse()->CheckMouse(Mouse_Wheel_Down) || inputManager->GetMouse()->CheckMouse(Mouse_Wheel_Up))
