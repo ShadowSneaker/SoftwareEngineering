@@ -1,6 +1,6 @@
 #pragma once
 #include "..//Graphics/Renderer/SDLSetup.h"
-
+#include "../Graphics/Images/Image.h"
 
 
 //
@@ -33,6 +33,15 @@ public:
 
 
 public:
+
+	///function
+
+	// A function to test the cameras off set is bieng calculated correctly and is bieng applied 
+	// @param the image that the camera has been centred on to test the cameras position against it
+	void CameraTesterFunction(CImage* TheImage);
+
+
+
 	/// Setters
 
 	// Sets the X location of this camera.
@@ -66,4 +75,7 @@ public:
 
 	// Returns the location of this camera.
 	INLINE SVector2 GetCameraPosition() const { return CameraPosition; }
+
+
+	
 };

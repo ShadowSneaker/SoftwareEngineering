@@ -29,7 +29,7 @@ int main(int argc, char** argv)
 
 	TheCamera->SetCameraPosition(300.0f,300.0f);
 
-	Image->SetCellCount(1, 5);
+	Image->SetCellCount(1, 4);
 	Image->Transform.Location = 300.0f;
 	//Image->ReverseFromEnd();
 	//Image->Stop();
@@ -65,7 +65,7 @@ int main(int argc, char** argv)
 		Renderer->DrawAllImages();
 		//TheImage->SetColour(255, 0, 0); // sets it to red
 		//TheImage->TestImageColour(255, 0, 0); // tests if its red
-
+		TheCamera->CameraTesterFunction(Image);
 
 		//TheImage->TestImageLocation(MovedLocation, MovedLocation);
 		//Renderer->RenderImagePixelTest(TheImage, 300, 300);

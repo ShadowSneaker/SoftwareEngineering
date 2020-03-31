@@ -26,10 +26,14 @@ void CAnimation::Update()
 {
 	if (Playing)
 	{
+		//float oldframe = FrameIndex;
 		//Timer += Speed * TTime::DeltaTime;
 		FrameIndex = TMath::FloorInt((TTime::Time - PauseTime ) * Speed * ((IsReversed()) ? -1.0f : 1.0f)) % TotalFrames;
 
 		//printf("%f\n", (TTime::Time - PauseTime) * Speed * ((IsReversed()) ? -1.0f : 1.0f));
+		//if (oldframe != FrameIndex)
+		//	AnimationTestFunction();
+
 
 		if (!IsReversed() && !Loop && FrameIndex == TotalFrames) Stop();
 		else if (IsReversed() && !Loop && FrameIndex == 0) Stop();
