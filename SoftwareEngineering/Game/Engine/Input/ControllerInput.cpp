@@ -92,7 +92,14 @@ void ControllerInput::ReceiveEvent(SDL_Event* event)
 
 void ControllerInput::MoveImage(CImage* Image)
 {
-    
+    if (JoyStickAngle == -45)
+        Image->Transform.Location.SetX(Image->Transform.Location.GetX() += 1);
+    else if (JoyStickAngle == 180)
+        Image->Transform.Location.SetX(Image->Transform.Location.GetX() -= 1);
+    else if (JoyStickAngle == -90)
+        Image->Transform.Location.SetY(Image->Transform.Location.GetY() -= 1);
+    else if (JoyStickAngle == 90)
+        Image->Transform.Location.SetY(Image->Transform.Location.GetY() += 1);
 }
 
 void ControllerInput::Release()

@@ -10,21 +10,14 @@
 SDL_Event* Event{ new SDL_Event{} };
 InputManager* inputManager = new InputManager();
 CImage* Image{ new CImage() };
+CImage* Image2{ new CImage() };
 
 int ControllerThread(void* threadData)
 {
 
 	inputManager->GetController()->ReceiveEvent(Event);
 	inputManager->GetController()->CalculateJSAngle(inputManager->GetController()->xDirection, inputManager->GetController()->yDirection);
-
-	if (inputManager->GetController()->JoyStickAngle == -45)
-		Image->Transform.Location.SetX(Image->Transform.Location.GetX() += 1);
-	else if (inputManager->GetController()->JoyStickAngle == 180)
-		Image->Transform.Location.SetX(Image->Transform.Location.GetX() -= 1);
-	else if (inputManager->GetController()->JoyStickAngle == -90)
-		Image->Transform.Location.SetY(Image->Transform.Location.GetY() -= 1);
-	else if (inputManager->GetController()->JoyStickAngle == -180)
-		Image->Transform.Location.SetY(Image->Transform.Location.GetY() += 1);
+	inputManager->GetController()->MoveImage(Image2);
 
 	return 0;
 }
@@ -38,11 +31,15 @@ int main(int argc, char** argv)
 	
 	Renderer->SetBackgroundColour(SColour::DarkGray());
 	Renderer->SetImage(Image, "Content/Images/HappyBoi.png", false);
+	Renderer->SetImage(Image2, "Content/Images/HappyBoi2.png", false);
 	Renderer->AddImage(Image);
+	Renderer->AddImage(Image2);
 
 	Image->Transform.Location = 300.0f;
 	Image->SetColour(0, 255, 0, 255);
 
+	Image2->Transform.Location = 300.0f;
+	Image2->SetColour(255, 255, 0, 255);
 	//-----------------------------------MOUSE STUFF--------------------------//
 	//how much the mouse wheel affects stuff
 	inputManager->GetMouse()->SetWheelStrength(100);
