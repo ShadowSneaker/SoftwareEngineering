@@ -50,6 +50,7 @@
     <ClCompile Include="Engine\UI\UIElement.cpp" />
     <ClCompile Include="Engine\WorldObject\WorldActor.cpp" />
     <ClCompile Include="Engine\WorldObject\WorldObject.cpp" />
+    <ClCompile Include="ImageBox.cpp" />
     <ClCompile Include="Label.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -86,6 +87,7 @@
     <ClInclude Include="Engine\UI\UIElement.h" />
     <ClInclude Include="Engine\WorldObject\WorldActor.h" />
     <ClInclude Include="Engine\WorldObject\WorldObject.h" />
+    <ClInclude Include="ImageBox.h" />
     <ClInclude Include="Label.h" />
   </ItemGroup>
   <ItemGroup>
