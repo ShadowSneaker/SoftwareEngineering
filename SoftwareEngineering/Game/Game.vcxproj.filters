@@ -102,6 +102,21 @@
     <ClCompile Include="ButtonTexture.cpp">
       <Filter>Source Files\UI</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\UI\UIBuilder.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\UI\SampleUI.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\UI\UIBox.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\UI\UIBase.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\UI\UIBuilderFactory.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Graphics\Renderer\Renderer.h">
@@ -186,6 +201,24 @@
       <Filter>Header Files\UI</Filter>
     </ClInclude>
     <ClInclude Include="ButtonTexture.h">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\UI\SampleUI.h">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\UI\UIBox.h">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\UI\UIBuilder.h">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\UI\AnchorTypes.h">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\UI\UIBase.h">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\UI\UIBuilderFactory.h">
       <Filter>Header Files\UI</Filter>
     </ClInclude>
   </ItemGroup>

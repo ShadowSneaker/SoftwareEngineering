@@ -3,7 +3,8 @@
 #include "Graphics/Images/Animation.h"
 #include "System/Time.h"
 
-
+#include "UI/SampleUI.h"
+#include "../Label.h"
 
 int main(int argc, char** argv)
 {
@@ -13,7 +14,14 @@ int main(int argc, char** argv)
 
 	CRenderer* Renderer{ new CRenderer() };
 	Renderer->SetBackgroundColour(SColour::DarkGray());
-	
+
+	SampleUI* ui = new SampleUI(Renderer);
+
+	TTF_Font* font = TTF_OpenFont("Content/Fonts/Roboto-Regular.ttf", 12);
+	if (font == NULL) {
+		std::cout << "Failed to load font" << std::endl;
+	}
+
 	CAnimation* Image{ new CAnimation() };
 	Image->SetImage("Content/Images/Anim.png");
 	Renderer->AddImage(Image);
@@ -29,7 +37,10 @@ int main(int argc, char** argv)
 	while (Event->type != SDL_QUIT)
 	{
 		Time->Update();
+		Renderer->Clear();
+		ui->drawAllElements();
 		Renderer->DrawAllImages();
+		ui->updateAllElements();
 		SDL_PollEvent(Event);
 	}
 

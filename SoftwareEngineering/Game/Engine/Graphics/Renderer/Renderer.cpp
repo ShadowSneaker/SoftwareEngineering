@@ -62,7 +62,6 @@ void CRenderer::DeleteAllTextures()
 
 void CRenderer::DrawAllImages() 
 {
-	Clear();
 	for (CImage* Image : Images)
 	{
 		if (Image->Enabled)

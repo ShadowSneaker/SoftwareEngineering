@@ -1,8 +1,12 @@
 #include "Label.h"
 
-Label::Label(SDL_Renderer* temprenderer, TTF_Font* tempFont) : renderer(temprenderer), font(tempFont)
+void Label::updateText() {
+	surface = maxLength > 0 ? TTF_RenderText_Blended_Wrapped(font, text.c_str(), { colour.r, colour.g, colour.b }, maxLength) : TTF_RenderText_Blended(font, text.c_str(), { colour.r, colour.g, colour.b });
+	texture = SDL_CreateTextureFromSurface(renderer, surface);
+}
+
+Label::Label(SDL_Renderer* renderer, int windowWidth, int windowHeight) : UIElement(renderer, windowWidth, windowHeight)
 {
-	
 }
 
 Label::~Label()
@@ -30,44 +34,75 @@ bool Label::LoadFont(const char* fontLocationString, int fontSize, std::string f
 	}
 	else
 	{
+		updateText();
 		//Render text
+		/*
 		SDL_Color textColor = { redValue,greenValue,blueValue };
 		if (!bTexture.loadFromRenderedText(fontText.c_str(), textColor, renderer, font))
 		{
 			printf("Failed to render text texture!\n");
 			success = false;
 		}
+		*/
 	}
 
 	return success;
 }
 
-void Label::RenderFont(int x, int y, Uint8 red, Uint8 green, Uint8 blue, Uint8 alpha, double degreesOfRotation, SDL_RendererFlip flipType)
+
+
+void Label::RenderFont()
 {
-	//Clear screen
-	SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
-	SDL_RenderClear(renderer);
-
-	//Render current frame
-
 	SDL_Rect buttonSize;
-	buttonSize.x = 0;
-	buttonSize.y = 0;
-	buttonSize.w = bTexture.getWidth();
-	buttonSize.h = bTexture.getHeight();
+	buttonSize.x = localX;
+	buttonSize.y = localY;
+	buttonSize.w = textWidth;
+	buttonSize.h = textHeight;
 
+	//Clip the text to the area specified
+	SDL_Rect clip = { localX, localY, elementWidth, elementHeight };
 
-	//Render background color
+	SDL_RenderSetClipRect(renderer, &clip);
+	SDL_RenderCopy(renderer, this->texture, NULL, &buttonSize);
+	SDL_RenderSetClipRect(renderer, NULL);
+}
 
-	SDL_Rect backgroundRect = { x, y, bTexture.getWidth(), bTexture.getHeight() };
-	SDL_SetRenderDrawColor(renderer, red, green, blue, alpha);
-	SDL_RenderFillRect(renderer, &backgroundRect);
+void Label::drawElement(SDL_Texture* texture) {
+	RenderFont();
+}
 
+void Label::update()
+{
+}
 
-	//Render text
-	bTexture.setAlpha(alpha);
-	bTexture.render(renderer, x, y, &buttonSize, degreesOfRotation, NULL, flipType);
+void Label::setText(std::string text) {
+	this->text = text;
+}
 
-	//Update screen
-	SDL_RenderPresent(renderer);
+void Label::setColour(SDL_Color colour) {
+	this->colour = colour;
+}
+
+void Label::setFont(const char* fontPath, int size) {
+	LoadFont(fontPath, size, text, colour.r, colour.g, colour.b);
+}
+
+void Label::setMaxLength(Uint32 length) {
+	this->maxLength = length;
+}
+
+void Label::calculateDimensions() {
+	int w, h;
+	TTF_SizeText(font, text.c_str(), &w, &h);
+	if (maxLength > 0) {
+		int lines = 1;
+		if (w > maxLength)
+			lines = std::roundf((float)w / (float)maxLength);
+		textWidth = maxLength;
+		textHeight = h * lines;
+	}
+	else {
+		textWidth = w;
+		textHeight = h;
+	}
 }
