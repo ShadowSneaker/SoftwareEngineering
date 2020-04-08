@@ -2,6 +2,7 @@
 #include "Graphics/Renderer/Renderer.h"
 #include "Graphics/Images/Animation.h"
 #include "System/Time.h"
+#include "Level/Level.h"
 
 
 
@@ -14,6 +15,11 @@ int main(int argc, char** argv)
 	CRenderer* Renderer{ new CRenderer() };
 	Renderer->SetBackgroundColour(SColour::DarkGray());
 	
+
+	Level* lvl = new Level("Content/LevelFile/File.txt",0,100,99);
+	lvl->AddTilesToRenderer(Renderer);
+	
+
 	CAnimation* Image{ new CAnimation() };
 	Image->SetImage("Content/Images/Anim.png");
 	Renderer->AddImage(Image);

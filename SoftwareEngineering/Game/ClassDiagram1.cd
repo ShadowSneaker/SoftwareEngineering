@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Tile">
+    <Position X="13.5" Y="0.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAIQEQAAAAAACAAAAAAAAAoQAAAAAIAAAAAAACAQAQA=</HashCode>
+      <FileName>Engine\Level\Tile.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TileBase">
+    <Position X="7.5" Y="0.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>BAIQEQAAAAAAiAAIAAAAAAoQEAMAAIAAAAAAAAAYAAQ=</HashCode>
+      <FileName>Engine\Level\TileBase.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Level">
+    <Position X="13.75" Y="4.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AACBAAAAAAAAAAAAAAAAAAAAAgEAAAQBRAABAABEQQA=</HashCode>
+      <FileName>Engine\Level\Level.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
