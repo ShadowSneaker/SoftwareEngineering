@@ -21,7 +21,7 @@ public:
 	void	EquipItem(Equippable* item);		// Need equippable item implementation
 	void	UnequipItem(SlotName item);	// ^^
 
-	bool	IsItemEquipped(Item* item);
+	bool	IsItemEquipped(Equippable* item);
 	bool	IsEquipmentSlotFree(SlotName equipmentSlot);
 
 };
