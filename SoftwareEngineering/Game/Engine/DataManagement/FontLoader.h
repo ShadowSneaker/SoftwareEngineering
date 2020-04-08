@@ -15,7 +15,7 @@ public:
 	// Loads image at specified path
 	static SDL_Texture* LoadFromFile(const char* path, SDL_Renderer* renderer);
 
-	// Create image from font string
+	// Create image from ttf
 	static SDL_Texture* LoadFromRenderedText(const char* texture, SDL_Color textColor, SDL_Renderer* renderer, TTF_Font* font);
 };
 

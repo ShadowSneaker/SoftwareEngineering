@@ -12,10 +12,11 @@ FontLoader::~FontLoader()
 // Load texture from existing file
 SDL_Texture* FontLoader::LoadFromFile(const char* path, SDL_Renderer * renderer)
 {
+	// Load texture with assetloader
 	SDL_Surface* image = AssetLoader::LoadImage(path);
 	if (image == NULL) return nullptr;
 
-	// Color key image
+	// Set color key
 	SDL_SetColorKey(image, SDL_TRUE, SDL_MapRGB(image->format, 0, 0xFF, 0xFF));
 
 	// Create texture from surface pixels
@@ -26,11 +27,11 @@ SDL_Texture* FontLoader::LoadFromFile(const char* path, SDL_Renderer * renderer)
 		return nullptr;
 	}
 
-	// Get image dimensions
+	// Save image dimensions
 	mWidth = image->w;
 	mHeight = image->h;
 
-	// Get rid of the old surfaces
+	// Delete old surface
 	SDL_FreeSurface(image);
 
 	return texture;
@@ -39,7 +40,7 @@ SDL_Texture* FontLoader::LoadFromFile(const char* path, SDL_Renderer * renderer)
 // Load from ttf file
 SDL_Texture* FontLoader::LoadFromRenderedText(const char* texturePath, SDL_Color textColor, SDL_Renderer* renderer, TTF_Font* font)
 {
-	// Render text surface
+	// Load image from ttf
 	SDL_Surface* image = TTF_RenderText_Blended(font, texturePath, textColor);
 	if (image == NULL)
 	{
@@ -47,6 +48,7 @@ SDL_Texture* FontLoader::LoadFromRenderedText(const char* texturePath, SDL_Color
 		return nullptr;
 	}
 
+	// Create texture from surface pixels
 	SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, image);
 	if (texture == NULL)
 	{
@@ -54,11 +56,11 @@ SDL_Texture* FontLoader::LoadFromRenderedText(const char* texturePath, SDL_Color
 		return nullptr;
 	}
 
-	// Get image dimensions
+	// Save image dimensions
 	mWidth = image->w;
 	mHeight = image->h;
 
-	// Get rid of old surface
+	// Delete old surface
 	SDL_FreeSurface(image);
 
 	return texture;
