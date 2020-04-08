@@ -20,7 +20,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\DataManagement\AssetLoader.cpp" />
+    <ClCompile Include="Engine\DataManagement\FontLoader.cpp" />
+    <ClCompile Include="Engine\DataManagement\JsonFacade.cpp" />
     <ClCompile Include="Engine\DataManagement\JsonHandler.cpp" />
+    <ClCompile Include="Engine\DataManagement\JsonObject.cpp" />
+    <ClCompile Include="Engine\DataManagement\JsonReader.cpp" />
+    <ClCompile Include="Engine\DataManagement\JsonWriter.cpp" />
+    <ClCompile Include="Engine\DataManagement\KKCReader.cpp" />
+    <ClCompile Include="Engine\DataManagement\TextFileReadWrite.cpp" />
     <ClCompile Include="Engine\Graphics\Images\Animation.cpp" />
     <ClCompile Include="Engine\Inventory\Effects\Examples\DamageBuffEffect.cpp" />
     <ClCompile Include="Engine\Graphics\Images\Image.cpp" />
@@ -46,7 +53,17 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\DataManagement\AssetLoader.h" />
+    <ClInclude Include="Engine\DataManagement\FontLoader.h" />
+    <ClInclude Include="Engine\DataManagement\JsonArray.h" />
+    <ClInclude Include="Engine\DataManagement\JsonBase.h" />
+    <ClInclude Include="Engine\DataManagement\JsonFacade.h" />
     <ClInclude Include="Engine\DataManagement\JsonHandler.h" />
+    <ClInclude Include="Engine\DataManagement\JsonObject.h" />
+    <ClInclude Include="Engine\DataManagement\JsonReader.h" />
+    <ClInclude Include="Engine\DataManagement\JsonValue.h" />
+    <ClInclude Include="Engine\DataManagement\JsonWriter.h" />
+    <ClInclude Include="Engine\DataManagement\KKCReader.h" />
+    <ClInclude Include="Engine\DataManagement\TextFileReadWrite.h" />
     <ClInclude Include="Engine\Graphics\Images\Animation.h" />
     <ClInclude Include="Engine\Inventory\Effects\Examples\DamageBuffEffect.h" />
     <ClInclude Include="Engine\Inventory\Effects\Effect.h" />
