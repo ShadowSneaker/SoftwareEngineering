@@ -2,6 +2,8 @@
 #include <vector>
 
 class Item;
+class InventoryUI;
+class CRenderer;
 class WorldObject;
 
 class Inventory
@@ -12,6 +14,7 @@ private:
 	WorldObject*		m_owner;
 
 	int					m_maxSlots;
+	InventoryUI*		m_inventoryUI;
 
 public:
 
@@ -27,11 +30,15 @@ public:
 	int		GetTakenSlots();
 	int		CountMoney();	// Need to create money item.
 
+	void	Draw(CRenderer* renderer);
+
 protected:
 
 	std::vector<Item*>	GetItems();
 	WorldObject*		GetOwner();
 	int					GetMaxSlots();
+
+	void virtual UpdateUIElements();
 
 	virtual void OnItemAdded(Item* item) {};
 	virtual void OnItemRemoved(Item* item) {};

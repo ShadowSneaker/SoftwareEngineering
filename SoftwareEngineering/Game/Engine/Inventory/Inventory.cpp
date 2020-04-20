@@ -3,7 +3,7 @@
 #include "ItemSystem/Item.h"
 #include "ItemSystem/MoneyItem.h"
 #include "..//WorldObject/WorldObject.h"
-
+#include "InventoryUI.h"
 
 Inventory::~Inventory()
 {
@@ -12,6 +12,7 @@ Inventory::~Inventory()
 		delete m_items[i];
 	}
 	m_items.clear();
+	delete m_inventoryUI;
 }
 
 void Inventory::AddItem(Item* item)
@@ -100,6 +101,16 @@ int Inventory::CountMoney()
 	return count;
 }
 
+void Inventory::Draw(CRenderer* renderer)
+{
+	if (m_inventoryUI == nullptr) 
+	{
+		m_inventoryUI = new InventoryUI(renderer);
+		UpdateUIElements();
+	}
+	m_inventoryUI->Draw();
+}
+
 std::vector<Item*> Inventory::GetItems()
 {
 	return m_items;
@@ -113,4 +124,14 @@ WorldObject* Inventory::GetOwner()
 int Inventory::GetMaxSlots()
 {
 	return m_maxSlots;
+}
+
+void Inventory::UpdateUIElements()
+{
+	UILabelBuilder labelbuilder = *(UILabelBuilder*)m_inventoryUI->GetUIFactory()->getBuilder<Label>("Label");
+	for (int i = 0; i < GetItems().size(); i++)
+	{
+		auto item = GetItems()[i];
+		m_inventoryUI->AddElement(labelbuilder.withText(item->GetName()).withPosition(0, i * 50).build());
+	}
 }

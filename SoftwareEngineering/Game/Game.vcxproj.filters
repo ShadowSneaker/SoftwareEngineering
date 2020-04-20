@@ -1,236 +1,109 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
-    <Filter Include="Source Files\UI">
-      <UniqueIdentifier>{4c7795a1-6776-4a82-824d-4734c8f15aec}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\UI">
-      <UniqueIdentifier>{37d7ce63-fbd6-410c-b7e2-4b1f02e036a9}</UniqueIdentifier>
-    </Filter>
+    <ClCompile Include="ButtonTexture.cpp" />
+    <ClCompile Include="Engine\DataManagement\AssetLoader.cpp" />
+    <ClCompile Include="Engine\DataManagement\FontLoader.cpp" />
+    <ClCompile Include="Engine\DataManagement\JsonFacade.cpp" />
+    <ClCompile Include="Engine\DataManagement\JsonHandler.cpp" />
+    <ClCompile Include="Engine\DataManagement\JsonObject.cpp" />
+    <ClCompile Include="Engine\DataManagement\JsonReader.cpp" />
+    <ClCompile Include="Engine\DataManagement\JsonWriter.cpp" />
+    <ClCompile Include="Engine\DataManagement\KKCReader.cpp" />
+    <ClCompile Include="Engine\DataManagement\TextFileReadWrite.cpp" />
+    <ClCompile Include="Engine\Graphics\Images\Animation.cpp" />
+    <ClCompile Include="Engine\Inventory\Effects\Examples\DamageBuffEffect.cpp" />
+    <ClCompile Include="Engine\Graphics\Images\Image.cpp" />
+    <ClCompile Include="Engine\Graphics\Renderer\Renderer.cpp" />
+    <ClCompile Include="Engine\Graphics\Renderer\SDLSetup.cpp" />
+    <ClCompile Include="Engine\Inventory\Inventory.cpp" />
+    <ClCompile Include="Engine\Inventory\ItemSystem\Consumable.cpp" />
+    <ClCompile Include="Engine\Inventory\ItemSystem\Equippable.cpp" />
+    <ClCompile Include="Engine\Inventory\ItemSystem\Item.cpp" />
+    <ClCompile Include="Engine\Inventory\ItemSystem\Switchable.cpp" />
+    <ClCompile Include="Engine\Inventory\ItemSystem\UsableItem.cpp" />
+    <ClCompile Include="Engine\Inventory\LootableInventory.cpp" />
+    <ClCompile Include="Engine\Inventory\PlayerInventory.cpp" />
+    <ClCompile Include="Engine\Level\Level.cpp" />
+    <ClCompile Include="Engine\Level\Tile.cpp" />
+    <ClCompile Include="Engine\Level\TileBase.cpp" />
+    <ClCompile Include="Engine\Source.cpp" />
+    <ClCompile Include="Engine\Inventory\Effects\Examples\StaminaEffect.cpp" />
+    <ClCompile Include="Engine\Inventory\Effects\Examples\HealthEffect.cpp" />
+    <ClCompile Include="Engine\Inventory\ShopInventory.cpp" />
+    <ClCompile Include="Engine\Inventory\ItemSystem\MoneyItem.cpp" />
+    <ClCompile Include="Engine\Inventory\ItemSystem\ItemDatabase.cpp" />
+    <ClCompile Include="Engine\System\Time.cpp" />
+    <ClCompile Include="Engine\UI\SampleUI.cpp" />
+    <ClCompile Include="Engine\UI\UIBase.cpp" />
+    <ClCompile Include="Engine\UI\UIBox.cpp" />
+    <ClCompile Include="Engine\UI\UIBuilder.cpp" />
+    <ClCompile Include="Engine\UI\UIBuilderFactory.cpp" />
+    <ClCompile Include="Engine\UI\UIElement.cpp" />
+    <ClCompile Include="Engine\WorldObject\WorldActor.cpp" />
+    <ClCompile Include="Engine\WorldObject\WorldObject.cpp" />
+    <ClCompile Include="Engine\Inventory\Tests\Joe\MoneyCountTest.cpp" />
+    <ClCompile Include="Engine\Inventory\Tests\Joe\ShopInventoryTests.cpp" />
+    <ClCompile Include="ImageBox.cpp" />
+    <ClCompile Include="Label.cpp" />
+    <ClCompile Include="Engine\Inventory\InventoryUI.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Engine\Source.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Graphics\Renderer\Renderer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Graphics\Renderer\SDLSetup.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-<<<<<<< HEAD
-    <ClCompile Include="Engine\Graphics\Image.cpp">
-=======
-    <ClCompile Include="Engine\Inventory\Inventory.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Inventory\ItemSystem\Item.cpp">
->>>>>>> origin/ui
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Inventory\Effects\Examples\StaminaEffect.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Inventory\Effects\Examples\HealthEffect.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Inventory\Effects\Examples\DamageBuffEffect.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Inventory\ShopInventory.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Inventory\PlayerInventory.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Inventory\ItemSystem\Consumable.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Inventory\ItemSystem\Equippable.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Inventory\ItemSystem\Switchable.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Inventory\ItemSystem\UsableItem.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Inventory\ItemSystem\MoneyItem.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Inventory\LootableInventory.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Inventory\ItemSystem\ItemDatabase.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\WorldObject\WorldActor.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\WorldObject\WorldObject.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Inventory\ItemSystem\Item.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Inventory\Inventory.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Inventory\Tests\Joe\MoneyCountTest.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Inventory\Tests\Joe\ShopInventoryTests.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\UI\UIElement.cpp">
-      <Filter>Source Files\UI</Filter>
-    </ClCompile>
-    <ClCompile Include="Label.cpp">
-      <Filter>Source Files\UI</Filter>
-    </ClCompile>
-    <ClCompile Include="ButtonTexture.cpp">
-      <Filter>Source Files\UI</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\UI\UIBuilder.cpp">
-      <Filter>Source Files\UI</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\UI\SampleUI.cpp">
-      <Filter>Source Files\UI</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\UI\UIBox.cpp">
-      <Filter>Source Files\UI</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\UI\UIBase.cpp">
-      <Filter>Source Files\UI</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\UI\UIBuilderFactory.cpp">
-      <Filter>Source Files\UI</Filter>
-    </ClCompile>
-    <ClCompile Include="ImageBox.cpp">
-      <Filter>Source Files\UI</Filter>
-    </ClCompile>
+    <ClInclude Include="ButtonTexture.h" />
+    <ClInclude Include="Engine\DataManagement\AssetLoader.h" />
+    <ClInclude Include="Engine\DataManagement\FontLoader.h" />
+    <ClInclude Include="Engine\DataManagement\JsonArray.h" />
+    <ClInclude Include="Engine\DataManagement\JsonBase.h" />
+    <ClInclude Include="Engine\DataManagement\JsonFacade.h" />
+    <ClInclude Include="Engine\DataManagement\JsonHandler.h" />
+    <ClInclude Include="Engine\DataManagement\JsonObject.h" />
+    <ClInclude Include="Engine\DataManagement\JsonReader.h" />
+    <ClInclude Include="Engine\DataManagement\JsonValue.h" />
+    <ClInclude Include="Engine\DataManagement\JsonWriter.h" />
+    <ClInclude Include="Engine\DataManagement\KKCReader.h" />
+    <ClInclude Include="Engine\DataManagement\TextFileReadWrite.h" />
+    <ClInclude Include="Engine\Graphics\Images\Animation.h" />
+    <ClInclude Include="Engine\Inventory\Effects\Examples\DamageBuffEffect.h" />
+    <ClInclude Include="Engine\Inventory\Effects\Effect.h" />
+    <ClInclude Include="Engine\Graphics\Colour.h" />
+    <ClInclude Include="Engine\Graphics\Images\Image.h" />
+    <ClInclude Include="Engine\Graphics\Renderer\Renderer.h" />
+    <ClInclude Include="Engine\Graphics\Renderer\SDLSetup.h" />
+    <ClInclude Include="Engine\Inventory\Effects\Examples\StaminaEffect.h" />
+    <ClInclude Include="Engine\Inventory\Effects\Examples\HealthEffect.h" />
+    <ClInclude Include="Engine\Inventory\Inventory.h" />
+    <ClInclude Include="Engine\Inventory\ItemSystem\Consumable.h" />
+    <ClInclude Include="Engine\Inventory\ItemSystem\EquipmentSlots.h" />
+    <ClInclude Include="Engine\Inventory\ItemSystem\Equippable.h" />
+    <ClInclude Include="Engine\Inventory\ItemSystem\Item.h" />
+    <ClInclude Include="Engine\Inventory\ItemSystem\Switchable.h" />
+    <ClInclude Include="Engine\Inventory\ItemSystem\UsableItem.h" />
+    <ClInclude Include="Engine\Inventory\LootableInventory.h" />
+    <ClInclude Include="Engine\Inventory\PlayerInventory.h" />
+    <ClInclude Include="Engine\Inventory\ShopInventory.h" />
+    <ClInclude Include="Engine\Inventory\ItemSystem\MoneyItem.h" />
+    <ClInclude Include="Engine\Inventory\ItemSystem\ItemDatabase.h" />
+    <ClInclude Include="Engine\Level\Level.h" />
+    <ClInclude Include="Engine\Level\Tile.h" />
+    <ClInclude Include="Engine\Level\TileBase.h" />
+    <ClInclude Include="Engine\WorldObject\WorldActor.h" />
+    <ClInclude Include="Engine\WorldObject\WorldObject.h" />
+    <ClInclude Include="Engine\Inventory\Tests\Joe\MoneyCountTest.h" />
+    <ClInclude Include="Engine\Inventory\Tests\Joe\ShopInventoryTests.h" />
+    <ClInclude Include="Engine\UI\AnchorTypes.h" />
+    <ClInclude Include="Engine\UI\SampleUI.h" />
+    <ClInclude Include="Engine\UI\UIBase.h" />
+    <ClInclude Include="Engine\UI\UIBox.h" />
+    <ClInclude Include="Engine\UI\UIBuilder.h" />
+    <ClInclude Include="Engine\UI\UIBuilderFactory.h" />
+    <ClInclude Include="Engine\UI\UIElement.h" />
+    <ClInclude Include="ImageBox.h" />
+    <ClInclude Include="Label.h" />
+    <ClInclude Include="Engine\Inventory\InventoryUI.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Engine\Graphics\Renderer\Renderer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Graphics\Renderer\SDLSetup.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Graphics\Image.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Graphics\Colour.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Inventory\Effects\Effect.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Inventory\Effects\Examples\StaminaEffect.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Inventory\Effects\Examples\HealthEffect.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Inventory\Effects\Examples\DamageBuffEffect.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Inventory\ShopInventory.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Inventory\PlayerInventory.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Inventory\ItemSystem\Consumable.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Inventory\ItemSystem\EquipmentSlots.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Inventory\ItemSystem\Equippable.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Inventory\ItemSystem\Switchable.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Inventory\ItemSystem\UsableItem.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Inventory\ItemSystem\MoneyItem.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Inventory\LootableInventory.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Inventory\ItemSystem\ItemDatabase.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\WorldObject\WorldActor.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\WorldObject\WorldObject.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Inventory\ItemSystem\Item.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Inventory\Inventory.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Inventory\Tests\Joe\MoneyCountTest.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-<<<<<<< HEAD
-    <ClInclude Include="Engine\Inventory\Tests\Joe\ShopInventoryTests.h">
-=======
-    <ClInclude Include="Engine\Inventory\Inventory.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Inventory\ItemSystem\Item.h">
->>>>>>> origin/ui
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\UI\UIElement.h">
-      <Filter>Header Files\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="Label.h">
-      <Filter>Header Files\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="ButtonTexture.h">
-      <Filter>Header Files\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\UI\SampleUI.h">
-      <Filter>Header Files\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\UI\UIBox.h">
-      <Filter>Header Files\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\UI\UIBuilder.h">
-      <Filter>Header Files\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\UI\AnchorTypes.h">
-      <Filter>Header Files\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\UI\UIBase.h">
-      <Filter>Header Files\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\UI\UIBuilderFactory.h">
-      <Filter>Header Files\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="ImageBox.h">
-      <Filter>Header Files\UI</Filter>
-    </ClInclude>
+    <None Include="ClassDiagram.cd" />
+    <None Include="ClassDiagram1.cd" />
+    <None Include="Engine\DataManagement\Fruits.json" />
   </ItemGroup>
 </Project>

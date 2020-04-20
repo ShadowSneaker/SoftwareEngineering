@@ -63,6 +63,7 @@
     <ClCompile Include="Engine\Inventory\Tests\Joe\MoneyCountTest.cpp" />
     <ClCompile Include="Engine\Inventory\Tests\Joe\ShopInventoryTests.cpp" />
     <ClCompile Include="ImageBox.cpp" />
+    <ClCompile Include="Engine\Inventory\InventoryUI.cpp" />
     <ClCompile Include="Label.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -115,6 +116,7 @@
     <ClInclude Include="Engine\UI\UIBuilderFactory.h" />
     <ClInclude Include="Engine\UI\UIElement.h" />
     <ClInclude Include="ImageBox.h" />
+    <ClInclude Include="Engine\Inventory\InventoryUI.h" />
     <ClInclude Include="Label.h" />
   </ItemGroup>
   <ItemGroup>
