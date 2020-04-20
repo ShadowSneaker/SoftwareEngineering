@@ -60,10 +60,13 @@
     <ClCompile Include="Engine\UI\UIElement.cpp" />
     <ClCompile Include="Engine\WorldObject\WorldActor.cpp" />
     <ClCompile Include="Engine\WorldObject\WorldObject.cpp" />
+<<<<<<< HEAD
     <ClCompile Include="Engine\Inventory\Tests\Joe\MoneyCountTest.cpp" />
     <ClCompile Include="Engine\Inventory\Tests\Joe\ShopInventoryTests.cpp" />
+=======
     <ClCompile Include="ImageBox.cpp" />
     <ClCompile Include="Label.cpp" />
+>>>>>>> origin/ui
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ButtonTexture.h" />
@@ -100,6 +103,7 @@
     <ClInclude Include="Engine\Inventory\ShopInventory.h" />
     <ClInclude Include="Engine\Inventory\ItemSystem\MoneyItem.h" />
     <ClInclude Include="Engine\Inventory\ItemSystem\ItemDatabase.h" />
+<<<<<<< HEAD
     <ClInclude Include="Engine\Level\Level.h" />
     <ClInclude Include="Engine\Level\Tile.h" />
     <ClInclude Include="Engine\Level\TileBase.h" />
@@ -107,6 +111,7 @@
     <ClInclude Include="Engine\WorldObject\WorldObject.h" />
     <ClInclude Include="Engine\Inventory\Tests\Joe\MoneyCountTest.h" />
     <ClInclude Include="Engine\Inventory\Tests\Joe\ShopInventoryTests.h" />
+=======
     <ClInclude Include="Engine\UI\AnchorTypes.h" />
     <ClInclude Include="Engine\UI\SampleUI.h" />
     <ClInclude Include="Engine\UI\UIBase.h" />
@@ -114,8 +119,11 @@
     <ClInclude Include="Engine\UI\UIBuilder.h" />
     <ClInclude Include="Engine\UI\UIBuilderFactory.h" />
     <ClInclude Include="Engine\UI\UIElement.h" />
+    <ClInclude Include="Engine\WorldObject\WorldActor.h" />
+    <ClInclude Include="Engine\WorldObject\WorldObject.h" />
     <ClInclude Include="ImageBox.h" />
     <ClInclude Include="Label.h" />
+>>>>>>> origin/ui
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
