@@ -121,5 +121,8 @@ public:
 
 
 	// Returns the size of the window.
-	INLINE SVector2i GetWindowSize() const { Setup->WindowSize; }
+	INLINE SVector2i GetWindowSize() const { return Setup->WindowSize; }
+
+	//Returns the SDL renderer
+	INLINE SDL_Renderer* GetSDLRenderer() const { return Setup->GetRenderer(); }
 };
