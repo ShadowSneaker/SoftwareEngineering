@@ -2,7 +2,7 @@
 #pragma warning(disable : 26812)
 
 #include "SDLSetup.h"
-#include "..\Image.h"
+#include "../Images/Image.h"
 #include <map>
 #include <vector>
 #include <SDL.h>
@@ -13,9 +13,16 @@
 // 
 class CRenderer
 {
+public:
+	/// Static Properties
+
+	static CRenderer* Instance;
+
+
+
 private:
 	/// Properties
-	CSDLSetup* Setup;
+	CSDLSetup* Setup{ nullptr };
 
 	// A reference to all loaded textures.
 	// Used to keep one reference of all texture types.
@@ -93,6 +100,7 @@ public:
 
 
 
+
 	/// Setters
 
 	void SetBackgroundColour(const SColour& Colour);
@@ -107,4 +115,11 @@ private:
 	// Returns the file built filepath of an inputted file.
 	INLINE std::string GetPath(const std::string& Path, const bool& UseDefaultPath = true) const { return std::string{ (UseDefaultPath) ? "" + Path : Path }; }
 
+
+public:
+	SImageInfo GetImage(const std::string& Path);
+
+
+	// Returns the size of the window.
+	INLINE SVector2i GetWindowSize() const { Setup->WindowSize; }
 };

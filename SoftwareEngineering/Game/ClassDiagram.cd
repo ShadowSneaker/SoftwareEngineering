@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Level">
+    <Position X="4" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AACBAAAAAAAAAAAAAAAAAAAAAgEAAAQBRAABAABAAAA=</HashCode>
+      <FileName>Engine\Level\Level.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CRenderer">
+    <Position X="0.75" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>ABgAAgAASAAAERBAAAACAAEQAAAiQBAAQQQAACBCAAA=</HashCode>
+      <FileName>Engine\Graphics\Renderer\Renderer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="Tile">
+    <Position X="6.75" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAIQEQAAAAAAiAAIAAAAAAoQEAEAAIAAAAAAACAYAQQ=</HashCode>
+      <FileName>Engine\Level\Level.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
