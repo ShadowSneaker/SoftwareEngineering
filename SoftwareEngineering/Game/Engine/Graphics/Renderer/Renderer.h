@@ -157,4 +157,8 @@ public:
 
 	// Returns the base information of the main monitor.
 	INLINE SDL_DisplayMode GetScreenInfo() const { return Setup->GetDisplayMode(); }
+
+	// returns the SDL Renderer
+	INLINE SDL_Renderer* GetSDLRenderer() const { return Setup->GetRenderer(); }
+
 };
