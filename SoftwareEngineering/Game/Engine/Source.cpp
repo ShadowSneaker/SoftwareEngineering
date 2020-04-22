@@ -14,20 +14,28 @@ int main(int argc, char** argv)
 	TTime* Time{ new TTime{} };
 
 	CRenderer* Renderer{ new CRenderer() };
-	Renderer->SetBackgroundColour(SColour::DarkGray());
+	Renderer->SetBackgroundColour(SColour::Black());
 	
-	Level* lvl = new Level("Content/LevelFile/File.txt",0,100,99);
-	lvl->AddTilesToRenderer(Renderer);
-	
+
+	Renderer->SetMainCamera(TheCamera);
 
 	CAnimation* Image{ new CAnimation() };
 	Image->SetImage("Content/Images/Anim.png");
-	Renderer->AddImage(Image);
 
-	Image->SetCellCount(1, 6);
+	//CImage* TheImage{ new CImage() };
+	//TheImage->SetImage("Content/Images/HappyBoi.png");
+	//TheImage->Transform.Location = 300.0f;
+
+
+	TheCamera->SetCameraPosition(300.0f,300.0f);
+
+	Image->SetCellCount(1, 4);
 	Image->Transform.Location = 300.0f;
-	Image->Speed = 0.1f;
+	//Image->ReverseFromEnd();
+	//Image->Stop();
 	Image->Transform.Scale = 1.0f;
+	Image->Pivot = Image->GetCellCenter();
+	
 
 	SDL_Event* Event{ new SDL_Event{} };
 
@@ -36,8 +44,25 @@ int main(int argc, char** argv)
 	int i = 1;
 	item->SetName("Item " + std::to_string(i));
 
+	//float MovedLocation = 340.0f;
+	//TheImage->Transform.Location = MovedLocation;
+
+	
+
 	while (Event->type != SDL_QUIT)
 	{
+		Timer += TTime::DeltaTime;
+		if (Timer > 2.0f && !Bop)
+		{
+			Timer = 0.0f;
+			Bop = true;
+			//if (Image->IsPlaying()) Image->ReverseFromEnd();
+			//Image->ReverseFromEnd();
+
+			
+		}
+		
+		//Image->AnimationTestFunction();
 		Time->Update();
 		
 		inventory->Draw(Renderer);

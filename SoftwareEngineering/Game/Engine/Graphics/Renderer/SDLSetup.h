@@ -74,5 +74,6 @@ public:
 	// Returns the created renderer reference.
 	INLINE SDL_Renderer* GetRenderer() const { return Renderer; }
 
+	// Returns the window data to be used for the window size.
 	uint32 GetWindowFlags() const;
 };
