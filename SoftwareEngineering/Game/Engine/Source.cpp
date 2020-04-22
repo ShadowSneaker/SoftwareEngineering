@@ -3,7 +3,8 @@
 #include "Graphics/Images/Animation.h"
 #include "System/Time.h"
 #include "Level/Level.h"
-
+#include "Inventory/Inventory.h"
+#include "Inventory/ItemSystem/Item.h"
 
 
 int main(int argc, char** argv)
@@ -15,7 +16,6 @@ int main(int argc, char** argv)
 	CRenderer* Renderer{ new CRenderer() };
 	Renderer->SetBackgroundColour(SColour::DarkGray());
 	
-
 	Level* lvl = new Level("Content/LevelFile/File.txt",0,100,99);
 	lvl->AddTilesToRenderer(Renderer);
 	
@@ -31,11 +31,26 @@ int main(int argc, char** argv)
 
 	SDL_Event* Event{ new SDL_Event{} };
 
+	Inventory* inventory = new Inventory();
+	auto item = new Item();
+	int i = 1;
+	item->SetName("Item " + std::to_string(i));
 
 	while (Event->type != SDL_QUIT)
 	{
 		Time->Update();
+		
+		inventory->Draw(Renderer);
+
 		Renderer->DrawAllImages();
+
+		if(Event->type == SDL_KEYDOWN)
+		{
+			item->SetName("Item " + std::to_string(i));
+			inventory->AddItem(item->Clone());
+			i++;
+		}
+		
 		SDL_PollEvent(Event);
 	}
 

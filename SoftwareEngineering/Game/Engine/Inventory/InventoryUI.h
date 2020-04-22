@@ -1,16 +1,22 @@
 #pragma once
 #include "../UI/UIBase.h"
-#include "../Graphics/Renderer/Renderer.h"
+
+class Inventory;
+class CRenderer;
 
 class InventoryUI : UIBase
 {
 public:
-	InventoryUI(CRenderer* renderer);
+	InventoryUI(CRenderer* renderer, Inventory* inventory);
 	void update() override;
 
 	void Draw();
 
 	void AddElement(UIElement* element) { addElement(element); }
 	BuilderFactory* GetUIFactory() { return factory; }
+
+	virtual void UpdateElements();
+private:
+	Inventory* m_inventory;
 };
 

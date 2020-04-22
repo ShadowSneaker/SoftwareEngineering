@@ -12,7 +12,12 @@ Inventory::~Inventory()
 		delete m_items[i];
 	}
 	m_items.clear();
-	delete m_inventoryUI;
+	
+	if (m_inventoryUI) 
+	{
+		delete m_inventoryUI;
+		m_inventoryUI = nullptr;
+	}
 }
 
 void Inventory::AddItem(Item* item)
@@ -31,6 +36,10 @@ void Inventory::AddItem(Item* item)
 	item->UpdateOwner(this);
 	item->OnAdded();
 	OnItemAdded(item);
+	
+	if(m_inventoryUI)
+		m_inventoryUI->UpdateElements();
+	
 }
 
 void Inventory::RemoveItem(Item* item)
@@ -59,6 +68,9 @@ void Inventory::RemoveItem(Item* item)
 	item->UpdateOwner(nullptr);
 	item->OnRemoved();
 	OnItemRemoved(item);
+	
+	if (m_inventoryUI)
+		m_inventoryUI->UpdateElements();
 }
 
 bool Inventory::ContainsItem(Item* item)
@@ -105,8 +117,8 @@ void Inventory::Draw(CRenderer* renderer)
 {
 	if (m_inventoryUI == nullptr) 
 	{
-		m_inventoryUI = new InventoryUI(renderer);
-		UpdateUIElements();
+		m_inventoryUI = new InventoryUI(renderer, this);
+		m_inventoryUI->UpdateElements();
 	}
 	m_inventoryUI->Draw();
 }
@@ -124,14 +136,4 @@ WorldObject* Inventory::GetOwner()
 int Inventory::GetMaxSlots()
 {
 	return m_maxSlots;
-}
-
-void Inventory::UpdateUIElements()
-{
-	UILabelBuilder labelbuilder = *(UILabelBuilder*)m_inventoryUI->GetUIFactory()->getBuilder<Label>("Label");
-	for (int i = 0; i < GetItems().size(); i++)
-	{
-		auto item = GetItems()[i];
-		m_inventoryUI->AddElement(labelbuilder.withText(item->GetName()).withPosition(0, i * 50).build());
-	}
 }

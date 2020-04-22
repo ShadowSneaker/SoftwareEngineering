@@ -31,16 +31,14 @@ public:
 	int		CountMoney();	// Need to create money item.
 
 	void	Draw(CRenderer* renderer);
-
-protected:
-
+	
 	std::vector<Item*>	GetItems();
 	WorldObject*		GetOwner();
 	int					GetMaxSlots();
 
-	void virtual UpdateUIElements();
+
+protected:
 
 	virtual void OnItemAdded(Item* item) {};
 	virtual void OnItemRemoved(Item* item) {};
-
 };
