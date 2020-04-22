@@ -151,4 +151,10 @@ public:
 
 	// Returns the size of the window.
 	INLINE SVector2i GetWindowSize() const { return Setup->WindowSize; }
+
+	// Returns the size of the main monitor.
+	INLINE SVector2i GetScreenSize() const { return SVector2i{ Setup->GetDisplayMode().w, Setup->GetDisplayMode().h }; }
+
+	// Returns the base information of the main monitor.
+	INLINE SDL_DisplayMode GetScreenInfo() const { return Setup->GetDisplayMode(); }
 };
