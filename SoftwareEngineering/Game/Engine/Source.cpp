@@ -10,12 +10,14 @@
 int main(int argc, char** argv)
 {
 	// Temporary code, this should be changed!
+	// Temporary code, this should be changed!
 
 	TTime* Time{ new TTime{} };
 
 	CRenderer* Renderer{ new CRenderer() };
 	Renderer->SetBackgroundColour(SColour::Black());
-	
+
+	CCamera* TheCamera{ new CCamera() };
 
 	Renderer->SetMainCamera(TheCamera);
 
@@ -27,7 +29,7 @@ int main(int argc, char** argv)
 	//TheImage->Transform.Location = 300.0f;
 
 
-	TheCamera->SetCameraPosition(300.0f,300.0f);
+	TheCamera->SetCameraPosition(300.0f, 300.0f);
 
 	Image->SetCellCount(1, 4);
 	Image->Transform.Location = 300.0f;
@@ -35,9 +37,12 @@ int main(int argc, char** argv)
 	//Image->Stop();
 	Image->Transform.Scale = 1.0f;
 	Image->Pivot = Image->GetCellCenter();
-	
+
 
 	SDL_Event* Event{ new SDL_Event{} };
+
+	float Timer = 0.0f;
+	bool Bop = false;
 
 	Inventory* inventory = new Inventory();
 	auto item = new Item();
