@@ -149,11 +149,10 @@ int main(int argc, char** argv)
 		}
 
 
-			
-		}
+
 		
 		//Image->AnimationTestFunction();
-		Time->Update();
+		//Time->Update();
 		Renderer->DrawAllImages();
 		//TheImage->SetColour(255, 0, 0); // sets it to red
 		//TheImage->TestImageColour(255, 0, 0); // tests if its red

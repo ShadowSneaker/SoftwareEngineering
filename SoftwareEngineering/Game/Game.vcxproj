@@ -22,6 +22,11 @@
     <ClCompile Include="Engine\DataManagement\AssetLoader.cpp" />
     <ClCompile Include="Engine\DataManagement\JsonHandler.cpp" />
     <ClCompile Include="Engine\Graphics\Images\Animation.cpp" />
+    <ClCompile Include="Engine\Input\ControllerInput.cpp" />
+    <ClCompile Include="Engine\Input\InputController.cpp" />
+    <ClCompile Include="Engine\Input\InputManager.cpp" />
+    <ClCompile Include="Engine\Input\KeyboardInput.CPP" />
+    <ClCompile Include="Engine\Input\MouseInput.cpp" />
     <ClCompile Include="Engine\Inventory\Effects\Examples\DamageBuffEffect.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
@@ -92,7 +97,10 @@
     <ClInclude Include="Engine\DataManagement\JsonHandler.h" />
     <ClInclude Include="Engine\Graphics\Images\Animation.h" />
     <ClInclude Include="Engine\Input\ControllerInput.h" />
+    <ClInclude Include="Engine\Input\InputController.h" />
     <ClInclude Include="Engine\Input\InputManager.h" />
+    <ClInclude Include="Engine\Input\KeyboardInput.h" />
+    <ClInclude Include="Engine\Input\MouseInput.h" />
     <ClInclude Include="Engine\Inventory\Effects\Examples\DamageBuffEffect.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
@@ -167,6 +175,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Engine\DataManagement\Fruits.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Engine\Input\gamecontrollerdb.txt.txt" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
