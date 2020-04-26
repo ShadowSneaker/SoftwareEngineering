@@ -14,15 +14,15 @@
 
 SDL_Event* Event{ new SDL_Event{} };
 InputManager* inputManager = new InputManager();
-CImage* Image{ new CImage() };
-CImage* Image2{ new CImage() };
+//CImage* Image{ new CImage() };
+//CImage* Image2{ new CImage() };
 
 int ControllerThread(void* threadData)
 {
 
 	inputManager->GetController()->ReceiveEvent(Event);
 	inputManager->GetController()->CalculateJSAngle(inputManager->GetController()->xDirection, inputManager->GetController()->yDirection);
-	inputManager->GetController()->MoveImage(Image2);
+	//inputManager->GetController()->MoveImage(Image);
 
 	return 0;
 }
@@ -56,9 +56,9 @@ int main(int argc, char** argv)
 
 	Renderer->SetBackgroundColour(SColour::DarkGray());
 	Renderer->SetImage(Image, "Content/Images/HappyBoi.png", false);
-	Renderer->SetImage(Image2, "Content/Images/HappyBoi2.png", false);
+	//Renderer->SetImage(Image2, "Content/Images/HappyBoi2.png", false);
 	Renderer->AddImage(Image);
-	Renderer->AddImage(Image2);
+	//Renderer->AddImage(Image2);
 
 
 	Image->SetCellCount(1, 4);
@@ -80,8 +80,8 @@ int main(int argc, char** argv)
 
 	
 
-	Image2->Transform.Location = 300.0f;
-	Image2->SetColour(255, 255, 0, 255);
+	/*Image2->Transform.Location = 300.0f;
+	Image2->SetColour(255, 255, 0, 255);*/
 	//-----------------------------------MOUSE STUFF--------------------------//
 	//how much the mouse wheel affects stuff
 	inputManager->GetMouse()->SetWheelStrength(100);
