@@ -91,6 +91,8 @@
     <ClInclude Include="Engine\DataManagement\AssetLoader.h" />
     <ClInclude Include="Engine\DataManagement\JsonHandler.h" />
     <ClInclude Include="Engine\Graphics\Images\Animation.h" />
+    <ClInclude Include="Engine\Input\ControllerInput.h" />
+    <ClInclude Include="Engine\Input\InputManager.h" />
     <ClInclude Include="Engine\Inventory\Effects\Examples\DamageBuffEffect.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
