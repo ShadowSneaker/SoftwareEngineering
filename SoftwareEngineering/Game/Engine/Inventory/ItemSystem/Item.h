@@ -18,9 +18,7 @@ private:
 
 	Inventory* m_owner = nullptr;
 	
-protected:
-	void SetIsStackable(bool stackable) { m_stackable = stackable; }
-	void SetIsQuestItem(bool isQuestItem) { m_isQuestItem = isQuestItem; }
+
 	
 public:
 	
@@ -36,6 +34,8 @@ public:
 	void SetWeight(int weight) { m_weight = weight; }
 	int GetValue()const { return m_value; }
 	void SetValue(int value) { m_value = value; }
+	void SetIsStackable(bool stackable) { m_stackable = stackable; }
+	void SetIsQuestItem(bool isQuestItem) { m_isQuestItem = isQuestItem; }
 
 	std::string GetName() { return m_name; }
 	void SetName(std::string name) { m_name = name; }

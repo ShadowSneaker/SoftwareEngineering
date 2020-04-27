@@ -31,7 +31,7 @@ std::string KKCReader::ReadValue(std::string object, std::string key)
 		auto b = object.find_first_of('"', a + 2);
 
 
-		std::cout << object.substr(a + 2, b - 1 - a) << std::endl;
+		return object.substr(a + 2, b - 1 - a);
 	}
 	return std::string();
 }
