@@ -31,7 +31,7 @@ int main(int argc, char** argv)
 
 	TheCamera->SetCameraPosition(300.0f, 300.0f);
 
-	Image->SetCellCount(1, 4);
+	Image->SetCellCount(1, 5);
 	Image->Transform.Location = 300.0f;
 	//Image->ReverseFromEnd();
 	//Image->Stop();
@@ -51,7 +51,10 @@ int main(int argc, char** argv)
 
 	//float MovedLocation = 340.0f;
 	//TheImage->Transform.Location = MovedLocation;
-
+	//
+	//
+	Level* lvl = new Level("Content/LevelFile/File.txt", -128, 128, 99);
+	lvl->AddTilesToRenderer(Renderer);
 	
 
 	while (Event->type != SDL_QUIT)
@@ -69,11 +72,11 @@ int main(int argc, char** argv)
 		
 		//Image->AnimationTestFunction();
 		Time->Update();
-		
+
 		inventory->Draw(Renderer);
 
 		Renderer->DrawAllImages();
-
+		
 		if(Event->type == SDL_KEYDOWN)
 		{
 			item->SetName("Item " + std::to_string(i));
