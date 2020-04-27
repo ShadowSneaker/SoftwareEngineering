@@ -14,13 +14,14 @@ private:
 	// The total amount of images per row/column.
 	SVector2i CellSize{ 1 };
 
-	
-
 	// The total amount of frames in this animation.
 	uint TotalFrames{ 0 };
 
 	// The current timer before the next frame is displayed.
 	float Timer{ 0.0f };
+
+	// The offset of time when this animation was resumed.
+	float PauseTime{ 0.0f };
 
 protected:
 	// Determines if the animation is playing.
@@ -57,8 +58,11 @@ public:
 	// Updates the animation.
 	virtual void Update() override;
 
+	// Gets the frame point of an image.
 	virtual SDL_Rect GetCell() const override;
 
+	// Sets image based off of file path.
+	// @param Path - the filepath for the image being used.
 	virtual void SetImage(const std::string& Path) override;
 
 
@@ -80,11 +84,13 @@ public:
 	// Plays the animation in reverse, starting from the last frame index.
 	void ReverseFromEnd();
 
+	// a function to test what frame the animation is on
+	void AnimationTestFunction();
 
 
 	/// Setters
 
-	// Sets how manay frame tare in the animation.
+	// Sets how manay frame there are in the animation.
 	// @param Rows - The amount of frames there are in the Y axis.
 	// @param Columns - The amount of frames there are in the X axis.
 	void SetCellCount(const uint& Rows, const uint& Columns);
@@ -97,7 +103,6 @@ public:
 
 	/// Getters
 
-
 	// Returns true if the animtion is currently playing.
 	INLINE bool IsPlaying() const { return Playing; }
 
@@ -108,5 +113,5 @@ public:
 	INLINE SVector2i GetCellSize() const { return SVector2i{ Cell.w, Cell.h }; }
 
 	// Returns the position of the center of the displayed cell.
-	INLINE const SVector2i GetCellCenter() const { return 0; };
+	INLINE const SVector2i GetCellCenter() const { return (GetCellSize() * Transform.GetWorldScale()) / 2.0f; };
 };

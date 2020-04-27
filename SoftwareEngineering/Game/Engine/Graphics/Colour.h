@@ -57,6 +57,7 @@ public:
 	INLINE SColour(SVector2 Vector, uint8 InB, uint8 Alpha = 1.0f);
 
 
+
 	/// Operators
 
 	// Operator, Returns the result of this colour added by another colour.
@@ -501,9 +502,9 @@ INLINE bool SColour::operator>(const SColour& Other) const
 {
 	return
 	(
-		R > Other.R&&
-		G > Other.G&&
-		B > Other.B&&
+		R > Other.R &&
+		G > Other.G &&
+		B > Other.B &&
 		A > Other.A
 	);
 }
@@ -513,9 +514,9 @@ INLINE bool SColour::operator>(const uint8& Value) const
 {
 	return
 	(
-		R > Value&&
-		G > Value&&
-		B > Value&&
+		R > Value &&
+		G > Value &&
+		B > Value &&
 		A > Value
 	);
 }

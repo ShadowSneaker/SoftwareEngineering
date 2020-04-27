@@ -47,6 +47,7 @@
     <ClCompile Include="ImageBox.cpp" />
     <ClCompile Include="Label.cpp" />
     <ClCompile Include="Engine\Inventory\InventoryUI.cpp" />
+    <ClCompile Include="Engine\System\Camera.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ButtonTexture.h" />
@@ -100,6 +101,7 @@
     <ClInclude Include="ImageBox.h" />
     <ClInclude Include="Label.h" />
     <ClInclude Include="Engine\Inventory\InventoryUI.h" />
+    <ClInclude Include="Engine\System\Camera.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

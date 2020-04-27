@@ -1,5 +1,5 @@
 #include "Animation.h"
-//#include "../../System/Time.h"
+#include "../../System/Time.h"
 
 
 
@@ -26,11 +26,19 @@ void CAnimation::Update()
 {
 	if (Playing)
 	{
-		Timer += Speed * 0.5f; //TTime::DeltaTime;
-		FrameIndex = TMath::FloorInt(Timer) % (TotalFrames);
+		//float oldframe = FrameIndex;
+		//Timer += Speed * TTime::DeltaTime;
+		FrameIndex = TMath::FloorInt((TTime::Time - PauseTime ) * Speed * ((IsReversed()) ? -1.0f : 1.0f)) % TotalFrames;
 
-		if (!Reversed && !Loop && FrameIndex == TotalFrames) Stop();
-		else if (Reversed && !Loop && FrameIndex == 0) Stop();
+		//printf("%f\n", (TTime::Time - PauseTime) * Speed * ((IsReversed()) ? -1.0f : 1.0f));
+		//if (oldframe != FrameIndex)
+		//	AnimationTestFunction();
+
+
+		if (!IsReversed() && !Loop && FrameIndex == TotalFrames) Stop();
+		else if (IsReversed() && !Loop && FrameIndex == 0) Stop();
+
+		
 	}
 }
 
@@ -59,8 +67,13 @@ void CAnimation::SetImage(const std::string& Path)
 
 void CAnimation::Play()
 {
-	Reversed = false;
-	Playing = true;
+	if (!Playing)
+	{
+		float Temp = PauseTime;
+		PauseTime = TTime::Time - Temp;
+		if (IsReversed()) Reverse();
+		Playing = true;
+	}
 }
 
 
@@ -72,22 +85,30 @@ void CAnimation::Stop()
 
 void CAnimation::Reverse()
 {
+	//Speed *= -1.0f;
+	float Temp = (FrameIndex) / -Speed;
+	PauseTime = TTime::Time - Temp;
+
 	Reversed = !Reversed;
-	Playing = true;
 }
 
 
 void CAnimation::PlayFromStart()
 {
-	FrameIndex = 0;
+	PauseTime = TTime::Time;
+	Reversed = false;
 	Play();
 }
 
 
 void CAnimation::ReverseFromEnd()
 {
-	FrameIndex = TotalFrames;
+	//Speed *= -1.0f;
+	//FrameIndex = TotalFrames;
+
 	Reversed = true;
+	float Temp = (TotalFrames) / -Speed;
+	PauseTime = TTime::Time - Temp;
 	Playing = true;
 }
 
@@ -109,4 +130,9 @@ void CAnimation::SetCellCount(const SVector2i& InCells)
 	Cell.w = GetImageSize()[X] / CellSize[X];
 	Cell.h = GetImageSize()[Y] / CellSize[Y];
 	TotalFrames = (CellSize[X] * CellSize[Y]);
+}
+
+void CAnimation::AnimationTestFunction()
+{
+	printf("The Current Frame the animation is on --> Frame: %i\n", FrameIndex);
 }
