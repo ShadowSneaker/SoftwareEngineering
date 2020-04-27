@@ -17,6 +17,7 @@ public:
 
 	virtual void UpdateElements();
 private:
+	CRenderer* m_renderer;
 	Inventory* m_inventory;
 };
 

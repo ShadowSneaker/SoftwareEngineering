@@ -21,8 +21,17 @@
   <ItemGroup>
     <ClCompile Include="ButtonTexture.cpp" />
     <ClCompile Include="Engine\DataManagement\AssetLoader.cpp" />
+    <ClCompile Include="Engine\DataManagement\FontLoader.cpp" />
+    <ClCompile Include="Engine\DataManagement\JsonFacade.cpp" />
     <ClCompile Include="Engine\DataManagement\JsonHandler.cpp" />
+    <ClCompile Include="Engine\DataManagement\JsonObject.cpp" />
+    <ClCompile Include="Engine\DataManagement\JsonReader.cpp" />
+    <ClCompile Include="Engine\DataManagement\JsonWriter.cpp" />
+    <ClCompile Include="Engine\DataManagement\KKCReader.cpp" />
+    <ClCompile Include="Engine\DataManagement\TextFileReadWrite.cpp" />
     <ClCompile Include="Engine\Graphics\Images\Animation.cpp" />
+    <ClCompile Include="Engine\Input\InputController.cpp" />
+    <ClCompile Include="Engine\Input\KeyboardInput.CPP" />
     <ClCompile Include="Engine\Inventory\Effects\Examples\DamageBuffEffect.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
@@ -62,6 +71,9 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="Engine\Level\Level.cpp" />
+    <ClCompile Include="Engine\Level\Tile.cpp" />
+    <ClCompile Include="Engine\Level\TileBase.cpp" />
     <ClCompile Include="Engine\Source.cpp" />
     <ClCompile Include="Engine\Inventory\Effects\Examples\StaminaEffect.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
@@ -102,8 +114,20 @@
   <ItemGroup>
     <ClInclude Include="ButtonTexture.h" />
     <ClInclude Include="Engine\DataManagement\AssetLoader.h" />
+    <ClInclude Include="Engine\DataManagement\FontLoader.h" />
+    <ClInclude Include="Engine\DataManagement\JsonArray.h" />
+    <ClInclude Include="Engine\DataManagement\JsonBase.h" />
+    <ClInclude Include="Engine\DataManagement\JsonFacade.h" />
     <ClInclude Include="Engine\DataManagement\JsonHandler.h" />
+    <ClInclude Include="Engine\DataManagement\JsonObject.h" />
+    <ClInclude Include="Engine\DataManagement\JsonReader.h" />
+    <ClInclude Include="Engine\DataManagement\JsonValue.h" />
+    <ClInclude Include="Engine\DataManagement\JsonWriter.h" />
+    <ClInclude Include="Engine\DataManagement\KKCReader.h" />
+    <ClInclude Include="Engine\DataManagement\TextFileReadWrite.h" />
     <ClInclude Include="Engine\Graphics\Images\Animation.h" />
+    <ClInclude Include="Engine\Input\InputController.h" />
+    <ClInclude Include="Engine\Input\KeyboardInput.h" />
     <ClInclude Include="Engine\Inventory\Effects\Examples\DamageBuffEffect.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
@@ -172,7 +196,11 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </ClInclude>
+    <ClInclude Include="Engine\Level\Level.h" />
+    <ClInclude Include="Engine\Level\Tile.h" />
+    <ClInclude Include="Engine\Level\TileBase.h" />
     <ClInclude Include="Engine\System\Camera.h" />
+    <ClInclude Include="Engine\System\Time.h" />
     <ClInclude Include="Engine\WorldObject\WorldActor.h" />
     <ClInclude Include="Engine\WorldObject\WorldObject.h" />
     <ClInclude Include="Engine\Inventory\Tests\Joe\MoneyCountTest.h" />
@@ -190,6 +218,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Engine\DataManagement\Fruits.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Engine\Input\gamecontrollerdb.txt.txt" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
