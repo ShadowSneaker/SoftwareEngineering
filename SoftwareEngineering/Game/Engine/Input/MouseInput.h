@@ -1,6 +1,6 @@
 #pragma once
 #include <SDL.h>
-//Custom libraries that aren't mine
+//Custom libraries by other students
 #include "..//Graphics/Renderer/Renderer.h"
 #include <CopiriteMath/Datatypes/Transform.h>
 

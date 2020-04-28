@@ -15,7 +15,7 @@
 SDL_Event* Event{ new SDL_Event{} };
 InputManager* inputManager = new InputManager();
 //CImage* Image{ new CImage() };
-//CImage* Image2{ new CImage() };
+
 
 int ControllerThread(void* threadData)
 {
@@ -50,15 +50,15 @@ int main(int argc, char** argv)
 	//CImage* TheImage{ new CImage() };
 	//TheImage->SetImage("Content/Images/HappyBoi.png");
 	//TheImage->Transform.Location = 300.0f;
-
+	CImage* Image2{ new CImage() };
 
 	TheCamera->SetCameraPosition(300.0f,300.0f);
 
 	Renderer->SetBackgroundColour(SColour::DarkGray());
 	Renderer->SetImage(Image, "Content/Images/HappyBoi.png", false);
-	//Renderer->SetImage(Image2, "Content/Images/HappyBoi2.png", false);
+	Renderer->SetImage(Image2, "Content/Images/HappyBoi2.png", false);
 	Renderer->AddImage(Image);
-	//Renderer->AddImage(Image2);
+	Renderer->AddImage(Image2);
 
 
 	Image->SetCellCount(1, 4);
@@ -80,22 +80,22 @@ int main(int argc, char** argv)
 
 	
 
-	/*Image2->Transform.Location = 300.0f;
-	Image2->SetColour(255, 255, 0, 255);*/
+	Image2->Transform.Location = 300.0f;
+	Image2->SetColour(255, 255, 0, 255);
 	//-----------------------------------MOUSE STUFF--------------------------//
 	//how much the mouse wheel affects stuff
 	inputManager->GetMouse()->SetWheelStrength(100);
 	float cursor_Sensitivity = 1;
 	//makes the image the cursor
-	inputManager->GetMouse()->SetCursorImage(Image);//COMMENT IF YOU WANT TO USE MOUSE !ON_IMAGE
+	inputManager->GetMouse()->SetCursorImage(Image2);//COMMENT IF YOU WANT TO USE MOUSE !ON_IMAGE
 	SDL_ShowCursor(0);//switches cursor off
 
 
 	while (Event->type != SDL_QUIT)
 	{
-		Timer += TTime::DeltaTime;
-		if (Timer > 2.0f && !Bop)
-		{
+		//Timer += TTime::DeltaTime;
+		//if (Timer > 2.0f && !Bop)
+		//{
 
 			Timer = 0.0f;
 			Bop = true;
@@ -109,16 +109,16 @@ int main(int argc, char** argv)
 			inputManager->Update(Event);
 
 
-			if ((inputManager->GetMouse()->CheckMouse(Mouse_Button_Left) && (inputManager->GetMouse()->OnImage(Image))) || inputManager->GetMouse()->ImageSelected)
+			if ((inputManager->GetMouse()->CheckMouse(Mouse_Button_Left) && (inputManager->GetMouse()->OnImage(Image2))) || inputManager->GetMouse()->ImageSelected)
 			{
-				Image->SetColour(255, 0, 0, 255);
-				cursor_Sensitivity*=1.05;
-				//inputManager->GetMouse()->MoveImage(Image);
+				Image2->SetColour(255, 0, 0, 255);
+				//cursor_Sensitivity*=1.05;
+				inputManager->GetMouse()->MoveImage(Image2);
 			}
 			else if (inputManager->GetMouse()->CheckMouse(Mouse_Button_Left))
 			{
-				
-			}
+				Image2->SetColour(255, 0, 0, 255);
+			}				
 			else if (inputManager->GetMouse()->CheckMouse(Mouse_Button_Right) && inputManager->GetMouse()->OnImage(Image))
 			{
 				cursor_Sensitivity/=1.05;
@@ -142,11 +142,11 @@ int main(int argc, char** argv)
 				//std::cout << "Test" << std::endl;
 			}
 
-			inputManager->GetMouse()->SetMouseWheel(Image->Transform.Location.GetY());
+			//inputManager->GetMouse()->SetMouseWheel(Image->Transform.Location.GetY());
 			inputManager->GetMouse()->SetSensitivity(cursor_Sensitivity);
 			SDL_WaitThread(threadID, NULL);
 			Renderer->DrawAllImages();
-		}
+		//}
 
 
 

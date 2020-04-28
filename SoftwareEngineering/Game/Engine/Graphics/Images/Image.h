@@ -100,11 +100,11 @@ public:
 	// @param Colour - The red, green, blue and alpha components this image shoudl be multiplied with.
 	void SetColour(const SDL_Color& Colour);
 
-	//function used for testing the images location
-	void TestImageLocation(float ImageLocationX, float ImageLocationY);
+	////function used for testing the images location
+	//void TestImageLocation(float ImageLocationX, float ImageLocationY);
 
-	// a function that tests the images colour against the original
-	void TestImageColour(const uint8& Red, const uint8& Green, const uint8& Blue);
+	//// a function that tests the images colour against the original
+	//void TestImageColour(const uint8& Red, const uint8& Green, const uint8& Blue);
 
 	/// Getters
 
