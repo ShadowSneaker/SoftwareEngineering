@@ -28,7 +28,8 @@ int ControllerThread(void* threadData)
 }
 
 
-
+#include "UI/SampleUI.h"
+#include "../Label.h"
 
 int main(int argc, char** argv)
 {
@@ -37,12 +38,20 @@ int main(int argc, char** argv)
 	TTime* Time{ new TTime{} };
 
 	CRenderer* Renderer{ new CRenderer() };
+
 	Renderer->SetBackgroundColour(SColour::Black());
 	
 
 	CCamera* TheCamera{ new CCamera() };
 
 	Renderer->SetMainCamera(TheCamera);
+
+	SampleUI* ui = new SampleUI(Renderer);
+
+	TTF_Font* font = TTF_OpenFont("Content/Fonts/Roboto-Regular.ttf", 12);
+	if (font == NULL) {
+		std::cout << "Failed to load font" << std::endl;
+	}
 
 	CAnimation* Image{ new CAnimation() };
 	Image->SetImage("Content/Images/Anim.png");
@@ -153,13 +162,17 @@ int main(int argc, char** argv)
 		
 		//Image->AnimationTestFunction();
 		//Time->Update();
+		Renderer->Clear();
+		ui->drawAllElements();
 		Renderer->DrawAllImages();
+		ui->updateAllElements();
 		//TheImage->SetColour(255, 0, 0); // sets it to red
 		//TheImage->TestImageColour(255, 0, 0); // tests if its red
 		TheCamera->CameraTesterFunction(Image);
 
 		//TheImage->TestImageLocation(MovedLocation, MovedLocation);
 		//Renderer->RenderImagePixelTest(TheImage, 300, 300);
+
 		SDL_PollEvent(Event);
 	}
 

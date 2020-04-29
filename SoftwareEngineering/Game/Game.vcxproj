@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ButtonTexture.cpp" />
     <ClCompile Include="Engine\DataManagement\AssetLoader.cpp" />
     <ClCompile Include="Engine\DataManagement\JsonHandler.cpp" />
     <ClCompile Include="Engine\Graphics\Images\Animation.cpp" />
@@ -89,10 +90,19 @@
     </ClCompile>
     <ClCompile Include="Engine\System\Camera.cpp" />
     <ClCompile Include="Engine\System\Time.cpp" />
+    <ClCompile Include="Engine\UI\SampleUI.cpp" />
+    <ClCompile Include="Engine\UI\UIBase.cpp" />
+    <ClCompile Include="Engine\UI\UIBox.cpp" />
+    <ClCompile Include="Engine\UI\UIBuilder.cpp" />
+    <ClCompile Include="Engine\UI\UIBuilderFactory.cpp" />
+    <ClCompile Include="Engine\UI\UIElement.cpp" />
     <ClCompile Include="Engine\WorldObject\WorldActor.cpp" />
     <ClCompile Include="Engine\WorldObject\WorldObject.cpp" />
+    <ClCompile Include="ImageBox.cpp" />
+    <ClCompile Include="Label.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ButtonTexture.h" />
     <ClInclude Include="Engine\DataManagement\AssetLoader.h" />
     <ClInclude Include="Engine\DataManagement\JsonHandler.h" />
     <ClInclude Include="Engine\Graphics\Images\Animation.h" />
@@ -170,8 +180,17 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="Engine\System\Camera.h" />
+    <ClInclude Include="Engine\UI\AnchorTypes.h" />
+    <ClInclude Include="Engine\UI\SampleUI.h" />
+    <ClInclude Include="Engine\UI\UIBase.h" />
+    <ClInclude Include="Engine\UI\UIBox.h" />
+    <ClInclude Include="Engine\UI\UIBuilder.h" />
+    <ClInclude Include="Engine\UI\UIBuilderFactory.h" />
+    <ClInclude Include="Engine\UI\UIElement.h" />
     <ClInclude Include="Engine\WorldObject\WorldActor.h" />
     <ClInclude Include="Engine\WorldObject\WorldObject.h" />
+    <ClInclude Include="ImageBox.h" />
+    <ClInclude Include="Label.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Engine\DataManagement\Fruits.json" />

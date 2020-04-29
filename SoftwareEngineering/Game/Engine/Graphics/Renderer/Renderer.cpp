@@ -65,7 +65,6 @@ void CRenderer::DrawAllImages()
 {
 	std::sort(Images.begin(), Images.end(), IMAGE_ZORDER_SORTER());
 
-	Clear();
 	for (CImage* Image : Images)
 	{
 		if (Image->Enabled)
