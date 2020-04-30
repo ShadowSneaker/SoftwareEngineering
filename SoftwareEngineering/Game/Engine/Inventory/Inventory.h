@@ -13,7 +13,7 @@ private:
 	std::vector<Item*>	m_items;
 	WorldObject*		m_owner;
 
-	int					m_maxSlots;
+	int					m_maxSlots = 36;
 	InventoryUI*		m_inventoryUI;
 
 public:
