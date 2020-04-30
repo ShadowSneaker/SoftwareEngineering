@@ -21,6 +21,7 @@ SampleUI::SampleUI(CRenderer* renderer) : UIBase(renderer) {
 	addElement(label2);
 	addElement(label3);
 	//removeElement(box3);
+    //clearElements();
 }
 
 void SampleUI::update() {
