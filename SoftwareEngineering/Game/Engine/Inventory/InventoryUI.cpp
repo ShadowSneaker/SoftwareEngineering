@@ -20,8 +20,14 @@ void InventoryUI::Draw()
 	drawAllElements();
 }
 
+void InventoryUI::Clear()
+{
+	clearElements();
+}
+
 void InventoryUI::UpdateElements()
 {
+	Clear();
 	UILabelBuilder* labelbuilder = (UILabelBuilder*)GetUIFactory()->getBuilder<Label>("Label");
 	UIBoxBuilder* boxbuilder = (UIBoxBuilder*)factory->getBuilder<UIBox>("Box");
 

@@ -11,6 +11,7 @@ public:
 	void update() override;
 
 	void Draw();
+	void Clear();
 	
 	void AddElement(UIElement* element) { addElement(element); }
 	BuilderFactory* GetUIFactory() { return factory; }
