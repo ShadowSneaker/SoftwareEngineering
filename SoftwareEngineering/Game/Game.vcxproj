@@ -206,7 +206,6 @@
     <ClInclude Include="Engine\Level\Tile.h" />
     <ClInclude Include="Engine\Level\TileBase.h" />
     <ClInclude Include="Engine\System\Camera.h" />
->>>>>>>>> Temporary merge branch 2
     <ClInclude Include="Engine\WorldObject\WorldActor.h" />
     <ClInclude Include="Engine\WorldObject\WorldObject.h" />
     <ClInclude Include="Engine\Inventory\Tests\Joe\MoneyCountTest.h" />

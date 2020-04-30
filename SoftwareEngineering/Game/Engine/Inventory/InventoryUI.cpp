@@ -27,7 +27,7 @@ void InventoryUI::UpdateElements()
 
 	SVector2i screenSize = m_renderer->GetWindowSize();
 	
-	//AddElement(boxbuilder->withPosition((float)screenSize.X()/2.f - 400, (float)screenSize.Y() / 2.f - 200).withDimensions(800, 400).withColour({255,255,255,255}).build());
+	//AddElement(boxbuilder->withPosition((float)screenSize.X()/2.f - screenSize.X() / 4.f, (float)screenSize.Y() / 2.f - screenSize.Y()/4.f).withDimensions(screenSize.X()/2.f, screenSize.Y()/2.f).withColour({255,255,255,255}).build());
 
 	for (int i = 0; i < m_inventory->GetItems().size(); i++)
 	{

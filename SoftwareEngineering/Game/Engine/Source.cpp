@@ -49,7 +49,7 @@ int main(int argc, char** argv)
 
 	Renderer->SetMainCamera(TheCamera);
 
-	SampleUI* ui = new SampleUI(Renderer);
+	//SampleUI* ui = new SampleUI(Renderer);
 
 	TTF_Font* font = TTF_OpenFont("Content/Fonts/Roboto-Regular.ttf", 12);
 	if (font == NULL) {
@@ -102,6 +102,8 @@ int main(int argc, char** argv)
 	inputManager->GetMouse()->SetCursorImage(Image);//COMMENT IF YOU WANT TO USE MOUSE !ON_IMAGE
 	SDL_ShowCursor(0);//switches cursor off
 
+	Inventory* inventory = new Inventory();
+	Item* i = new Item();
 
 	while (Event->type != SDL_QUIT)
 	{
@@ -151,24 +153,29 @@ int main(int argc, char** argv)
 			if (inputManager->GetKeyboard()->IsKeyPressed(KEY_CONFIRM))
 			{
 				Image->SetColour(0, 0, 255, 255);
-				//std::cout << "Test" << std::endl;
 			}
-
 			inputManager->GetMouse()->SetMouseWheel(Image->Transform.Location.GetY());
 			inputManager->GetMouse()->SetSensitivity(cursor_Sensitivity);
 			SDL_WaitThread(threadID, NULL);
 			Renderer->DrawAllImages();
 		}
 
-
+		if(Event->type == SDL_KEYDOWN)
+		{
+			std::cout << "Adding item" << "\n";
+			auto cloned = i->Clone();
+			cloned->SetName("Item " + std::to_string(inventory->GetItems().size()));
+			inventory->AddItem(cloned);
+		}
 
 		
 		//Image->AnimationTestFunction();
 		//Time->Update();
 		Renderer->Clear();
-		ui->drawAllElements();
+		inventory->Draw(Renderer);
+		//ui->drawAllElements();
 		Renderer->DrawAllImages();
-		ui->updateAllElements();
+		//ui->updateAllElements();
 		//TheImage->SetColour(255, 0, 0); // sets it to red
 		//TheImage->TestImageColour(255, 0, 0); // tests if its red
 		TheCamera->CameraTesterFunction(Image);
@@ -179,5 +186,8 @@ int main(int argc, char** argv)
 		SDL_PollEvent(Event);
 	}
 
+	delete inventory;
+	delete i;
+	
 	return 1;
 }
