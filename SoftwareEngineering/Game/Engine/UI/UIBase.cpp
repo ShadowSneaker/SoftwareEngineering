@@ -37,3 +37,10 @@ void UIBase::updateAllElements() {
 		elements[i]->update();
 	}
 }
+
+void UIBase::clearElements() {
+	for (auto e : elements) {
+		delete e;
+	}
+	elements.clear();
+}

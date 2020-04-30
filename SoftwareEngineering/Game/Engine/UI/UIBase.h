@@ -16,6 +16,7 @@ public:
 	void addElement(UIElement* element);
 	void removeElement(UIElement* element);
 	void updateAllElements();
+	void clearElements();
 	virtual void update() = 0;
 protected:
 	BuilderFactory* factory;
