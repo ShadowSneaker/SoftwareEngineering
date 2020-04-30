@@ -3,7 +3,22 @@
 #include "ItemSystem/Item.h"
 #include "ItemSystem/MoneyItem.h"
 #include "..//WorldObject/WorldObject.h"
+#include "InventoryUI.h"
 
+Inventory::~Inventory()
+{
+	for (int i = 0; i < m_items.size(); i++)
+	{
+		delete m_items[i];
+	}
+	m_items.clear();
+	
+	if (m_inventoryUI) 
+	{
+		delete m_inventoryUI;
+		m_inventoryUI = nullptr;
+	}
+}
 
 void Inventory::AddItem(Item* item)
 {
@@ -16,12 +31,15 @@ void Inventory::AddItem(Item* item)
 	else
 	{
 		m_items.push_back(item);
-		item->IncrementStackSize();
 	}
 
 	item->UpdateOwner(this);
 	item->OnAdded();
 	OnItemAdded(item);
+	
+	if(m_inventoryUI)
+		m_inventoryUI->UpdateElements();
+	
 }
 
 void Inventory::RemoveItem(Item* item)
@@ -50,6 +68,9 @@ void Inventory::RemoveItem(Item* item)
 	item->UpdateOwner(nullptr);
 	item->OnRemoved();
 	OnItemRemoved(item);
+	
+	if (m_inventoryUI)
+		m_inventoryUI->UpdateElements();
 }
 
 bool Inventory::ContainsItem(Item* item)
@@ -86,10 +107,20 @@ int Inventory::CountMoney()
 	{
 		auto money = dynamic_cast<MoneyItem*>(m_items[i]);
 		if (money != nullptr)
-			count++;
+			count += money->GetStackSize();
 	}
 
 	return count;
+}
+
+void Inventory::Draw(CRenderer* renderer)
+{
+	if (m_inventoryUI == nullptr) 
+	{
+		m_inventoryUI = new InventoryUI(renderer, this);
+		m_inventoryUI->UpdateElements();
+	}
+	m_inventoryUI->Draw();
 }
 
 std::vector<Item*> Inventory::GetItems()
