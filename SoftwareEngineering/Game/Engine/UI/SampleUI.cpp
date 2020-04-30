@@ -5,7 +5,7 @@ SampleUI::SampleUI(CRenderer* renderer) : UIBase(renderer) {
 	UIBoxBuilder builder = *(UIBoxBuilder*)factory->getBuilder<UIBox>("Box");
 
 	UIBox* box = builder.withPosition(100, 30).withDimensions(100, 100).withColour({ 0xFF,0,0 }).build();
-	UIBox* box2 = builder.withParent(box).withPosition(0, 0).withDimensions(10, 10).withColour({ 0, 0xFF, 0 }).withAnchor(Anchor::CENTRE).build();
+	UIBox* box2 = builder.withParent(box).withPosition(0, 0).withDimensions(10, 10).withColour({ 0, 0xFF, 0 }).withAnchor(Anchor::CENTRE).withLayer(1).build();
 	UIBox* box3 = builder.withPosition(0, 0).withDimensions(50, 80).withColour({ 0, 0, 0xFF }).withAnchor(Anchor::BOTTOM_LEFT).build();
 
 	addElement(box);
@@ -20,6 +20,7 @@ SampleUI::SampleUI(CRenderer* renderer) : UIBase(renderer) {
 	addElement(label);
 	addElement(label2);
 	addElement(label3);
+	//removeElement(box3);
 }
 
 void SampleUI::update() {

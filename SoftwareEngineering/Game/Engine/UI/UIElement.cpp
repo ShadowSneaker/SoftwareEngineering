@@ -78,3 +78,11 @@ void UIElement::setPosition(float x, float y) {
 	offsetY = y;
 	applyAnchor();
 }
+
+void UIElement::setLayer(int layer) {
+	this->layer = layer;
+}
+
+int UIElement::getLayer() {
+	return layer;
+}

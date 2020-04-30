@@ -30,8 +30,11 @@
     <ClCompile Include="Engine\DataManagement\KKCReader.cpp" />
     <ClCompile Include="Engine\DataManagement\TextFileReadWrite.cpp" />
     <ClCompile Include="Engine\Graphics\Images\Animation.cpp" />
+    <ClCompile Include="Engine\Input\ControllerInput.cpp" />
     <ClCompile Include="Engine\Input\InputController.cpp" />
+    <ClCompile Include="Engine\Input\InputManager.cpp" />
     <ClCompile Include="Engine\Input\KeyboardInput.CPP" />
+    <ClCompile Include="Engine\Input\MouseInput.cpp" />
     <ClCompile Include="Engine\Inventory\Effects\Examples\DamageBuffEffect.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
@@ -126,8 +129,11 @@
     <ClInclude Include="Engine\DataManagement\KKCReader.h" />
     <ClInclude Include="Engine\DataManagement\TextFileReadWrite.h" />
     <ClInclude Include="Engine\Graphics\Images\Animation.h" />
+    <ClInclude Include="Engine\Input\ControllerInput.h" />
     <ClInclude Include="Engine\Input\InputController.h" />
+    <ClInclude Include="Engine\Input\InputManager.h" />
     <ClInclude Include="Engine\Input\KeyboardInput.h" />
+    <ClInclude Include="Engine\Input\MouseInput.h" />
     <ClInclude Include="Engine\Inventory\Effects\Examples\DamageBuffEffect.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
@@ -200,7 +206,7 @@
     <ClInclude Include="Engine\Level\Tile.h" />
     <ClInclude Include="Engine\Level\TileBase.h" />
     <ClInclude Include="Engine\System\Camera.h" />
-    <ClInclude Include="Engine\System\Time.h" />
+>>>>>>>>> Temporary merge branch 2
     <ClInclude Include="Engine\WorldObject\WorldActor.h" />
     <ClInclude Include="Engine\WorldObject\WorldObject.h" />
     <ClInclude Include="Engine\Inventory\Tests\Joe\MoneyCountTest.h" />

@@ -160,5 +160,4 @@ public:
 
 	// returns the SDL Renderer
 	INLINE SDL_Renderer* GetSDLRenderer() const { return Setup->GetRenderer(); }
-
 };

@@ -37,6 +37,11 @@ UIBoxBuilder& UIBoxBuilder::withParent(UIElement* parent) {
 	return *this;
 }
 
+UIBoxBuilder& UIBoxBuilder::withLayer(int layer) {
+	this->layer = layer;
+	return *this;
+}
+
 UIBox* UIBoxBuilder::build() {
 	UIBox* box = new UIBox(renderer, windowWidth, windowHeight);
 	box->setParent(parent);
@@ -45,16 +50,16 @@ UIBox* UIBoxBuilder::build() {
 	box->setPosition(x, y);
 	box->setColour(colour);
 	box->setImage(image);
+	box->setLayer(layer);
 	reset();
 	return box;
 }
 
 void UIBoxBuilder::reset() {
-	x = y = width = height = 0;
+	x = y = width = height = layer = 0;
 	colour = { 0,0,0 };
 	anchor = TOP_LEFT;
 	parent = nullptr;
-
 }
 
 UILabelBuilder::UILabelBuilder(SDL_Renderer* renderer, int windowWidth, int windowHeight) : renderer(renderer), windowWidth(windowWidth), windowHeight(windowHeight) {
@@ -103,6 +108,11 @@ UILabelBuilder& UILabelBuilder::withText(std::string text) {
 	return *this;
 }
 
+UILabelBuilder& UILabelBuilder::withLayer(int layer) {
+	this->layer = layer;
+	return *this;
+}
+
 Label* UILabelBuilder::build() {
 	Label* label = new Label(renderer, windowWidth, windowHeight);
 	label->setColour(colour);
@@ -115,12 +125,13 @@ Label* UILabelBuilder::build() {
 	label->setParent(parent);
 	label->setPosition(x, y);
 	label->setFont(fontPath, fontSize);
+	label->setLayer(layer);
 	reset();
 	return label;
 }
 
 void UILabelBuilder::reset() {
-	x = y = width = height = maxLength = fontSize = 0;
+	x = y = width = height = maxLength = fontSize = layer = 0;
 	colour = { 0,0,0 };
 	anchor = TOP_LEFT;
 	parent = nullptr;

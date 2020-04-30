@@ -14,6 +14,7 @@ public:
 	UIBase(CRenderer* renderer);
 	virtual void drawAllElements();
 	void addElement(UIElement* element);
+	void removeElement(UIElement* element);
 	void updateAllElements();
 	virtual void update() = 0;
 protected:

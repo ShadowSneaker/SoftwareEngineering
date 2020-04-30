@@ -21,6 +21,7 @@ private:
 	int windowWidth, windowHeight;
 	SDL_Color colour{1, 1, 1};
 	CImage image;
+	int layer;
 public:
 	UIBoxBuilder(SDL_Renderer* renderer, int windowWidth, int windowHeight);
 	UIBoxBuilder& withPosition(float x, float y);
@@ -29,6 +30,7 @@ public:
 	UIBoxBuilder& withImage(CImage image);
 	UIBoxBuilder& withAnchor(Anchor anchor);
 	UIBoxBuilder& withParent(UIElement* parent);
+	UIBoxBuilder& withLayer(int layer);
 	UIBox *build() override;
 	void reset() override;
 };
@@ -42,6 +44,7 @@ private:
 	int fontSize;
 	SDL_Color colour{ 1,1,1 };
 	std::string text;
+	int layer;
 public:
 	UILabelBuilder(SDL_Renderer* renderer, int windowWidth, int windowHeight);
 	UILabelBuilder& withPosition(float x, float y);
@@ -52,6 +55,7 @@ public:
 	UILabelBuilder& withParent(UIElement* parent);
 	UILabelBuilder& withFont(const char* path, int size);
 	UILabelBuilder& withText(std::string text);
+	UILabelBuilder& withLayer(int layer);
 	Label* build() override;
 	void reset() override;
 };

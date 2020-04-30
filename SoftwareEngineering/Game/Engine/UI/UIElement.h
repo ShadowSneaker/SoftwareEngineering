@@ -11,6 +11,7 @@ private:
 
 	//Offset values from the anchored position
 	float offsetX, offsetY;
+	int layer;
 public:
 	UIElement(SDL_Renderer* renderer, int windowWidth, int windowHeight);
 
@@ -28,6 +29,9 @@ public:
 	virtual void update() = 0;
 
 	void setPosition(float x, float y);
+
+	void setLayer(int layer);
+	int getLayer();
 
 	//Implement in child classes
 	virtual void drawElement(SDL_Texture* surface) = 0;

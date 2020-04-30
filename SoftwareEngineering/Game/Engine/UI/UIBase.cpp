@@ -1,6 +1,7 @@
 #include "UIBase.h"
 
 #include <iostream>
+#include <algorithm>
 
 UIBase::UIBase(CRenderer* renderer) {
 	this->renderer = renderer->GetSDLRenderer();
@@ -13,7 +14,6 @@ void UIBase::drawAllElements() {
 	SDL_SetRenderTarget(renderer, surface);
 	SDL_GetRenderDrawColor(renderer, &r, &g, &b, &a);
 	SDL_RenderClear(renderer);
-
 	for (int i = 0; i < elements.size(); i++) {
 		elements[i]->drawElement(surface);
 	}
@@ -24,6 +24,12 @@ void UIBase::drawAllElements() {
 
 void UIBase::addElement(UIElement* element) {
 	elements.push_back(element);
+	std::sort(elements.begin(), elements.end(), [](UIElement* a, UIElement* b) {return a->getLayer() < b->getLayer(); });
+}
+
+void UIBase::removeElement(UIElement* element) {
+	elements.erase(std::remove(elements.begin(), elements.end(), element), elements.end());
+	delete element;
 }
 
 void UIBase::updateAllElements() {
