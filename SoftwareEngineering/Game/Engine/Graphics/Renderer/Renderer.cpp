@@ -61,7 +61,7 @@ void CRenderer::DeleteAllTextures()
 }
 
 
-void CRenderer::DrawAllImages() 
+void CRenderer::DrawAllImages()
 {
 	std::sort(Images.begin(), Images.end(), IMAGE_ZORDER_SORTER());
 
@@ -83,7 +83,7 @@ void CRenderer::DrawImage(CImage* Image) const
 {
 	SDL_Rect Cell{ Image->GetCell() };
 	SVector2 Pivot{ Image->Pivot };
-	
+
 	STransform2 Local{ Image->Transform };
 	Local.Location -= Pivot;
 
@@ -238,7 +238,7 @@ void CRenderer::RenderImagePixelTest(CImage* TheImage, int x, int y)
 	SDL_PixelFormat* pixelformattest;
 	pixelformattest = TempSurface->format;
 
-	
+
 	for (int i = 0; i <= 32; i++)
 	{
 

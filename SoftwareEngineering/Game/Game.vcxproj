@@ -21,7 +21,14 @@
   <ItemGroup>
     <ClCompile Include="ButtonTexture.cpp" />
     <ClCompile Include="Engine\DataManagement\AssetLoader.cpp" />
+    <ClCompile Include="Engine\DataManagement\FontLoader.cpp" />
+    <ClCompile Include="Engine\DataManagement\JsonFacade.cpp" />
     <ClCompile Include="Engine\DataManagement\JsonHandler.cpp" />
+    <ClCompile Include="Engine\DataManagement\JsonObject.cpp" />
+    <ClCompile Include="Engine\DataManagement\JsonReader.cpp" />
+    <ClCompile Include="Engine\DataManagement\JsonWriter.cpp" />
+    <ClCompile Include="Engine\DataManagement\KKCReader.cpp" />
+    <ClCompile Include="Engine\DataManagement\TextFileReadWrite.cpp" />
     <ClCompile Include="Engine\Graphics\Images\Animation.cpp" />
     <ClCompile Include="Engine\Input\ControllerInput.cpp" />
     <ClCompile Include="Engine\Input\InputController.cpp" />
@@ -67,6 +74,9 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="Engine\Level\Level.cpp" />
+    <ClCompile Include="Engine\Level\Tile.cpp" />
+    <ClCompile Include="Engine\Level\TileBase.cpp" />
     <ClCompile Include="Engine\Source.cpp" />
     <ClCompile Include="Engine\Inventory\Effects\Examples\StaminaEffect.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
@@ -98,13 +108,26 @@
     <ClCompile Include="Engine\UI\UIElement.cpp" />
     <ClCompile Include="Engine\WorldObject\WorldActor.cpp" />
     <ClCompile Include="Engine\WorldObject\WorldObject.cpp" />
+    <ClCompile Include="Engine\Inventory\Tests\Joe\MoneyCountTest.cpp" />
+    <ClCompile Include="Engine\Inventory\Tests\Joe\ShopInventoryTests.cpp" />
     <ClCompile Include="ImageBox.cpp" />
+    <ClCompile Include="Engine\Inventory\InventoryUI.cpp" />
     <ClCompile Include="Label.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ButtonTexture.h" />
     <ClInclude Include="Engine\DataManagement\AssetLoader.h" />
+    <ClInclude Include="Engine\DataManagement\FontLoader.h" />
+    <ClInclude Include="Engine\DataManagement\JsonArray.h" />
+    <ClInclude Include="Engine\DataManagement\JsonBase.h" />
+    <ClInclude Include="Engine\DataManagement\JsonFacade.h" />
     <ClInclude Include="Engine\DataManagement\JsonHandler.h" />
+    <ClInclude Include="Engine\DataManagement\JsonObject.h" />
+    <ClInclude Include="Engine\DataManagement\JsonReader.h" />
+    <ClInclude Include="Engine\DataManagement\JsonValue.h" />
+    <ClInclude Include="Engine\DataManagement\JsonWriter.h" />
+    <ClInclude Include="Engine\DataManagement\KKCReader.h" />
+    <ClInclude Include="Engine\DataManagement\TextFileReadWrite.h" />
     <ClInclude Include="Engine\Graphics\Images\Animation.h" />
     <ClInclude Include="Engine\Input\ControllerInput.h" />
     <ClInclude Include="Engine\Input\InputController.h" />
@@ -179,7 +202,14 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </ClInclude>
+    <ClInclude Include="Engine\Level\Level.h" />
+    <ClInclude Include="Engine\Level\Tile.h" />
+    <ClInclude Include="Engine\Level\TileBase.h" />
     <ClInclude Include="Engine\System\Camera.h" />
+    <ClInclude Include="Engine\WorldObject\WorldActor.h" />
+    <ClInclude Include="Engine\WorldObject\WorldObject.h" />
+    <ClInclude Include="Engine\Inventory\Tests\Joe\MoneyCountTest.h" />
+    <ClInclude Include="Engine\Inventory\Tests\Joe\ShopInventoryTests.h" />
     <ClInclude Include="Engine\UI\AnchorTypes.h" />
     <ClInclude Include="Engine\UI\SampleUI.h" />
     <ClInclude Include="Engine\UI\UIBase.h" />
@@ -187,9 +217,8 @@
     <ClInclude Include="Engine\UI\UIBuilder.h" />
     <ClInclude Include="Engine\UI\UIBuilderFactory.h" />
     <ClInclude Include="Engine\UI\UIElement.h" />
-    <ClInclude Include="Engine\WorldObject\WorldActor.h" />
-    <ClInclude Include="Engine\WorldObject\WorldObject.h" />
     <ClInclude Include="ImageBox.h" />
+    <ClInclude Include="Engine\Inventory\InventoryUI.h" />
     <ClInclude Include="Label.h" />
   </ItemGroup>
   <ItemGroup>

@@ -19,7 +19,7 @@ public:
 	// The pointer refernce to the Renderer.
 	static CRenderer* Instance;
 
-	
+
 
 private:
 	/// Properties
@@ -118,12 +118,12 @@ public:
 	// @param Blue - The blue component to set the background with.
 	// @param Alpha - The alpha component to set the background with.
 	void SetBackgroundColour(const uint8& Red, const uint8& Green, const uint8& Blue, const uint8& Alpha = 255);
-	
+
 	// Sets the colour the window refreshes with.
 	// @param Colour - The red, green and blue colour to set the window.
 	void SetBackgroundColour(const SDL_Color& Colour);
 
-	
+
 
 	/// Setters
 

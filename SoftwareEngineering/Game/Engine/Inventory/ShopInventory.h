@@ -4,7 +4,7 @@
 class ShopInventory : public Inventory
 {
 public:
-	void BuyItemFromVender(Item* item, Inventory* buyer);
-	void SellToVender(Item* item, Inventory* seller);
+	void BuyItemFromMe(Item* item, Inventory* buyer);
+	void SellItemToMe(Item* item, Inventory* seller);
 };
 

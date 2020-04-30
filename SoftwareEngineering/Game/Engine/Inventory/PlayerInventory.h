@@ -4,6 +4,7 @@
 #include "Inventory.h"
 #include "ItemSystem/Item.h"
 #include "ItemSystem/EquipmentSlots.h"
+#include "ItemSystem/Equippable.h"
 
 class PlayerInventory :
 	public Inventory
@@ -14,11 +15,13 @@ private:
 
 public:
 
-	void	UseItem(Item* item);
-	void	EquipItem(Item* item);		// Need equippable item implementation
-	void	UnequipItem(Item* item);	// ^^
+	PlayerInventory();
 
-	bool	IsItemEquipped(Item* item);
+	void	UseItem(Item* item);
+	void	EquipItem(Equippable* item);		// Need equippable item implementation
+	void	UnequipItem(SlotName item);	// ^^
+
+	bool	IsItemEquipped(Equippable* item);
 	bool	IsEquipmentSlotFree(SlotName equipmentSlot);
 
 };

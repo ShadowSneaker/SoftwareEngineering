@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <vector>
+#include <map>
 class Item;
 
 class ItemDatabase
@@ -14,4 +15,5 @@ public:
 	static ItemDatabase* getInstance() { return m_instance; }
 	static void DeleteInstance();
 
+	~ItemDatabase();
 };

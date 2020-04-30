@@ -1,24 +1,55 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
-    <Filter Include="Source Files\UI">
-      <UniqueIdentifier>{4c7795a1-6776-4a82-824d-4734c8f15aec}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\UI">
-      <UniqueIdentifier>{37d7ce63-fbd6-410c-b7e2-4b1f02e036a9}</UniqueIdentifier>
-    </Filter>
+    <ClCompile Include="ButtonTexture.cpp" />
+    <ClCompile Include="Engine\DataManagement\AssetLoader.cpp" />
+    <ClCompile Include="Engine\DataManagement\JsonHandler.cpp" />
+    <ClCompile Include="Engine\Graphics\Images\Animation.cpp" />
+    <ClCompile Include="Engine\Inventory\Effects\Examples\DamageBuffEffect.cpp" />
+    <ClCompile Include="Engine\Graphics\Images\Image.cpp" />
+    <ClCompile Include="Engine\Graphics\Renderer\Renderer.cpp" />
+    <ClCompile Include="Engine\Graphics\Renderer\SDLSetup.cpp" />
+    <ClCompile Include="Engine\Inventory\Inventory.cpp" />
+    <ClCompile Include="Engine\Inventory\ItemSystem\Consumable.cpp" />
+    <ClCompile Include="Engine\Inventory\ItemSystem\Equippable.cpp" />
+    <ClCompile Include="Engine\Inventory\ItemSystem\Item.cpp" />
+    <ClCompile Include="Engine\Inventory\ItemSystem\Switchable.cpp" />
+    <ClCompile Include="Engine\Inventory\ItemSystem\UsableItem.cpp" />
+    <ClCompile Include="Engine\Inventory\LootableInventory.cpp" />
+    <ClCompile Include="Engine\Inventory\PlayerInventory.cpp" />
+    <ClCompile Include="Engine\Source.cpp" />
+    <ClCompile Include="Engine\Inventory\Effects\Examples\StaminaEffect.cpp" />
+    <ClCompile Include="Engine\Inventory\Effects\Examples\HealthEffect.cpp" />
+    <ClCompile Include="Engine\Inventory\ShopInventory.cpp" />
+    <ClCompile Include="Engine\Inventory\ItemSystem\MoneyItem.cpp" />
+    <ClCompile Include="Engine\Inventory\ItemSystem\ItemDatabase.cpp" />
+    <ClCompile Include="Engine\System\Time.cpp" />
+    <ClCompile Include="Engine\UI\SampleUI.cpp" />
+    <ClCompile Include="Engine\UI\UIBase.cpp" />
+    <ClCompile Include="Engine\UI\UIBox.cpp" />
+    <ClCompile Include="Engine\UI\UIBuilder.cpp" />
+    <ClCompile Include="Engine\UI\UIBuilderFactory.cpp" />
+    <ClCompile Include="Engine\UI\UIElement.cpp" />
+    <ClCompile Include="Engine\WorldObject\WorldActor.cpp" />
+    <ClCompile Include="Engine\WorldObject\WorldObject.cpp" />
+    <ClCompile Include="Engine\Inventory\Tests\Joe\MoneyCountTest.cpp" />
+    <ClCompile Include="Engine\Inventory\Tests\Joe\ShopInventoryTests.cpp" />
+    <ClCompile Include="ImageBox.cpp" />
+    <ClCompile Include="Label.cpp" />
+    <ClCompile Include="Engine\Inventory\InventoryUI.cpp" />
+    <ClCompile Include="Engine\System\Camera.cpp" />
+    <ClCompile Include="Engine\DataManagement\JsonObject.cpp" />
+    <ClCompile Include="Engine\DataManagement\JsonReader.cpp" />
+    <ClCompile Include="Engine\DataManagement\JsonWriter.cpp" />
+    <ClCompile Include="Engine\DataManagement\KKCReader.cpp" />
+    <ClCompile Include="Engine\DataManagement\TextFileReadWrite.cpp" />
+    <ClCompile Include="Engine\DataManagement\FontLoader.cpp" />
+    <ClCompile Include="Engine\DataManagement\JsonFacade.cpp" />
+    <ClCompile Include="Engine\Level\Level.cpp" />
+    <ClCompile Include="Engine\Level\Tile.cpp" />
+    <ClCompile Include="Engine\Level\TileBase.cpp" />
+    <ClCompile Include="Engine\Input\InputController.cpp" />
+    <ClCompile Include="Engine\Input\KeyboardInput.CPP" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\Source.cpp">
@@ -93,25 +124,6 @@
     <ClCompile Include="Engine\System\Time.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-<<<<<<< HEAD
-    <ClCompile Include="Engine\System\Camera.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Input\MouseInput.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Input\KeyboardInput.CPP">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Input\InputManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Input\InputController.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Input\ControllerInput.cpp">
-      <Filter>Source Files</Filter>
-=======
     <ClCompile Include="Engine\UI\UIElement.cpp">
       <Filter>Source Files\UI</Filter>
     </ClCompile>
@@ -138,7 +150,8 @@
     </ClCompile>
     <ClCompile Include="ImageBox.cpp">
       <Filter>Source Files\UI</Filter>
->>>>>>> ui
+    <ClCompile Include="Engine\System\Camera.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -215,7 +228,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Inventory\ItemSystem\Item.h">
-<<<<<<< HEAD
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Engine\System\Camera.h">
@@ -234,8 +246,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Input\InputController.h">
-=======
->>>>>>> ui
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Engine\UI\UIElement.h">
@@ -270,7 +280,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Engine\DataManagement\Fruits.json" />
+    <Text Include="Engine\Input\gamecontrollerdb.txt.txt" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Engine\Input\gamecontrollerdb.txt.txt" />
