@@ -39,8 +39,8 @@ void UIBase::updateAllElements() {
 }
 
 void UIBase::clearElements() {
-	for (auto e : elements) {
-		delete e;
+	for (auto e = elements.begin(); e != elements.end(); ++e) {
+		delete* e;
 	}
 	elements.clear();
 }
