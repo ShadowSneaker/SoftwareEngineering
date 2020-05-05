@@ -19,6 +19,13 @@ InputManager* inputManager = new InputManager();
 //CImage* Image{ new CImage() };
 //CImage* Image2{ new CImage() };
 
+
+// the Corpirite Code Library used for the maths within this project was not created within this project and no adjustments to output to the code was developed in this project
+// ideally this would be made into an actual library but due to time this was not possible. 
+
+
+
+
 int ControllerThread(void* threadData)
 {
 
@@ -107,6 +114,8 @@ int main(int argc, char** argv)
 
 	while (Event->type != SDL_QUIT)
 	{
+
+		Renderer->Clear();
 		Timer += TTime::DeltaTime;
 		if (Timer > 2.0f && !Bop)
 		{
@@ -147,7 +156,7 @@ int main(int argc, char** argv)
 			else if (inputManager->GetMouse()->CheckMouse(Mouse_Wheel_Down) || inputManager->GetMouse()->CheckMouse(Mouse_Wheel_Up))
 			{
 				//moves image with wheel
-	/*			Image->Transform.Location.SetY(inputManager->GetMouse()->GetMouseWheel());*/
+				/*Image->Transform.Location.SetY(inputManager->GetMouse()->GetMouseWheel());*/
 			}
 
 			if (inputManager->GetKeyboard()->IsKeyPressed(KEY_CONFIRM))
@@ -171,14 +180,14 @@ int main(int argc, char** argv)
 		
 		//Image->AnimationTestFunction();
 		//Time->Update();
-		Renderer->Clear();
+		
 		inventory->Draw(Renderer);
 		//ui->drawAllElements();
-		Renderer->DrawAllImages();
+		//Renderer->DrawAllImages();
 		//ui->updateAllElements();
 		//TheImage->SetColour(255, 0, 0); // sets it to red
 		//TheImage->TestImageColour(255, 0, 0); // tests if its red
-		TheCamera->CameraTesterFunction(Image);
+		//TheCamera->CameraTesterFunction(Image);
 
 		//TheImage->TestImageLocation(MovedLocation, MovedLocation);
 		//Renderer->RenderImagePixelTest(TheImage, 300, 300);
