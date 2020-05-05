@@ -69,7 +69,8 @@ void CRenderer::DrawAllImages()
 	{
 		if (Image->Enabled)
 		{
-			if (Image->GetTexture() != nullptr && Image->GetSurface() != nullptr) {
+			if (Image->GetTexture() && !Image->GetDestroying()) 
+			{
 				Image->Update();
 				DrawImage(Image);
 			}

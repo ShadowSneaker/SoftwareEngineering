@@ -74,13 +74,13 @@ int main(int argc, char** argv)
 	TheCamera->SetCameraPosition(300.0f, 300.0f);
 
 	Renderer->SetBackgroundColour(SColour::DarkGray());
-	Renderer->SetImage(Image, "Content/Images/HappyBoi.png", false);
+	//Renderer->SetImage(Image, "Content/Images/HappyBoi.png", false);
 	//Renderer->SetImage(Image2, "Content/Images/HappyBoi2.png", false);
 	Renderer->AddImage(Image);
 	//Renderer->AddImage(Image2);
 
 
-	Image->SetCellCount(1, 4);
+	Image->SetCellCount(1, 5);
 	Image->Transform.Location = 300.0f;
 	//Image->ReverseFromEnd();
 	//Image->Stop();
@@ -122,52 +122,52 @@ int main(int argc, char** argv)
 
 			Timer = 0.0f;
 			Bop = true;
-			//if (Image->IsPlaying()) Image->ReverseFromEnd();
-			//Image->ReverseFromEnd();
-
-			int data = 10;
-
-			SDL_Thread* threadID = SDL_CreateThread(ControllerThread, "Controller Thread", (void*)data);
-
-			inputManager->Update(Event);
-
-
-			if ((inputManager->GetMouse()->CheckMouse(Mouse_Button_Left) && (inputManager->GetMouse()->OnImage(Image))) || inputManager->GetMouse()->ImageSelected)
-			{
-				Image->SetColour(255, 0, 0, 255);
-				cursor_Sensitivity*=1.05;
-				//inputManager->GetMouse()->MoveImage(Image);
-			}
-			else if (inputManager->GetMouse()->CheckMouse(Mouse_Button_Left))
-			{
-				
-			}
-			else if (inputManager->GetMouse()->CheckMouse(Mouse_Button_Right) && inputManager->GetMouse()->OnImage(Image))
-			{
-				cursor_Sensitivity/=1.05;
-				SDL_ShowCursor(1); //switches cursor on
-			}
-			else if (inputManager->GetMouse()->CheckMouse(Mouse_Button_Right))
-			{
-				//Switches cursor on
-				//SDL_ShowCursor(1);
-			}
-			//move something up and down using mouse wheel
-			else if (inputManager->GetMouse()->CheckMouse(Mouse_Wheel_Down) || inputManager->GetMouse()->CheckMouse(Mouse_Wheel_Up))
-			{
-				//moves image with wheel
-				/*Image->Transform.Location.SetY(inputManager->GetMouse()->GetMouseWheel());*/
-			}
-
-			if (inputManager->GetKeyboard()->IsKeyPressed(KEY_CONFIRM))
-			{
-				Image->SetColour(0, 0, 255, 255);
-			}
-			inputManager->GetMouse()->SetMouseWheel(Image->Transform.Location.GetY());
-			inputManager->GetMouse()->SetSensitivity(cursor_Sensitivity);
-			SDL_WaitThread(threadID, NULL);
-			Renderer->DrawAllImages();
 		}
+		//if (Image->IsPlaying()) Image->ReverseFromEnd();
+		//Image->ReverseFromEnd();
+
+		int data = 10;
+
+		SDL_Thread* threadID = SDL_CreateThread(ControllerThread, "Controller Thread", (void*)data);
+
+		inputManager->Update(Event);
+
+
+		if ((inputManager->GetMouse()->CheckMouse(Mouse_Button_Left) && (inputManager->GetMouse()->OnImage(Image))) || inputManager->GetMouse()->ImageSelected)
+		{
+			Image->SetColour(255, 0, 0, 255);
+			cursor_Sensitivity*=1.05;
+			//inputManager->GetMouse()->MoveImage(Image);
+		}
+		else if (inputManager->GetMouse()->CheckMouse(Mouse_Button_Left))
+		{
+				
+		}
+		else if (inputManager->GetMouse()->CheckMouse(Mouse_Button_Right) && inputManager->GetMouse()->OnImage(Image))
+		{
+			cursor_Sensitivity/=1.05;
+			SDL_ShowCursor(1); //switches cursor on
+		}
+		else if (inputManager->GetMouse()->CheckMouse(Mouse_Button_Right))
+		{
+			//Switches cursor on
+			//SDL_ShowCursor(1);
+		}
+		//move something up and down using mouse wheel
+		else if (inputManager->GetMouse()->CheckMouse(Mouse_Wheel_Down) || inputManager->GetMouse()->CheckMouse(Mouse_Wheel_Up))
+		{
+			//moves image with wheel
+			/*Image->Transform.Location.SetY(inputManager->GetMouse()->GetMouseWheel());*/
+		}
+
+		if (inputManager->GetKeyboard()->IsKeyPressed(KEY_CONFIRM))
+		{
+			Image->SetColour(0, 0, 255, 255);
+		}
+		inputManager->GetMouse()->SetMouseWheel(Image->Transform.Location.GetY());
+		inputManager->GetMouse()->SetSensitivity(cursor_Sensitivity);
+		SDL_WaitThread(threadID, NULL);
+		
 
 		if(Event->type == SDL_KEYDOWN)
 		{
@@ -179,11 +179,11 @@ int main(int argc, char** argv)
 
 		
 		//Image->AnimationTestFunction();
-		//Time->Update();
+		Time->Update();
 		
 		inventory->Draw(Renderer);
 		//ui->drawAllElements();
-		//Renderer->DrawAllImages();
+		Renderer->DrawAllImages();
 		//ui->updateAllElements();
 		//TheImage->SetColour(255, 0, 0); // sets it to red
 		//TheImage->TestImageColour(255, 0, 0); // tests if its red
@@ -197,6 +197,7 @@ int main(int argc, char** argv)
 
 	delete inventory;
 	delete i;
+	delete Renderer;
 	
 	return 1;
 }
