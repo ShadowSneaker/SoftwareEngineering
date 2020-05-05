@@ -7,6 +7,8 @@
 #include "Inventory/Inventory.h"
 #include "Inventory/ItemSystem/Item.h"
 
+#include "Audio/AudioManager.h"
+
 #include "Input/InputManager.h"
 #include <SDL_thread.h>
 #include <SDL.h>
@@ -101,6 +103,25 @@ int main(int argc, char** argv)
 
 	/*Image2->Transform.Location = 300.0f;
 	Image2->SetColour(255, 255, 0, 255);*/
+
+	////////////////////////////////////////////////////////////////////////////////////////////////////////
+	/////////		Audio Stuff		///////////////
+
+	AudioManager* Aud = new AudioManager(); //Audio manager created first
+	MusicClip* myMusic = new MusicClip("Content/Audio/sound.wav"); //Music clips loaded in to use
+
+	AudioClip* ButtonPressClip = new AudioClip("Content/Audio/ButtonPress.wav"); //audio clips loaded in to use
+
+	Aud->Play(myMusic); //start playing music (loops). only one music track can play at once.
+	
+
+//	Aud->Play(ButtonPressClip); //plays a single fire sound event. can play multiple sfx sounds at once.
+
+//	Aud->Play(ButtonPressClip, true); //plays a looping Sfx. can play multiple sfx sounds at once.
+
+	//////////////////////////////////////////////////////////////////////////////////////////
+
+
 	//-----------------------------------MOUSE STUFF--------------------------//
 	//how much the mouse wheel affects stuff
 	inputManager->GetMouse()->SetWheelStrength(100);
@@ -138,6 +159,10 @@ int main(int argc, char** argv)
 			Image->SetColour(255, 0, 0, 255);
 			cursor_Sensitivity*=1.05;
 			//inputManager->GetMouse()->MoveImage(Image);
+
+			
+			if (!Aud->isClipPlaying(ButtonPressClip)) Aud->Play(ButtonPressClip); //plays a single fire sound event. can play multiple sfx sounds at once.
+
 		}
 		else if (inputManager->GetMouse()->CheckMouse(Mouse_Button_Left))
 		{
@@ -147,6 +172,9 @@ int main(int argc, char** argv)
 		{
 			cursor_Sensitivity/=1.05;
 			SDL_ShowCursor(1); //switches cursor on
+
+			
+			if (!Aud->isClipPlaying(ButtonPressClip)) Aud->Play(ButtonPressClip); //plays a single fire sound event. can play multiple sfx sounds at once.
 		}
 		else if (inputManager->GetMouse()->CheckMouse(Mouse_Button_Right))
 		{
