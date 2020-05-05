@@ -41,10 +41,10 @@ void InventoryUI::UpdateElements()
 
 	int height = (itemsYOffset + moneyYOffset + (h * itemSize) + (h * 8));
 
-	clearElements();
 
 	SVector2i screenSize = m_renderer->GetWindowSize();
 
+	clearElements();
 	auto mainBox = boxbuilder->withPosition((float)screenSize.X() / 2.f - screenSize.X() / 4.f, (float)screenSize.Y() / 2.f - height / 2.f).
 		withDimensions(screenSize.X() / 2.f, height).withColour({ 255,255,255,255 }).build();
 
