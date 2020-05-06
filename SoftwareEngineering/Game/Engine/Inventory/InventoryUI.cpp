@@ -63,8 +63,8 @@ void InventoryUI::UpdateElements()
 		{
 			if (m_inventory->GetItems().size() > i&& m_inventory->GetItems()[i] != nullptr)
 			{
-				//AddElement(labelbuilder->withText(m_inventory->GetItems()[i]->GetName()).withFont(FONT_ROBOTO, 8).withParent(mainBox).withDimensions(size, size).
-				//	withPosition(itemsXOffset + x * (size + 8), itemsYOffset + y * (size + 8)).withColour({ 0,0,0,255 }).build());
+				//AddElement(labelbuilder->withText(m_inventory->GetItems()[i]->GetName()).withFont(FONT_ROBOTO, 8).withParent(mainBox).withDimensions(itemSize, itemSize).
+				//	withPosition(itemsXOffset + x * (itemSize + 8), itemsYOffset + y * (itemSize + 8)).withColour({ 0,0,0,255 }).build());
 			}
 			else
 			{

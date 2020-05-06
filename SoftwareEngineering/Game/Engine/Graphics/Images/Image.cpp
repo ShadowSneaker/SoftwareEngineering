@@ -11,6 +11,7 @@ CImage::CImage()
 
 CImage::~CImage()
 {
+	IsDestroying = true;
 	CRenderer::Instance->RemoveImage(this);
 }
 

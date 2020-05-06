@@ -18,6 +18,9 @@ class CImage
 private:
 	/// Properties
 
+	// Checks if this image is currently being deleted.
+	bool IsDestroying{ false };
+
 	// A reference to the texture surface this image uses.
 	SDL_Surface* Surface{ nullptr };
 
@@ -137,6 +140,9 @@ public:
 
 	// Returns a reference to the surface this image uses.
 	INLINE SDL_Surface* GetSurface() const { return Surface; }
+
+	// Returns if this object is currently being removed from memory.
+	INLINE bool GetDestroying() const { return IsDestroying; }
 
 	// Get the image flipped data.
 	SDL_RendererFlip GetFlip() const;

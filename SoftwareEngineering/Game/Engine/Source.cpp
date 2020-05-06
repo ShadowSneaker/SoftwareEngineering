@@ -163,9 +163,9 @@ int main(int argc, char** argv)
 		if (Event->type == SDL_KEYDOWN)
 		{
 			std::cout << "Adding item" << "\n";
-			//auto cloned = i->Clone();
-			//cloned->SetName("Item " + std::to_string(inventory->GetItems().size()));
-			//inventory->AddItem(cloned);
+			auto cloned = i->Clone();
+			cloned->SetName("Item " + std::to_string(inventory->GetItems().size()));
+			inventory->AddItem(cloned);
 		}
 		
 		//Image->AnimationTestFunction();
