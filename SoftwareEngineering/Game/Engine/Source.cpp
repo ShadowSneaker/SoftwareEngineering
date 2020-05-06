@@ -7,6 +7,8 @@
 #include "Inventory/Inventory.h"
 #include "Inventory/ItemSystem/Item.h"
 
+#include "Audio/AudioManager.h"
+
 #include "Input/InputManager.h"
 #include <SDL_thread.h>
 #include <SDL.h>
@@ -18,6 +20,13 @@ SDL_Event* Event{ new SDL_Event{} };
 InputManager* inputManager = new InputManager();
 //CImage* Image{ new CImage() };
 //CImage* Image2{ new CImage() };
+
+
+// the Corpirite Code Library used for the maths within this project was not created within this project and no adjustments to output to the code was developed in this project
+// ideally this would be made into an actual library but due to time this was not possible. 
+
+
+
 
 int ControllerThread(void* threadData)
 {
@@ -67,13 +76,13 @@ int main(int argc, char** argv)
 	TheCamera->SetCameraPosition(300.0f, 300.0f);
 
 	Renderer->SetBackgroundColour(SColour::DarkGray());
-	Renderer->SetImage(Image, "Content/Images/HappyBoi.png", false);
+	//Renderer->SetImage(Image, "Content/Images/HappyBoi.png", false);
 	//Renderer->SetImage(Image2, "Content/Images/HappyBoi2.png", false);
 	Renderer->AddImage(Image);
 	//Renderer->AddImage(Image2);
 
 
-	Image->SetCellCount(1, 4);
+	Image->SetCellCount(1, 5);
 	Image->Transform.Location = 300.0f;
 	//Image->ReverseFromEnd();
 	//Image->Stop();
@@ -94,6 +103,25 @@ int main(int argc, char** argv)
 
 	/*Image2->Transform.Location = 300.0f;
 	Image2->SetColour(255, 255, 0, 255);*/
+
+	////////////////////////////////////////////////////////////////////////////////////////////////////////
+	/////////		Audio Stuff		///////////////
+
+	AudioManager* Aud = new AudioManager(); //Audio manager created first
+	MusicClip* myMusic = new MusicClip("Content/Audio/sound.wav"); //Music clips loaded in to use
+
+	AudioClip* ButtonPressClip = new AudioClip("Content/Audio/ButtonPress.wav"); //audio clips loaded in to use
+
+	Aud->Play(myMusic); //start playing music (loops). only one music track can play at once.
+	
+
+//	Aud->Play(ButtonPressClip); //plays a single fire sound event. can play multiple sfx sounds at once.
+
+//	Aud->Play(ButtonPressClip, true); //plays a looping Sfx. can play multiple sfx sounds at once.
+
+	//////////////////////////////////////////////////////////////////////////////////////////
+
+
 	//-----------------------------------MOUSE STUFF--------------------------//
 	//how much the mouse wheel affects stuff
 	inputManager->GetMouse()->SetWheelStrength(100);
@@ -107,58 +135,67 @@ int main(int argc, char** argv)
 
 	while (Event->type != SDL_QUIT)
 	{
+
+		Renderer->Clear();
 		Timer += TTime::DeltaTime;
 		if (Timer > 2.0f && !Bop)
 		{
 
 			Timer = 0.0f;
 			Bop = true;
-			//if (Image->IsPlaying()) Image->ReverseFromEnd();
-			//Image->ReverseFromEnd();
-
-			int data = 10;
-
-			SDL_Thread* threadID = SDL_CreateThread(ControllerThread, "Controller Thread", (void*)data);
-
-			inputManager->Update(Event);
-
-
-			if ((inputManager->GetMouse()->CheckMouse(Mouse_Button_Left) && (inputManager->GetMouse()->OnImage(Image))) || inputManager->GetMouse()->ImageSelected)
-			{
-				Image->SetColour(255, 0, 0, 255);
-				cursor_Sensitivity*=1.05;
-				//inputManager->GetMouse()->MoveImage(Image);
-			}
-			else if (inputManager->GetMouse()->CheckMouse(Mouse_Button_Left))
-			{
-				
-			}
-			else if (inputManager->GetMouse()->CheckMouse(Mouse_Button_Right) && inputManager->GetMouse()->OnImage(Image))
-			{
-				cursor_Sensitivity/=1.05;
-				SDL_ShowCursor(1); //switches cursor on
-			}
-			else if (inputManager->GetMouse()->CheckMouse(Mouse_Button_Right))
-			{
-				//Switches cursor on
-				//SDL_ShowCursor(1);
-			}
-			//move something up and down using mouse wheel
-			else if (inputManager->GetMouse()->CheckMouse(Mouse_Wheel_Down) || inputManager->GetMouse()->CheckMouse(Mouse_Wheel_Up))
-			{
-				//moves image with wheel
-	/*			Image->Transform.Location.SetY(inputManager->GetMouse()->GetMouseWheel());*/
-			}
-
-			if (inputManager->GetKeyboard()->IsKeyPressed(KEY_CONFIRM))
-			{
-				Image->SetColour(0, 0, 255, 255);
-			}
-			inputManager->GetMouse()->SetMouseWheel(Image->Transform.Location.GetY());
-			inputManager->GetMouse()->SetSensitivity(cursor_Sensitivity);
-			SDL_WaitThread(threadID, NULL);
-			Renderer->DrawAllImages();
 		}
+		//if (Image->IsPlaying()) Image->ReverseFromEnd();
+		//Image->ReverseFromEnd();
+
+		int data = 10;
+
+		SDL_Thread* threadID = SDL_CreateThread(ControllerThread, "Controller Thread", (void*)data);
+
+		inputManager->Update(Event);
+
+
+		if ((inputManager->GetMouse()->CheckMouse(Mouse_Button_Left) && (inputManager->GetMouse()->OnImage(Image))) || inputManager->GetMouse()->ImageSelected)
+		{
+			Image->SetColour(255, 0, 0, 255);
+			cursor_Sensitivity*=1.05;
+			//inputManager->GetMouse()->MoveImage(Image);
+
+			
+			if (!Aud->isClipPlaying(ButtonPressClip)) Aud->Play(ButtonPressClip); //plays a single fire sound event. can play multiple sfx sounds at once.
+
+		}
+		else if (inputManager->GetMouse()->CheckMouse(Mouse_Button_Left))
+		{
+				
+		}
+		else if (inputManager->GetMouse()->CheckMouse(Mouse_Button_Right) && inputManager->GetMouse()->OnImage(Image))
+		{
+			cursor_Sensitivity/=1.05;
+			SDL_ShowCursor(1); //switches cursor on
+
+			
+			if (!Aud->isClipPlaying(ButtonPressClip)) Aud->Play(ButtonPressClip); //plays a single fire sound event. can play multiple sfx sounds at once.
+		}
+		else if (inputManager->GetMouse()->CheckMouse(Mouse_Button_Right))
+		{
+			//Switches cursor on
+			//SDL_ShowCursor(1);
+		}
+		//move something up and down using mouse wheel
+		else if (inputManager->GetMouse()->CheckMouse(Mouse_Wheel_Down) || inputManager->GetMouse()->CheckMouse(Mouse_Wheel_Up))
+		{
+			//moves image with wheel
+			/*Image->Transform.Location.SetY(inputManager->GetMouse()->GetMouseWheel());*/
+		}
+
+		if (inputManager->GetKeyboard()->IsKeyPressed(KEY_CONFIRM))
+		{
+			Image->SetColour(0, 0, 255, 255);
+		}
+		inputManager->GetMouse()->SetMouseWheel(Image->Transform.Location.GetY());
+		inputManager->GetMouse()->SetSensitivity(cursor_Sensitivity);
+		SDL_WaitThread(threadID, NULL);
+		
 
 		if (Event->type == SDL_KEYDOWN)
 		{
@@ -169,15 +206,15 @@ int main(int argc, char** argv)
 		}
 		
 		//Image->AnimationTestFunction();
-		//Time->Update();
-		Renderer->Clear();
+		Time->Update();
+		
 		inventory->Draw(Renderer);
 		//ui->drawAllElements();
 		Renderer->DrawAllImages();
 		//ui->updateAllElements();
 		//TheImage->SetColour(255, 0, 0); // sets it to red
 		//TheImage->TestImageColour(255, 0, 0); // tests if its red
-		TheCamera->CameraTesterFunction(Image);
+		//TheCamera->CameraTesterFunction(Image);
 
 		//TheImage->TestImageLocation(MovedLocation, MovedLocation);
 		//Renderer->RenderImagePixelTest(TheImage, 300, 300);
@@ -187,6 +224,7 @@ int main(int argc, char** argv)
 
 	delete inventory;
 	delete i;
+	delete Renderer;
 	
 	return 1;
 }
