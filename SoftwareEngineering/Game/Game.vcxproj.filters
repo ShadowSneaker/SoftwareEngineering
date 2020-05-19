@@ -56,6 +56,8 @@
     <ClCompile Include="Engine\Audio\AudioClip.cpp" />
     <ClCompile Include="Engine\Audio\AudioManager.cpp" />
     <ClCompile Include="Engine\Audio\MusicClip.cpp" />
+    <ClCompile Include="TilesObservator.cpp" />
+    <ClCompile Include="TilePrototype.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ButtonTexture.h" />
@@ -118,6 +120,8 @@
     <ClInclude Include="Engine\Audio\AudioClip.h" />
     <ClInclude Include="Engine\Audio\AudioManager.h" />
     <ClInclude Include="Engine\Audio\MusicClip.h" />
+    <ClInclude Include="TilesObservator.h" />
+    <ClInclude Include="TilePrototype.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Engine\DataManagement\Fruits.json" />

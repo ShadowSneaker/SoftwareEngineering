@@ -116,6 +116,8 @@
     <ClCompile Include="ImageBox.cpp" />
     <ClCompile Include="Engine\Inventory\InventoryUI.cpp" />
     <ClCompile Include="Label.cpp" />
+    <ClCompile Include="TilePrototype.cpp" />
+    <ClCompile Include="TilesObservator.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ButtonTexture.h" />
@@ -226,6 +228,8 @@
     <ClInclude Include="ImageBox.h" />
     <ClInclude Include="Engine\Inventory\InventoryUI.h" />
     <ClInclude Include="Label.h" />
+    <ClInclude Include="TilePrototype.h" />
+    <ClInclude Include="TilesObservator.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Engine\DataManagement\Fruits.json" />
