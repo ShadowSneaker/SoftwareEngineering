@@ -15,6 +15,7 @@
 //#include "Source.h"
 #include <stdio.h>
 #include <string>
+#include "../TilesObservator.h"
 #include "Inventory/ItemSystem/ItemDatabase.h"
 
 SDL_Event* Event{ new SDL_Event{} };
@@ -25,6 +26,7 @@ InputManager* inputManager = new InputManager();
 
 // the Corpirite Code Library used for the maths within this project was not created within this project and no adjustments to output to the code was developed in this project
 // ideally this would be made into an actual library but due to time this was not possible. 
+
 
 
 
@@ -53,11 +55,16 @@ int main(int argc, char** argv)
 	CRenderer* Renderer{ new CRenderer() };
 
 	Renderer->SetBackgroundColour(SColour::Black());
-	
+
 
 	CCamera* TheCamera{ new CCamera() };
 
 	Renderer->SetMainCamera(TheCamera);
+
+	Renderer->GetScreenSize();
+
+
+
 
 	//SampleUI* ui = new SampleUI(Renderer);
 
@@ -74,7 +81,7 @@ int main(int argc, char** argv)
 	//TheImage->Transform.Location = 300.0f;
 
 
-	TheCamera->SetCameraPosition(300.0f, 300.0f);
+	TheCamera->SetCameraPosition(400.0f, 300.0f);
 
 	Renderer->SetBackgroundColour(SColour::DarkGray());
 	//Renderer->SetImage(Image, "Content/Images/HappyBoi.png", false);
@@ -90,6 +97,11 @@ int main(int argc, char** argv)
 	Image->Transform.Scale = 1.0f;
 	Image->Pivot = Image->GetCellCenter();
 
+	SVector2 TopLeft = TheCamera->GetCameraPosition() - (Renderer->GetWindowSize() / 2);
+
+	std::cout << TopLeft.GetX() << std::endl;
+	std::cout << TopLeft.GetY() << std::endl;
+
 
 	SDL_Event* Event{ new SDL_Event{} };
 
@@ -97,10 +109,16 @@ int main(int argc, char** argv)
 	bool Bop = false;
 
 
+	////////////////////////////////////////////////// LEVEL STUFF ///////////////////////////
+	TilesObservator* tileObservator = new TilesObservator(TheCamera);
+	Level* TheLevel{ new Level("Content/LevelFile/File.txt",100,100,99) };
+
+
+
 	//float MovedLocation = 340.0f;
 	//TheImage->Transform.Location = MovedLocation;
 
-	
+
 
 	/*Image2->Transform.Location = 300.0f;
 	Image2->SetColour(255, 255, 0, 255);*/
@@ -113,8 +131,8 @@ int main(int argc, char** argv)
 
 	AudioClip* ButtonPressClip = new AudioClip("Content/Audio/ButtonPress.wav"); //audio clips loaded in to use
 
-	Aud->Play(myMusic); //start playing music (loops). only one music track can play at once.
-	
+	//Aud->Play(myMusic); //start playing music (loops). only one music track can play at once.
+
 
 //	Aud->Play(ButtonPressClip); //plays a single fire sound event. can play multiple sfx sounds at once.
 
@@ -146,6 +164,7 @@ int main(int argc, char** argv)
 			Timer = 0.0f;
 			Bop = true;
 		}
+		TheLevel->AddTilesToRenderer(Renderer);
 		//if (Image->IsPlaying()) Image->ReverseFromEnd();
 		//Image->ReverseFromEnd();
 
@@ -154,28 +173,35 @@ int main(int argc, char** argv)
 		SDL_Thread* threadID = SDL_CreateThread(ControllerThread, "Controller Thread", (void*)data);
 
 		inputManager->Update(Event);
-
+		if (inputManager->GetKeyboard()->IsKeyPressed(KEY_DOWN))
+		{
+			//std::cout << "button still pressed" << std::endl;
+			TheCamera->SetCameraX(TheCamera->GetCameraX() - 1);
+		}
+		tileObservator->ObserveCameraPosition(TheLevel,TheCamera,Renderer);
 
 		if ((inputManager->GetMouse()->CheckMouse(Mouse_Button_Left) && (inputManager->GetMouse()->OnImage(Image))) || inputManager->GetMouse()->ImageSelected)
 		{
 			Image->SetColour(255, 0, 0, 255);
-			cursor_Sensitivity*=1.05;
+			Image->Transform.Location.SetX(0);
+			Image->Transform.Location.SetY(100);
+			cursor_Sensitivity *= 1.05;
 			//inputManager->GetMouse()->MoveImage(Image);
 
-			
+
 			if (!Aud->isClipPlaying(ButtonPressClip)) Aud->Play(ButtonPressClip); //plays a single fire sound event. can play multiple sfx sounds at once.
 
 		}
 		else if (inputManager->GetMouse()->CheckMouse(Mouse_Button_Left))
 		{
-				
+
 		}
 		else if (inputManager->GetMouse()->CheckMouse(Mouse_Button_Right) && inputManager->GetMouse()->OnImage(Image))
 		{
-			cursor_Sensitivity/=1.05;
+			cursor_Sensitivity /= 1.05;
 			SDL_ShowCursor(1); //switches cursor on
 
-			
+
 			if (!Aud->isClipPlaying(ButtonPressClip)) Aud->Play(ButtonPressClip); //plays a single fire sound event. can play multiple sfx sounds at once.
 		}
 		else if (inputManager->GetMouse()->CheckMouse(Mouse_Button_Right))
@@ -197,7 +223,7 @@ int main(int argc, char** argv)
 		inputManager->GetMouse()->SetMouseWheel(Image->Transform.Location.GetY());
 		inputManager->GetMouse()->SetSensitivity(cursor_Sensitivity);
 		SDL_WaitThread(threadID, NULL);
-		
+
 
 		if (Event->type == SDL_KEYDOWN)
 		{
@@ -215,7 +241,7 @@ int main(int argc, char** argv)
 		
 		//Image->AnimationTestFunction();
 		Time->Update();
-		
+
 		inventory->Draw(Renderer);
 		//ui->drawAllElements();
 		Renderer->DrawAllImages();
@@ -233,6 +259,6 @@ int main(int argc, char** argv)
 	delete inventory;
 	delete i;
 	delete Renderer;
-	
+
 	return 1;
 }

@@ -17,7 +17,7 @@ bool ControllerInput::Initialization()
     //Check for joysticks
     if (SDL_NumJoysticks() < 1)
     {
-        printf("Warning: No joysticks connected!\n");
+        //printf("Warning: No joysticks connected!\n");
     }
     else
     {

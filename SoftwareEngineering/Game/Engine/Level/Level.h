@@ -17,8 +17,8 @@ using namespace std;
 ///To Be Added and Defined Tile Paths
 ///
 //
-#define TILE_GRASS "Content/Images/tile01.png"
-#define TILE_DIRT "Content/Images/tile02.png"
+#define TILE_GRASS "Content/Images/Level/tile01.png"
+#define TILE_DIRT "Content/Images/Level/tile02.png"
 
 
 #define FILE_OPEN_TEST(x) ((x)?true:false)
@@ -73,7 +73,7 @@ public:
 	//Add all tile images to Renderer 
 	void AddTilesToRenderer(CRenderer* renderer);
 
-	std::vector<std::vector <Tile*>> GetTilesVector();
+	std::vector<std::vector <Tile*>>& GetTilesVector();
 
 
 	//Get Singleton Instance of the Level class

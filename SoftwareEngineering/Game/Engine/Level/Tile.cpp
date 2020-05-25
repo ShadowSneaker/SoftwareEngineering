@@ -70,6 +70,12 @@ float Tile::GetBottomBorder()
 	return BottomBorderOffSet;
 }
 
+SVector2 Tile::GetTilePosition()
+{
+	SVector2 pos = { image->Transform.Location.GetX(), image->Transform.Location.GetY() };
+	return pos;
+}
+
 bool Tile::CanWalkOn()
 {
 	return walkable;

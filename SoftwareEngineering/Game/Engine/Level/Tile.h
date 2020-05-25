@@ -40,6 +40,8 @@ public:
 	float GetTopBorder();
 	float GetBottomBorder();
 
+	SVector2 GetTilePosition();
+
 	//Check if it is walkable
 	bool CanWalkOn() override;
 };

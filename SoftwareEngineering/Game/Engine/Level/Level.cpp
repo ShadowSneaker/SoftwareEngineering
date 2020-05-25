@@ -44,7 +44,7 @@ void Level::SetUpTile(int row)
 	{
 		//Set Position of The Tile's Image
 		//Tile X Pos - Tile Excess of Alpha Pixels + Tile Width, Tile Y Pos
-		tile->GetImage()->Transform.Location.Set(tilePosition.GetX() - tile->GetLeftBorder() - tile->GetRightBorder() + tile->GetImage()->GetImageSize().GetX(), tilePosition.GetY());
+		tile->GetImage()->Transform.Location.Set(tilePosition.GetX() - tile->GetLeftBorder() - tile->GetRightBorder(), tilePosition.GetY());
 
 		//Set Layer Order of The Tile's Image
 		tile->SetTileLayerOrder(0);
@@ -206,7 +206,7 @@ void Level::AddTilesToRenderer(CRenderer* renderer)
 			renderer->AddImage(tiles[i][j]->GetImage());
 }
 
-std::vector<std::vector <Tile*>> Level::GetTilesVector()
+std::vector<std::vector <Tile*>>& Level::GetTilesVector()
 {
 	return tiles;
 }
