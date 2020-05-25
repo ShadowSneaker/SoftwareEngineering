@@ -232,6 +232,7 @@
     <ClInclude Include="TilesObservator.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ClassDiagram2.cd" />
     <None Include="Engine\DataManagement\Fruits.json" />
   </ItemGroup>
   <ItemGroup>

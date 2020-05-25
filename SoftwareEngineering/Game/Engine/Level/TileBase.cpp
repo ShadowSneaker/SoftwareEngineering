@@ -24,27 +24,3 @@ void TileBase::SetWalkable(bool CanWalkOn)
 {
 }
 
-CImage* TileBase::GetImage()
-{
-	return nullptr;
-}
-
-float TileBase::GetLeftBorder()
-{
-	return 0.0f;
-}
-
-float TileBase::GetRightBorder()
-{
-	return 0.0f;
-}
-
-float TileBase::GetTopBorder()
-{
-	return 0.0f;
-}
-
-float TileBase::GetBottomBorder()
-{
-	return 0.0f;
-}
