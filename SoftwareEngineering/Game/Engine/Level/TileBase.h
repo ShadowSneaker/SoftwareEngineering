@@ -3,7 +3,7 @@
 #include "../Graphics/Renderer/Renderer.h"
 #include <string>
 
-class TileBase
+class  TileBase
 {
 protected:
 	//Tile Image
@@ -51,18 +51,6 @@ public:
 	//Set tile ability to walk on
 	virtual void SetWalkable(bool CanWalkOn)=0;
 
-
-
-	///Getters
-
-	//Get Image of the tile
-	CImage* GetImage();
-
-	//Get Borders Value
-	float GetLeftBorder();
-	float GetRightBorder();
-	float GetTopBorder();
-	float GetBottomBorder();
 
 	//Check if it is walkable
 	virtual bool CanWalkOn()=0;

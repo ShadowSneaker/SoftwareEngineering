@@ -125,6 +125,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Engine\DataManagement\Fruits.json" />
+    <None Include="ClassDiagram2.cd" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Engine\Input\gamecontrollerdb.txt.txt" />
