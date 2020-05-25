@@ -39,32 +39,32 @@ void InventoryUI::UpdateElements()
 	int itemsYOffset = 64;
 	int moneyYOffset = 32;
 
-	int height = (itemsYOffset + moneyYOffset + (h* itemSize) + (h * 8));
-	
-	clearElements();
+	int height = (itemsYOffset + moneyYOffset + (h * itemSize) + (h * 8));
+
 
 	SVector2i screenSize = m_renderer->GetWindowSize();
 
-	auto mainBox = boxbuilder->withPosition((float)screenSize.X() / 2.f - screenSize.X() / 4.f, (float)screenSize.Y() / 2.f - height/2.f).
-	withDimensions(screenSize.X() / 2.f, height).withColour({ 255,255,255,255 }).build();
-	
+	clearElements();
+	auto mainBox = boxbuilder->withPosition((float)screenSize.X() / 2.f - screenSize.X() / 4.f, (float)screenSize.Y() / 2.f - height / 2.f).
+		withDimensions(screenSize.X() / 2.f, height).withColour({ 255,255,255,255 }).build();
+
 	AddElement(mainBox);
-	
+
 	AddElement(labelbuilder->withText("Player Inventory").withAnchor(Anchor::TOP_CENTRE).withFont(FONT_ROBOTO, 12).
 		withParent(mainBox).withColour({ 0,0,0,255 }).withDimensions(96, 32).build());
 
 	AddElement(labelbuilder->withText("Money Amount " + std::to_string(m_inventory->CountMoney())).withAnchor(Anchor::TOP_RIGHT).
-		withFont(FONT_ROBOTO, 12).withParent(mainBox).withColour({ 0,0,0,255 }).withDimensions(96, moneyYOffset).withPosition(0,24).build());
+		withFont(FONT_ROBOTO, 12).withParent(mainBox).withColour({ 0,0,0,255 }).withDimensions(96, moneyYOffset).withPosition(0, 24).build());
 
 	int i = 0;
 	for (int y = 0; y < h; y++)
 	{
 		for (int x = 0; x < w; x++)
 		{
-			if(m_inventory->GetItems().size() > i && m_inventory->GetItems()[i] != nullptr)
+			if (m_inventory->GetItems().size() > i&& m_inventory->GetItems()[i] != nullptr)
 			{
-				//AddElement(labelbuilder->withText(m_inventory->GetItems()[i]->GetName()).withFont(FONT_ROBOTO, 8).withParent(mainBox).withDimensions(size, size).
-				//	withPosition(itemsXOffset + x * (size + 8), itemsYOffset + y * (size + 8)).withColour({ 0,0,0,255 }).build());
+				AddElement(labelbuilder->withText(m_inventory->GetItems()[i]->GetName()).withFont(FONT_ROBOTO, 8).withParent(mainBox).withDimensions(itemSize, itemSize).
+					withPosition(itemsXOffset + x * (itemSize + 8), itemsYOffset + y * (itemSize + 8)).withColour({ 0,0,0,255 }).build());
 			}
 			else
 			{
@@ -73,7 +73,7 @@ void InventoryUI::UpdateElements()
 			i++;
 		}
 	}
-	
+
 	delete boxbuilder;
 	delete labelbuilder;
 }

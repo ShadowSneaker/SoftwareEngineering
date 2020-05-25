@@ -15,6 +15,7 @@
 //#include "Source.h"
 #include <stdio.h>
 #include <string>
+#include "Inventory/ItemSystem/ItemDatabase.h"
 
 SDL_Event* Event{ new SDL_Event{} };
 InputManager* inputManager = new InputManager();
@@ -129,7 +130,8 @@ int main(int argc, char** argv)
 	//makes the image the cursor
 	inputManager->GetMouse()->SetCursorImage(Image);//COMMENT IF YOU WANT TO USE MOUSE !ON_IMAGE
 	SDL_ShowCursor(0);//switches cursor off
-
+	
+	ItemDatabase::Init("Content/db.kkc");
 	Inventory* inventory = new Inventory();
 	Item* i = new Item();
 
@@ -197,14 +199,19 @@ int main(int argc, char** argv)
 		SDL_WaitThread(threadID, NULL);
 		
 
-		if(Event->type == SDL_KEYDOWN)
+		if (Event->type == SDL_KEYDOWN)
 		{
-			std::cout << "Adding item" << "\n";
-			auto cloned = i->Clone();
-			cloned->SetName("Item " + std::to_string(inventory->GetItems().size()));
-			inventory->AddItem(cloned);
+			if (inventory->GetMaxSlots() > inventory->GetItems().size()) {
+				std::cout << "Adding item" << "\n";
+				
+				//To be used once the KKC works
+				//auto cloned = ItemDatabase::getInstance()->GetItemByID("i_smiley_boi")->Clone();
+				
+				auto cloned = i->Clone();
+				cloned->SetName("Item " + std::to_string(inventory->GetItems().size()));
+				inventory->AddItem(cloned);
+			}
 		}
-
 		
 		//Image->AnimationTestFunction();
 		Time->Update();
