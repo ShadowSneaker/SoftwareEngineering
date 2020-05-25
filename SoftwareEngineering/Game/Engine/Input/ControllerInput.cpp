@@ -1,7 +1,7 @@
 #include "ControllerInput.h"
 #include <stdio.h>
 #include <iostream>
-
+// MADE BY KERON SEPP
 bool ControllerInput::Initialization()
 {
     //Initialization flag
@@ -90,7 +90,7 @@ void ControllerInput::ReceiveEvent(SDL_Event* event)
     }
 }
 
-void ControllerInput::MoveImage(CImage* Image)
+void ControllerInput::MoveImage(CAnimation* Image)
 {
     if (JoyStickAngle == -45)
         Image->Transform.Location.SetX(Image->Transform.Location.GetX() += 1);
@@ -100,6 +100,8 @@ void ControllerInput::MoveImage(CImage* Image)
         Image->Transform.Location.SetY(Image->Transform.Location.GetY() -= 1);
     else if (JoyStickAngle == 90)
         Image->Transform.Location.SetY(Image->Transform.Location.GetY() += 1);
+
+    std::cout << "Ready for controller input" << std::endl;
 }
 
 void ControllerInput::Release()

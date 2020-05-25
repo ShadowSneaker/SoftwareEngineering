@@ -1,8 +1,10 @@
 #include "SDL_gamecontroller.h"
 #include "SDL.h"
 #include "..//Graphics/Renderer/Renderer.h"
+#include "..//Graphics/Images/Animation.h"
 #include <CopiriteMath/Datatypes/Transform.h>
 #pragma once
+// MADE BY KERON SEPP
 class ControllerInput
 {
 private:
@@ -16,7 +18,7 @@ public:
 
 	bool Initialization();
 	void ReceiveEvent(SDL_Event* event);
-	void MoveImage(CImage* Image);
+	void MoveImage(CAnimation* Image);
 	void Release();
 	double CalculateJSAngle(int xDirecton, int yDirection);
 	~ControllerInput();

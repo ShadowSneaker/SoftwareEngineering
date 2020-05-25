@@ -35,7 +35,6 @@ int ControllerThread(void* threadData)
 
 	inputManager->GetController()->ReceiveEvent(Event);
 	inputManager->GetController()->CalculateJSAngle(inputManager->GetController()->xDirection, inputManager->GetController()->yDirection);
-	//inputManager->GetController()->MoveImage(Image);
 
 	return 0;
 }
@@ -75,6 +74,9 @@ int main(int argc, char** argv)
 	CAnimation* Image{ new CAnimation() };
 	Image->SetImage("Content/Images/Anim.png");
 
+	CAnimation* HappyBoi{ new CAnimation() };
+	HappyBoi->SetImage("Content/Images/HappyBoi.png");
+
 	//CImage* TheImage{ new CImage() };
 	//TheImage->SetImage("Content/Images/HappyBoi.png");
 	//TheImage->Transform.Location = 300.0f;
@@ -96,6 +98,13 @@ int main(int argc, char** argv)
 	Image->Transform.Scale = 1.0f;
 	Image->Pivot = Image->GetCellCenter();
 
+	//HappyBoi->SetCellCount(2, 5);
+	HappyBoi->Transform.Location = 300.0f;
+	//Image->ReverseFromEnd();
+	//Image->Stop();
+	HappyBoi->Transform.Scale = 1.0f;
+	HappyBoi->Pivot = HappyBoi->GetCellCenter();
+
 	SVector2 TopLeft = TheCamera->GetCameraPosition() - (Renderer->GetWindowSize() / 2);
 
 	std::cout << TopLeft.GetX() << std::endl;
@@ -112,7 +121,7 @@ int main(int argc, char** argv)
 	TilesObservator* tileObservator = new TilesObservator(TheCamera);
 	Level* TheLevel{ new Level("Content/LevelFile/File.txt",100,100,99) };
 
-
+	inputManager->GetController()->Initialization();
 
 	//float MovedLocation = 340.0f;
 	//TheImage->Transform.Location = MovedLocation;
@@ -168,7 +177,11 @@ int main(int argc, char** argv)
 
 		int data = 10;
 
+		
+		
 		SDL_Thread* threadID = SDL_CreateThread(ControllerThread, "Controller Thread", (void*)data);
+		inputManager->GetController()->MoveImage(HappyBoi);
+		
 
 		inputManager->Update(Event);
 		if (inputManager->GetKeyboard()->IsKeyPressed(KEY_DOWN))
