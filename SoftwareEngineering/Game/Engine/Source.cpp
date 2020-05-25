@@ -228,7 +228,6 @@ int main(int argc, char** argv)
 		if (Event->type == SDL_KEYDOWN)
 		{
 			if (inventory->GetMaxSlots() > inventory->GetItems().size()) {
-				std::cout << "Adding item" << "\n";
 				
 				//To be used once the KKC works
 				//auto cloned = ItemDatabase::getInstance()->GetItemByID("i_smiley_boi")->Clone();
